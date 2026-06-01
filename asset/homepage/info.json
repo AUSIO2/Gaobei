@@ -1,0 +1,118 @@
+{
+  "techHighlights": {
+    "title": "以自主研发科技，定义复材制造未来",
+    "subtitle": "技术壁垒 • 核心优势",
+    "description": "云路复材攻克三维立体编织工艺瓶颈，结合数字孪生与自动化智造系统，提供高强度、定制化、高一致性的前沿复合材料方案。",
+    "cards": [
+      {
+        "id": "braiding",
+        "title": "三维编织技术",
+        "subtitle": "3D Braiding Technology",
+        "description": "实现纤维多维立体交叉编织，从根本上解决层间剥离难题，为结构件提供极致的抗冲击与轻量化表现。",
+        "pills": ["1.5m 最大外径", "6m 编织长度", "近净尺寸成形"],
+        "href": "/technology#braiding"
+      },
+      {
+        "id": "digital-twin",
+        "title": "数字孪生自动化",
+        "subtitle": "Digital Twin Automation",
+        "description": "通过高精度传感器与三维可视化模型，建立产线物理实体的数字映射，提供全生产流程参数精确监控与追溯。",
+        "pills": ["±1℃ 温控精度", "100% 在线监测", "全工艺数智追溯"],
+        "href": "/technology#digital-twin"
+      }
+    ]
+  },
+  "solutionsPreview": {
+    "title": "服务三大核心产业",
+    "subtitle": "业务版图 • 行业应用",
+    "industries": [
+      {
+        "id": "aerospace",
+        "title": "航空航天",
+        "subtitle": "Aerospace & Defense",
+        "description": "针对极端工况要求，提供包括机身肋梁、发动机喷管保护层、整流罩、机翼前缘等高强度、零缺陷关键承力件的三维立体编织解决方案。",
+        "href": "/solutions#aerospace",
+        "highlights": ["无层间剥离结构", "极端耐温与防热", "近净尺寸成形"]
+      },
+      {
+        "id": "energy",
+        "title": "新能源与清洁能源",
+        "subtitle": "New Energy & Power",
+        "description": "面向储能与重载运输，开发高压气瓶（如70MPa氢气瓶）碳纤维编织外壳、大功率风电叶片根部预制体、储氢装备等高安全系数复材结构。",
+        "href": "/solutions#energy",
+        "highlights": ["碳纤维多维缠绕", "高压气密封层", "大尺寸预制体加工"]
+      },
+      {
+        "id": "automotive",
+        "title": "汽车轻量化",
+        "subtitle": "Automotive Lightweighting",
+        "description": "助力量产与高性能赛车，定制底盘传动轴管件、车身防撞横梁、新能源电池包壳体等结构件，实现高达30%-50%的以碳代钢轻量化减重。",
+        "href": "/solutions#automotive",
+        "highlights": ["批量化自动成型", "高吸能碰撞防御", "模块化快速装配"]
+      }
+    ],
+    "footerNote": "我们拥有完善的非标制造开发能力，亦可为 国防科工、海洋工程、轨道交通及高端医疗器械 等特种行业提供定制化复合材料工艺装备。"
+  },
+  "stats": [
+    {
+      "value": 100,
+      "suffix": "%",
+      "label": "核心技术自主研发",
+      "sublabel": "完全拥有三维编织核心算法及软硬件著作权"
+    },
+    {
+      "value": 34,
+      "suffix": "+",
+      "label": "远销国家和地区",
+      "sublabel": "卓越品质在国际复材与高端制造市场获得认可"
+    },
+    {
+      "value": 6,
+      "suffix": "m",
+      "label": "最大编织成形长度",
+      "sublabel": "具备大尺寸火箭喷管与飞机纵梁加工能力"
+    },
+    {
+      "prefix": "±",
+      "value": 1,
+      "suffix": "℃",
+      "label": "产线闭环温控精度",
+      "sublabel": "基于数字孪生模型的成型工艺高精度控制"
+    }
+  ],
+  "cta": {
+    "title": "为您的项目寻找最优复材解决方案",
+    "description": "无论您处于方案规划阶段还是在大批量采购阶段，云路复材的专业工程服务团队都将为您提供量身定制的支持。",
+    "cards": [
+      {
+        "title": "获取产品手册",
+        "description": "全面了解云路复材三维编织装备、专用核心配件及成型平台的详细技术参数与产品谱系。",
+        "buttonText": "获取电子手册",
+        "purpose": "获取产品手册",
+        "tag": "低门槛 • 快速获取"
+      },
+      {
+        "title": "预约参观 / 索取样件",
+        "description": "亲临现代化数字化中试车间，直观感受数字孪生自动化产线运作，或申请符合规格的三维编织测试样件。",
+        "buttonText": "索取及预约",
+        "purpose": "预约产线参观",
+        "tag": "中门槛 • 深度对接"
+      },
+      {
+        "title": "联系顾问，获取方案",
+        "description": "资深复合材料研发与设备专家一对一评估您的工艺需求，提供最适宜的三维编织结构设计与成型装备报价方案。",
+        "buttonText": "获取定制方案",
+        "purpose": "定制方案咨询",
+        "tag": "专业级 • 高效定制"
+      }
+    ],
+    "trustTitle": "云路智造 • 值得信赖的合作伙伴",
+    "trustSub": "拥有从工艺研发、预制体打样到产线非标定制的闭环智造体系",
+    "badges": [
+      "ISO 9001 质量管理体系",
+      "国家高新技术企业",
+      "高精细三维编织专利保护",
+      "软硬件100%自主可控"
+    ]
+  }
+}

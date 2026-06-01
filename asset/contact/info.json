@@ -1,0 +1,40 @@
+{
+  "hero": {
+    "title": "联系我们",
+    "subtitle": "联系方式 · CONTACT US",
+    "description": "如果您有任何设备采购、工艺解决方案咨询或加入我们的意向，欢迎通过以下渠道与我们取得联系。"
+  },
+  "info": {
+    "address": "重庆市沙坪坝区大学城中路（云路复材智能制造研发中心）",
+    "servicePhone": "023-61521612",
+    "recruitmentEmail": "info@yunlu-composites.com",
+    "mapImage": ""
+  },
+  "sales": [
+    {
+      "department": "三维编织智能设备",
+      "contactPerson": "罗先生",
+      "phone": "13203705005"
+    },
+    {
+      "department": "专用核心配件",
+      "contactPerson": "廖先生",
+      "phone": "13911123978"
+    },
+    {
+      "department": "复合材料中试与成型平台",
+      "contactPerson": "赵先生",
+      "phone": "18032899119 或 13739783590"
+    },
+    {
+      "department": "国际（所有产品）",
+      "contactPerson": "吴先生",
+      "phone": "18618319979"
+    },
+    {
+      "department": "非标自动化定制装备 / 数智业务",
+      "contactPerson": "陈先生",
+      "phone": "13108956091"
+    }
+  ]
+}

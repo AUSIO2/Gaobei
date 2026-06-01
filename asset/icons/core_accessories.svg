@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Spool / Bobbin Cylinder -->
+  <rect x="25" y="25" width="30" height="30" rx="3" stroke-width="2" />
+  
+  <!-- Spool Thread wraps -->
+  <line x1="25" y1="30" x2="55" y2="30" stroke-width="1.5" stroke-opacity="0.8" />
+  <line x1="25" y1="35" x2="55" y2="35" stroke-width="1.5" stroke-opacity="0.8" />
+  <line x1="25" y1="40" x2="55" y2="40" stroke-width="1.5" stroke-opacity="0.8" />
+  <line x1="25" y1="45" x2="55" y2="45" stroke-width="1.5" stroke-opacity="0.8" />
+  <line x1="25" y1="50" x2="55" y2="50" stroke-width="1.5" stroke-opacity="0.8" />
+  
+  <!-- Central Spindle Pin -->
+  <line x1="40" y1="18" x2="40" y2="62" stroke-width="2.5" />
+  <circle cx="40" cy="18" r="2" fill="currentColor" />
+  <circle cx="40" cy="62" r="2" fill="currentColor" />
+
+  <!-- Carrier Body bracket -->
+  <path d="M20 20 L25 20 L25 60 L20 60" stroke-width="1.5" stroke-opacity="0.6" />
+  <path d="M60 20 L55 20 L55 60 L60 60" stroke-width="1.5" stroke-opacity="0.6" />
+
+  <!-- Tension Arm and Eyelet -->
+  <path d="M40 18 C 48 18, 54 22, 54 28 L 54 48 C 54 52, 58 56, 62 56" stroke-width="2" />
+  <circle cx="62" cy="56" r="3" stroke-width="1.5" fill="none" />
+  
+  <!-- Fiber Thread feeding through -->
+  <path d="M54 28 L 62 56 L 70 70" stroke-width="1.5" stroke-dasharray="2 2" stroke-opacity="0.9" />
+
+  <!-- Gear-like Mounting Base -->
+  <path d="M15 65 L 65 65" stroke-width="2.5" />
+  <path d="M22 65 L 22 72 M 31 65 L 31 72 M 40 65 L 40 72 M 49 65 L 49 72 M 58 65 L 58 72" stroke-width="2.5" stroke-opacity="0.7" />
+</svg>

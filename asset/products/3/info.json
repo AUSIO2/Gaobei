@@ -1,0 +1,12 @@
+{
+  "id": "3",
+  "name": "复合材料中试与成型平台",
+  "nameEn": "COMPOSITE PLATFORM & MOLDING PLATFORM",
+  "icon": "composite_platform.svg",
+  "specs": [
+    "成型工艺：热压罐成型（Autoclave）、RTM/VARTM 真空导入",
+    "温控指标：室温至 400℃ 精确程序控温，波动小于 ±1℃",
+    "中试测试：三向压缩、微观组织分析与空隙率微破坏检测",
+    "成型压力：最大压力 16bar 可调，支持高压致密化成型"
+  ]
+}

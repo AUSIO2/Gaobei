@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Central Mandrel (Cylinder Core) -->
+  <path d="M35 15 C 35 12, 45 12, 45 15 L 45 65 C 45 68, 35 68, 35 65 Z" stroke-width="2" stroke-opacity="0.8" />
+  <ellipse cx="40" cy="15" rx="5" ry="2" stroke-width="1.5" stroke-opacity="0.6" />
+  
+  <!-- Outer Ring / Bobbin Track in perspective -->
+  <ellipse cx="40" cy="55" rx="32" ry="12" stroke-width="2" stroke-dasharray="4 4" stroke-opacity="0.5" />
+  <ellipse cx="40" cy="40" rx="28" ry="10" stroke-width="1.5" stroke-dasharray="3 3" stroke-opacity="0.4" />
+
+  <!-- Braided Fibers Wrapping Around (Clockwise & Counter-clockwise) -->
+  <!-- Helical paths wrapping the mandrel -->
+  <path d="M15 50 C 25 45, 35 30, 40 25 C 45 20, 43 18, 45 15" stroke-width="2" />
+  <path d="M65 50 C 55 45, 45 30, 40 25 C 35 20, 37 18, 35 15" stroke-width="2" />
+  
+  <path d="M20 53 C 28 47, 35 35, 42 30 C 45 27, 44 23, 45 20" stroke-width="2" stroke-opacity="0.7" />
+  <path d="M60 53 C 52 47, 45 35, 38 30 C 35 27, 36 23, 35 20" stroke-width="2" stroke-opacity="0.7" />
+  
+  <path d="M25 55 C 32 50, 38 42, 40 38 C 42 34, 44 32, 45 30" stroke-width="1.5" stroke-opacity="0.6" />
+  <path d="M55 55 C 48 50, 42 42, 40 38 C 38 34, 36 32, 35 30" stroke-width="1.5" stroke-opacity="0.6" />
+
+  <!-- Tension Nodes / Bobbins on the Track -->
+  <circle cx="15" cy="50" r="3" fill="currentColor" />
+  <circle cx="65" cy="50" r="3" fill="currentColor" />
+  <circle cx="20" cy="53" r="2" fill="currentColor" fill-opacity="0.7" />
+  <circle cx="60" cy="53" r="2" fill="currentColor" fill-opacity="0.7" />
+  
+  <!-- Axis / Guide line -->
+  <line x1="40" y1="5" x2="40" y2="75" stroke-width="1.5" stroke-dasharray="6 6" stroke-opacity="0.3" />
+</svg>

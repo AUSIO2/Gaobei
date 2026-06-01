@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Upper Press Mold (Upper Die) -->
+  <path d="M15 15 L65 15 L65 22 L55 22 L55 26 L25 26 L25 22 L15 22 Z" stroke-width="2" />
+  
+  <!-- Heat/Pressure Indicators (Downwards Arrows) -->
+  <path d="M30 8 L30 14 M30 14 L27 11 M30 14 L33 11" stroke-width="1.5" stroke-opacity="0.7" />
+  <path d="M40 8 L40 14 M40 14 L37 11 M40 14 L43 11" stroke-width="1.5" stroke-opacity="0.7" />
+  <path d="M50 8 L50 14 M50 14 L47 11 M50 14 L53 11" stroke-width="1.5" stroke-opacity="0.7" />
+
+  <!-- Composite Laminate Layers (Stacked Sheets) -->
+  <!-- Layer 1 (Top) -->
+  <path d="M22 34 L58 34 L52 40 L16 40 Z" stroke-width="1.5" fill="currentColor" fill-opacity="0.1" />
+  <!-- Cross Hatch Pattern for Carbon Fiber on Layer 1 -->
+  <line x1="26" y1="36" x2="32" y2="40" stroke-width="1" stroke-opacity="0.5" />
+  <line x1="34" y1="36" x2="40" y2="40" stroke-width="1" stroke-opacity="0.5" />
+  <line x1="42" y1="36" x2="48" y2="40" stroke-width="1" stroke-opacity="0.5" />
+
+  <!-- Layer 2 (Middle) -->
+  <path d="M22 43 L58 43 L52 49 L16 49 Z" stroke-width="1.5" fill="currentColor" fill-opacity="0.2" />
+  <!-- Cross Hatch Pattern in other direction -->
+  <line x1="32" y1="45" x2="26" y2="49" stroke-width="1" stroke-opacity="0.5" />
+  <line x1="40" y1="45" x2="34" y2="49" stroke-width="1" stroke-opacity="0.5" />
+  <line x1="48" y1="45" x2="42" y2="49" stroke-width="1" stroke-opacity="0.5" />
+
+  <!-- Layer 3 (Bottom) -->
+  <path d="M22 52 L58 52 L52 58 L16 58 Z" stroke-width="1.5" fill="currentColor" fill-opacity="0.3" />
+
+  <!-- Lower Press Mold Base (Lower Die) -->
+  <path d="M10 65 L70 65 L70 72 L10 72 Z" stroke-width="2" />
+  <path d="M20 59 L20 65 M60 59 L60 65" stroke-width="1.5" stroke-opacity="0.6" />
+</svg>

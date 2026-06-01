@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Base of the Robotic Arm -->
+  <rect x="15" y="65" width="20" height="8" rx="1" stroke-width="2" />
+  <line x1="25" y1="65" x2="25" y2="55" stroke-width="2.5" />
+  <circle cx="25" cy="55" r="4" fill="currentColor" />
+
+  <!-- Lower Arm segment -->
+  <line x1="25" y1="55" x2="45" y2="35" stroke-width="2.5" />
+  <circle cx="45" cy="35" r="4" fill="currentColor" />
+
+  <!-- Upper Arm segment -->
+  <line x1="45" y1="35" x2="60" y2="45" stroke-width="2" />
+  <circle cx="60" cy="45" r="3" fill="currentColor" />
+
+  <!-- Wrist Joint & Gripper -->
+  <path d="M60 45 L66 41" stroke-width="1.5" />
+  <!-- Gripper head -->
+  <path d="M66 38 L66 44" stroke-width="2" />
+  <!-- Fingers of the gripper -->
+  <path d="M66 38 L72 38 L72 40" stroke-width="1.5" />
+  <path d="M66 44 L72 44 L72 42" stroke-width="1.5" />
+
+  <!-- Laser / Sensing Ray (Light ray coming from gripper) -->
+  <line x1="72" y1="41" x2="77" y2="41" stroke-width="1" stroke-dasharray="2 2" stroke-opacity="0.8" />
+  <circle cx="77" cy="41" r="1.5" fill="currentColor" />
+
+  <!-- Circuit board patterns/automation tracks in the background -->
+  <path d="M40 68 L65 68 L65 60 L70 60" stroke-width="1.5" stroke-opacity="0.3" stroke-dasharray="2 2" />
+  <circle cx="70" cy="60" r="1" fill="currentColor" fill-opacity="0.5" />
+  
+  <path d="M35 15 L55 15 L60 20 L60 28" stroke-width="1.5" stroke-opacity="0.4" />
+  <circle cx="60" cy="28" r="1.5" fill="currentColor" fill-opacity="0.6" />
+</svg>

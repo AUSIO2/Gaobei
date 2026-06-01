@@ -1,0 +1,12 @@
+{
+  "id": "2",
+  "name": "专用核心配件",
+  "nameEn": "SPECIAL CORE ACCESSORIES",
+  "icon": "core_accessories.svg",
+  "specs": [
+    "携砂单元：高抗磨、大容量纤维携砂器（Shuttle）",
+    "驱动总成：超低惯量高频换向角齿轮组（Horn Gear）",
+    "导纱眼：超光滑氧化铝/氧化锆耐磨导向件",
+    "张力控制：自适应恒张力弹簧/气动微调结构"
+  ]
+}
