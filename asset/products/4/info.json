@@ -1,12 +1,13 @@
 {
   "id": "4",
   "name": "叠层针刺系列设备",
-  "nameEn": "Laminated Needling Equipment Series",
+  "nameEn": "Laminated Needle Punching Series Equipment",
   "icon": "custom_automation.svg",
   "specs": [
     "YNC系列圆筒预制体针刺机技术",
-    "YNP系列异形预制体针刺机技术",
-    "YNV器皿预制体针刺机技术",
-    "YNT平板预制体针刺机技术"
+    "YNP系列圆筒预制体针刺机技术",
+    "YNV系列圆筒预制体针刺机技术",
+    "YNT系列圆筒预制体针刺机技术"
   ]
 }
+
