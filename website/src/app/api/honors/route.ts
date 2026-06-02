@@ -18,6 +18,17 @@ export async function GET() {
               const content = fs.readFileSync(infoJsonPath, "utf-8");
               const honorInfo = JSON.parse(content);
               if (honorInfo && honorInfo.id) {
+                // Dynamically scan honors subdirectories for image files
+                const files = fs.readdirSync(itemDir);
+                const images: string[] = [];
+                const imgExtensions = [".png", ".jpg", ".jpeg", ".webp", ".gif"];
+                for (const file of files) {
+                  const ext = path.extname(file).toLowerCase();
+                  if (imgExtensions.includes(ext)) {
+                    images.push(`/api/honors/image/${honorInfo.id}/${encodeURIComponent(file)}`);
+                  }
+                }
+                honorInfo.images = images;
                 honors.push(honorInfo);
               }
             } catch (err) {
