@@ -5,3 +5,4 @@ website/node_modules
 website.tar.gz
 .idea/
 *.iml
+scratch/

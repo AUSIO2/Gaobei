@@ -24,6 +24,11 @@ else
     error "找不到密钥配置文件 .dev，请在项目根目录下创建该文件并配置 REMOTE_HOST, REMOTE_USER 和 REMOTE_PASS。"
 fi
 
+# 清理 Windows 换行符 (\r)，防止 Windows 编辑后脚本变量末尾带 \r 导致 SSH 报错
+REMOTE_HOST=$(echo "$REMOTE_HOST" | tr -d '\r')
+REMOTE_USER=$(echo "$REMOTE_USER" | tr -d '\r')
+REMOTE_PASS=$(echo "$REMOTE_PASS" | tr -d '\r')
+
 # ---- 配置区（按需修改） ----
 REMOTE_WEBSITE_DIR="/root/website"
 REMOTE_ASSET_DIR="/root/asset"
@@ -36,27 +41,90 @@ PUBLIC_PORT=80           # 对外暴露端口
 
 # ---- 前置检查 ----
 check_deps() {
-    command -v rsync  >/dev/null 2>&1 || error "请先安装 rsync"
-    command -v sshpass >/dev/null 2>&1 || error "请先安装 sshpass (brew install sshpass 或 brew install hudochenkov/sshpass/sshpass)"
+    HAS_RSYNC=true
+    HAS_SSHPASS=true
+
+    if ! command -v rsync >/dev/null 2>&1; then
+        HAS_RSYNC=false
+        warn "未检测到 rsync，将自动切换为 tar 打包 + scp 传输模式（Windows/Git Bash 环境推荐）"
+    fi
+
+    if ! command -v sshpass >/dev/null 2>&1; then
+        HAS_SSHPASS=false
+        warn "未检测到 sshpass，将使用标准 ssh/scp 认证（如未配置免密登录，需手动输入密码。提示：.dev 中密码为 ${REMOTE_PASS}）"
+    fi
 }
 
-SSH_CMD="sshpass -p '${REMOTE_PASS}' ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_HOST}"
-SCP_CMD="sshpass -p '${REMOTE_PASS}' scp -o StrictHostKeyChecking=no"
-RSYNC_CMD="sshpass -p '${REMOTE_PASS}' rsync -avz --delete \
-    --exclude='node_modules' \
-    --exclude='.next' \
-    --exclude='.git' \
-    --exclude='.DS_Store' \
-    -e 'ssh -o StrictHostKeyChecking=no'"
+# ---- 初始化指令 ----
+setup_commands() {
+    if [ "$HAS_SSHPASS" = true ] && [ -n "${REMOTE_PASS}" ]; then
+        SSH_CMD="sshpass -p '${REMOTE_PASS}' ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_HOST}"
+        SCP_CMD="sshpass -p '${REMOTE_PASS}' scp -o StrictHostKeyChecking=no"
+        RSYNC_CMD="sshpass -p '${REMOTE_PASS}' rsync -avz --delete \
+            --exclude='node_modules' \
+            --exclude='.next' \
+            --exclude='.git' \
+            --exclude='.DS_Store' \
+            -e 'ssh -o StrictHostKeyChecking=no'"
+    else
+        SSH_CMD="ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_HOST}"
+        SCP_CMD="scp -o StrictHostKeyChecking=no"
+        RSYNC_CMD="rsync -avz --delete \
+            --exclude='node_modules' \
+            --exclude='.next' \
+            --exclude='.git' \
+            --exclude='.DS_Store' \
+            -e 'ssh -o StrictHostKeyChecking=no'"
+    fi
+}
 
 # ---- Step 1: 同步代码与配置到远程服务器 ----
 sync_code() {
-    info "正在同步代码到 ${REMOTE_HOST}:${REMOTE_WEBSITE_DIR} ..."
-    eval "${RSYNC_CMD} ${LOCAL_WEBSITE_DIR}/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_WEBSITE_DIR}/"
-    
-    info "正在同步资源配置到 ${REMOTE_HOST}:${REMOTE_ASSET_DIR} ..."
-    eval "${RSYNC_CMD} ${LOCAL_ASSET_DIR}/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_ASSET_DIR}/"
-    
+    if [ "$HAS_RSYNC" = true ]; then
+        info "正在通过 rsync 同步代码到 ${REMOTE_HOST}:${REMOTE_WEBSITE_DIR} ..."
+        eval "${RSYNC_CMD} ${LOCAL_WEBSITE_DIR}/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_WEBSITE_DIR}/"
+        
+        info "正在通过 rsync 同步资源配置到 ${REMOTE_HOST}:${REMOTE_ASSET_DIR} ..."
+        eval "${RSYNC_CMD} ${LOCAL_ASSET_DIR}/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_ASSET_DIR}/"
+    else
+        info "正在本地打包代码与资源 (tar) ..."
+        
+        TEMP_DIR="$(dirname "$0")/scratch/deploy_temp"
+        mkdir -p "${TEMP_DIR}"
+        
+        local website_tar="${TEMP_DIR}/website.tar.gz"
+        local asset_tar="${TEMP_DIR}/asset.tar.gz"
+        
+        info "打包 website ..."
+        tar -czf "${website_tar}" -C "${LOCAL_WEBSITE_DIR}" --exclude="node_modules" --exclude=".next" --exclude=".git" --exclude=".DS_Store" .
+        
+        info "打包 asset ..."
+        tar -czf "${asset_tar}" -C "${LOCAL_ASSET_DIR}" .
+        
+        info "正在远程创建目录 ..."
+        eval ${SSH_CMD} "'mkdir -p ${REMOTE_WEBSITE_DIR} ${REMOTE_ASSET_DIR}'"
+        
+        info "正在上传并解压代码到 ${REMOTE_HOST}:${REMOTE_WEBSITE_DIR} ..."
+        eval "${SCP_CMD} '${website_tar}' '${REMOTE_USER}@${REMOTE_HOST}:/tmp/website.tar.gz'"
+        eval ${SSH_CMD} "'
+            rm -rf ${REMOTE_WEBSITE_DIR}
+            mkdir -p ${REMOTE_WEBSITE_DIR}
+            tar -xzf /tmp/website.tar.gz -C ${REMOTE_WEBSITE_DIR}
+            rm -f /tmp/website.tar.gz
+        '"
+        
+        info "正在上传并解压资源配置到 ${REMOTE_HOST}:${REMOTE_ASSET_DIR} ..."
+        eval "${SCP_CMD} '${asset_tar}' '${REMOTE_USER}@${REMOTE_HOST}:/tmp/asset.tar.gz'"
+        eval ${SSH_CMD} "'
+            rm -rf ${REMOTE_ASSET_DIR}
+            mkdir -p ${REMOTE_ASSET_DIR}
+            tar -xzf /tmp/asset.tar.gz -C ${REMOTE_ASSET_DIR}
+            rm -f /tmp/asset.tar.gz
+        '"
+        
+        # 清理本地临时文件
+        rm -rf "${TEMP_DIR}"
+    fi
     info "所有代码与配置同步完成"
 }
 
@@ -116,6 +184,7 @@ main() {
     echo ""
 
     check_deps
+    setup_commands
     sync_code
     build_image
     restart_container
