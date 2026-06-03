@@ -8,22 +8,22 @@
     "address": "盐城市盐南高新区新河街道新园路70号1幢",
     "servicePhone": " 0515-80995996",
     "recruitmentEmail": "gusenyan@yl-fc.com",
-    "mapImage": "asset/contact/微信图片_20260602092032.jpg"
+    "mapImage": "微信图片_20260602092032.jpg"
   },
   "sales": [
     {
-      "department": "公司总经理",
+      "department":"",
       "contactPerson": "易先生",
       "phone": "18121281680"
     },
     {
-      "department": "销售",
+      "department": "",
       "contactPerson": "夏先生",
       "phone": "18201731965"
     },
     {
-      "department": "行政部门",
-      "contactPerson": "明先生",
+      "department": "",
+      "contactPerson": "明女士",
       "phone": "18068884900"
     }
   ]

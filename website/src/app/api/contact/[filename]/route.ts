@@ -9,10 +9,11 @@ export async function GET(
   try {
     const { filename } = await props.params;
     const decodedFilename = decodeURIComponent(filename);
-    let filePath = path.join(process.cwd(), "../asset/front-contact", decodedFilename);
+    const baseFilename = path.basename(decodedFilename);
+    let filePath = path.join(process.cwd(), "../asset/front-contact", baseFilename);
 
     if (!fs.existsSync(filePath)) {
-      filePath = path.join(process.cwd(), "../asset/contact", decodedFilename);
+      filePath = path.join(process.cwd(), "../asset/contact", baseFilename);
     }
 
     if (!fs.existsSync(filePath)) {
