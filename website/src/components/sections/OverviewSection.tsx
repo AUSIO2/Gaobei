@@ -57,19 +57,19 @@ export default function OverviewSection() {
   // Prevent SSR/CSR hydration mismatch by rendering static placeholder during hydration
   if (!mounted) {
     return (
-      <section className="w-full bg-[#f8f9fa] py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24">
+      <section className="w-full bg-surface py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start">
           <div className="lg:col-span-8 lg:border-r border-neutral-200/80 lg:pr-8 max-lg:border-b max-lg:pb-8">
             <div className="flex justify-between items-end mb-8">
               <div>
-                <span className="text-xs md:text-sm font-bold tracking-widest text-[#2f55d4] uppercase block mb-2">
+                <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-2">
                   产品与装备
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-black text-[#0d102c] tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-black text-heading tracking-tight">
                   四大核心产品矩阵
                 </h2>
               </div>
-              <span className="text-xs sm:text-sm font-bold text-[#2f55d4] cursor-pointer">
+              <span className="text-xs sm:text-sm font-bold text-brand cursor-pointer">
                 产品中心 →
               </span>
             </div>
@@ -83,10 +83,10 @@ export default function OverviewSection() {
             <div>
               <div className="flex justify-between items-end mb-8">
                 <div>
-                  <span className="text-xs md:text-sm font-bold tracking-widest text-[#2f55d4] uppercase block mb-2">
+                  <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-2">
                     行业见解
                   </span>
-                  <h2 className="text-2xl sm:text-3xl font-black text-[#0d102c] tracking-tight">
+                  <h2 className="text-2xl sm:text-3xl font-black text-heading tracking-tight">
                     最新技术洞察
                   </h2>
                 </div>
@@ -100,22 +100,22 @@ export default function OverviewSection() {
   }
 
   return (
-    <section className="w-full bg-[#f8f9fa] py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24">
+    <section className="w-full bg-surface py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start">
         {/* Left Column: Products */}
         <div className="lg:col-span-8 lg:border-r border-neutral-200/80 lg:pr-8 max-lg:border-b max-lg:pb-8">
           <div className="flex justify-between items-end mb-8">
             <div>
-              <span className="text-xs md:text-sm font-bold tracking-widest text-[#2f55d4] uppercase block mb-2">
+              <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-2">
                 产品与装备
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#0d102c] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-black text-heading tracking-tight">
                 四大核心产品矩阵
               </h2>
             </div>
             <Link 
               href="/products" 
-              className="text-xs sm:text-sm font-bold text-[#2f55d4] hover:underline flex items-center gap-1 cursor-pointer"
+              className="text-xs sm:text-sm font-bold text-brand hover:underline flex items-center gap-1 cursor-pointer"
             >
               产品中心 <span className="text-xs">→</span>
             </Link>
@@ -132,7 +132,7 @@ export default function OverviewSection() {
               {products.map((product) => (
                 <Link key={product.id} href={`/products/${product.id}`} className="block h-full">
                   <motion.div
-                    className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#0c1f38] via-[#0d2545] to-[#12365c] p-5 md:p-6 text-white border border-[#2f55d4]/10 shadow-lg flex items-center justify-between group cursor-pointer h-full"
+                    className="relative overflow-hidden rounded-xl bg-gradient-to-br from-dark-from via-dark-via to-dark-to p-5 md:p-6 text-white border border-brand/10 shadow-lg flex items-center justify-between group cursor-pointer h-full"
                     whileHover={{
                       y: -5,
                       borderColor: "rgba(47, 85, 212, 0.4)",
@@ -174,16 +174,16 @@ export default function OverviewSection() {
           <div>
             <div className="flex justify-between items-end mb-8">
               <div>
-                <span className="text-xs md:text-sm font-bold tracking-widest text-[#2f55d4] uppercase block mb-2">
+                <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-2">
                   行业见解
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-black text-[#0d102c] tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-black text-heading tracking-tight">
                   最新技术洞察
                 </h2>
               </div>
               <Link 
                 href="/technology#insights" 
-                className="text-xs sm:text-sm font-bold text-[#2f55d4] hover:underline flex items-center gap-1 cursor-pointer"
+                className="text-xs sm:text-sm font-bold text-brand hover:underline flex items-center gap-1 cursor-pointer"
               >
                 查看更多 <span className="text-xs">→</span>
               </Link>
@@ -197,7 +197,7 @@ export default function OverviewSection() {
                     className="flex flex-col gap-1.5 cursor-pointer w-full text-left"
                   >
                     <span className="text-neutral-400 text-xs font-light font-mono">{item.date}</span>
-                    <span className="text-neutral-700 font-semibold text-sm sm:text-base line-clamp-2 group-hover:text-[#2f55d4] transition-colors leading-snug">
+                    <span className="text-neutral-700 font-semibold text-sm sm:text-base line-clamp-2 group-hover:text-brand transition-colors leading-snug">
                       {item.title}
                     </span>
                   </Link>

@@ -63,7 +63,7 @@ export default function ProductDetailPage(props: { params: Promise<{ categoryId:
 
   if (loading) {
     return (
-      <section className="w-full bg-[#f8f9fa] py-28 px-6 md:px-12 lg:px-24 min-h-screen">
+      <section className="w-full bg-surface py-28 px-6 md:px-12 lg:px-24 min-h-screen">
         <div className="max-w-4xl mx-auto space-y-6">
           <div className="h-6 w-32 bg-neutral-200 animate-pulse rounded" />
           <div className="h-12 w-full bg-neutral-200 animate-pulse rounded" />
@@ -81,9 +81,9 @@ export default function ProductDetailPage(props: { params: Promise<{ categoryId:
 
   if (!categoryData || !productItem) {
     return (
-      <section className="w-full bg-[#f8f9fa] py-28 px-6 md:px-12 lg:px-24 min-h-screen flex flex-col items-center justify-center">
+      <section className="w-full bg-surface py-28 px-6 md:px-12 lg:px-24 min-h-screen flex flex-col items-center justify-center">
         <h2 className="text-2xl font-bold text-neutral-800 mb-4">未找到相关产品详情</h2>
-        <Link href="/products" className="text-[#2f55d4] hover:underline flex items-center gap-2">
+        <Link href="/products" className="text-brand hover:underline flex items-center gap-2">
           <span>←</span> 返回产品体系
         </Link>
       </section>
@@ -91,7 +91,7 @@ export default function ProductDetailPage(props: { params: Promise<{ categoryId:
   }
 
   return (
-    <main className="min-h-screen bg-[#f8f9fa] pt-20 md:pt-28 pb-12 md:pb-20 px-4 sm:px-6 md:px-12 lg:px-24">
+    <main className="min-h-screen bg-surface pt-20 md:pt-28 pb-12 md:pb-20 px-4 sm:px-6 md:px-12 lg:px-24">
       <div className="max-w-4xl mx-auto">
         
         {/* Breadcrumb and Back Action */}
@@ -119,13 +119,13 @@ export default function ProductDetailPage(props: { params: Promise<{ categoryId:
         >
           {/* Category Badge */}
           <div className="flex items-center gap-4 mb-6">
-            <span className="bg-[#2f55d4]/5 text-[#2f55d4] text-[10px] font-bold tracking-wider px-3 py-1 rounded uppercase">
+            <span className="bg-brand/5 text-brand text-[10px] font-bold tracking-wider px-3 py-1 rounded uppercase">
               {categoryData.name}
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="text-3xl md:text-4xl font-extrabold text-[#0d102c] leading-tight mb-8">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-8">
             {productItem.name}
           </h1>
 
@@ -133,13 +133,13 @@ export default function ProductDetailPage(props: { params: Promise<{ categoryId:
 
           {/* Tech Specs Block */}
           <div className="mb-10 bg-neutral-50 border border-neutral-200/50 rounded-2xl p-6 md:p-8">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-[#0d102c] mb-4 border-b border-neutral-200 pb-2">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-heading mb-4 border-b border-neutral-200 pb-2">
               关键技术规格
             </h3>
             <ul className="space-y-3">
               {productItem.specs.map((spec, idx) => (
                 <li key={idx} className="text-neutral-700 text-sm md:text-base font-light flex items-start">
-                  <span className="text-[#2f55d4] mr-2.5">▪</span>
+                  <span className="text-brand mr-2.5">▪</span>
                   <span>{spec}</span>
                 </li>
               ))}
@@ -162,7 +162,7 @@ export default function ProductDetailPage(props: { params: Promise<{ categoryId:
           {/* Product Images Section */}
           {productItem.images && productItem.images.length > 0 && (
             <div className="mt-12 pt-8 border-t border-neutral-100">
-              <h3 className="text-lg font-bold text-[#0d102c] mb-6">
+              <h3 className="text-lg font-bold text-heading mb-6">
                 产品图片
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -187,7 +187,7 @@ export default function ProductDetailPage(props: { params: Promise<{ categoryId:
             </div>
             <Link
               href="/#contact"
-              className="inline-block px-6 py-3 bg-[#2f55d4] text-white font-bold text-sm rounded-full hover:bg-[#1d3c9f] transition-colors shadow-md text-center shrink-0"
+              className="inline-block px-6 py-3 bg-brand text-white font-bold text-sm rounded-full hover:bg-brand-hover transition-colors shadow-md text-center shrink-0"
             >
               获取定制方案
             </Link>
@@ -198,20 +198,20 @@ export default function ProductDetailPage(props: { params: Promise<{ categoryId:
         {/* Suggestion list */}
         {otherProducts.length > 0 && (
           <section className="border-t border-neutral-200/80 pt-10">
-            <h3 className="text-lg md:text-xl font-bold text-[#0d102c] mb-6">同类其他自研装备</h3>
+            <h3 className="text-lg md:text-xl font-bold text-heading mb-6">同类其他自研装备</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {otherProducts.map((p) => (
                 <Link key={p.id} href={`/products/${categoryData.id}/${p.id}`}>
-                  <div className="bg-white border border-neutral-200/50 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-[#2f55d4]/30 transition-all duration-300 h-full flex flex-col justify-between">
+                  <div className="bg-white border border-neutral-200/50 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-brand/30 transition-all duration-300 h-full flex flex-col justify-between">
                     <div>
-                      <h4 className="text-base font-bold text-neutral-800 hover:text-[#2f55d4] transition-colors leading-snug mb-2">
+                      <h4 className="text-base font-bold text-neutral-800 hover:text-brand transition-colors leading-snug mb-2">
                         {p.name}
                       </h4>
                       <p className="text-neutral-500 font-light text-xs line-clamp-2 leading-relaxed">
                         {p.summary}
                       </p>
                     </div>
-                    <span className="text-[#2f55d4] text-xs font-semibold mt-4 block">
+                    <span className="text-brand text-xs font-semibold mt-4 block">
                       查看详情 →
                     </span>
                   </div>

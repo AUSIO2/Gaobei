@@ -159,7 +159,7 @@ export default function TechnologyPage() {
 
   if (loading || !techData) {
     return (
-      <section className="w-full bg-[#f8f9fa] py-28 px-6 md:px-12 lg:px-24 min-h-screen">
+      <section className="w-full bg-surface py-28 px-6 md:px-12 lg:px-24 min-h-screen">
         <div className="max-w-7xl mx-auto space-y-12 animate-pulse">
           <div className="h-40 bg-neutral-200 rounded-3xl" />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -172,9 +172,9 @@ export default function TechnologyPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f8f9fa] pb-16 md:pb-24">
+    <main className="min-h-screen bg-surface pb-16 md:pb-24">
       {/* Hero Header */}
-      <section className="relative bg-gradient-to-br from-[#0c1f38] via-[#0d2545] to-[#12365c] text-white pt-28 pb-16 md:py-32 px-4 sm:px-6 md:px-12 lg:px-24 overflow-hidden border-b border-[#2f55d4]/10">
+      <section className="relative bg-gradient-to-br from-dark-from via-dark-via to-dark-to text-white pt-28 pb-16 md:py-32 px-4 sm:px-6 md:px-12 lg:px-24 overflow-hidden border-b border-brand/10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:25px_25px]" />
         <div className="absolute -right-40 -top-40 w-96 h-96 bg-blue-500/15 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute -left-40 -bottom-40 w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
@@ -197,7 +197,7 @@ export default function TechnologyPage() {
           </motionClient.h1>
           
           <motionClient.p 
-            className="text-[#38bdf8] text-sm sm:text-base md:text-xl font-bold tracking-widest uppercase mb-6"
+            className="text-brand-light text-sm sm:text-base md:text-xl font-bold tracking-widest uppercase mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -223,7 +223,7 @@ export default function TechnologyPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           {/* Left Column: SVG Fiber Weaving Loop */}
-          <div className="lg:col-span-5 w-full aspect-square max-w-[450px] mx-auto bg-gradient-to-br from-[#0c1f38] to-[#12365c] rounded-3xl p-8 border border-[#2f55d4]/10 shadow-xl overflow-hidden relative group">
+          <div className="lg:col-span-5 w-full aspect-square max-w-[450px] mx-auto bg-gradient-to-br from-dark-from to-dark-to rounded-3xl p-8 border border-brand/10 shadow-xl overflow-hidden relative group">
             <svg className="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <pattern id="weaving-grid" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -238,7 +238,7 @@ export default function TechnologyPage() {
                   {/* Diagonal Line Left-To-Right */}
                   <motionClient.path
                     d={`M -20,${20 + i * 40} L 220,${60 + i * 40}`}
-                    stroke="#2f55d4"
+                    stroke="var(--color-brand)"
                     strokeWidth="3.5"
                     strokeLinecap="round"
                     fill="none"
@@ -258,7 +258,7 @@ export default function TechnologyPage() {
                   {/* Diagonal Line Right-To-Left */}
                   <motionClient.path
                     d={`M 220,${20 + i * 40} L -20,${60 + i * 40}`}
-                    stroke="#38bdf8"
+                    stroke="var(--color-brand-light)"
                     strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeDasharray="4 4"
@@ -285,7 +285,7 @@ export default function TechnologyPage() {
                 cx="100" 
                 cy="100" 
                 r="50" 
-                stroke="#2f55d4" 
+                stroke="var(--color-brand)" 
                 strokeWidth="2" 
                 strokeDasharray="30 150" 
                 fill="none"
@@ -296,7 +296,7 @@ export default function TechnologyPage() {
                 cx="100" 
                 cy="100" 
                 r="44" 
-                stroke="#38bdf8" 
+                stroke="var(--color-brand-light)" 
                 strokeWidth="1.5" 
                 strokeDasharray="20 100" 
                 fill="none"
@@ -305,7 +305,7 @@ export default function TechnologyPage() {
               />
 
               <circle cx="100" cy="100" r="8" fill="#ffffff" opacity="0.1" />
-              <circle cx="100" cy="100" r="4" fill="#38bdf8" />
+              <circle cx="100" cy="100" r="4" fill="var(--color-brand-light)" />
             </svg>
             <div className="absolute bottom-4 left-4 text-[10px] text-neutral-400 font-mono">WEAVING CORE ENGINE v3.1</div>
           </div>
@@ -313,10 +313,10 @@ export default function TechnologyPage() {
           {/* Right Column: Descriptions & Advantages */}
           <div className="lg:col-span-7 flex flex-col justify-between">
             <div>
-              <span className="text-xs md:text-sm font-bold tracking-widest text-[#2f55d4] uppercase block mb-3">
+              <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-3">
                 01. 核心编织工艺
               </span>
-              <h2 className="text-3xl md:text-4xl font-black text-[#0d102c] tracking-tight mb-6">
+              <h2 className="text-3xl md:text-4xl font-black text-heading tracking-tight mb-6">
                 {techData.braiding.title}
               </h2>
               <p className="text-neutral-600 text-sm md:text-base leading-relaxed mb-8 font-light">
@@ -327,11 +327,11 @@ export default function TechnologyPage() {
             <div className="space-y-4">
               {techData.braiding.advantages.map((adv) => (
                 <div key={adv.title} className="flex items-start gap-4">
-                  <div className="w-6 h-6 rounded-full bg-[#2f55d4]/10 flex items-center justify-center text-[#2f55d4] shrink-0 mt-0.5 text-xs font-bold">
+                  <div className="w-6 h-6 rounded-full bg-brand/10 flex items-center justify-center text-brand shrink-0 mt-0.5 text-xs font-bold">
                     ✓
                   </div>
                   <div>
-                    <h4 className="text-sm md:text-base font-bold text-[#0d102c]">{adv.title}</h4>
+                    <h4 className="text-sm md:text-base font-bold text-heading">{adv.title}</h4>
                     <p className="text-neutral-500 text-xs md:text-sm font-light mt-1">{adv.desc}</p>
                   </div>
                 </div>
@@ -342,8 +342,8 @@ export default function TechnologyPage() {
 
         {/* Specifications Table */}
         <div className="mt-12 md:mt-16 bg-white border border-neutral-200/60 rounded-3xl p-6 sm:p-8 shadow-sm">
-          <h3 className="text-lg md:text-xl font-bold text-[#0d102c] mb-6 flex items-center gap-2">
-            <span className="w-1.5 h-5 bg-[#2f55d4] rounded-full" />
+          <h3 className="text-lg md:text-xl font-bold text-heading mb-6 flex items-center gap-2">
+            <span className="w-1.5 h-5 bg-brand rounded-full" />
             核心技术参数指标
           </h3>
           <div className="overflow-x-auto">
@@ -358,8 +358,8 @@ export default function TechnologyPage() {
               <tbody className="divide-y divide-neutral-100 text-neutral-700">
                 {techData.braiding.specs.map((spec) => (
                   <tr key={spec.name} className="hover:bg-neutral-50/50 transition-colors">
-                    <td className="py-4 pr-4 font-bold text-[#0d102c]">{spec.name}</td>
-                    <td className="py-4 px-4 font-mono font-bold text-[#2f55d4]">{spec.value}</td>
+                    <td className="py-4 pr-4 font-bold text-heading">{spec.name}</td>
+                    <td className="py-4 px-4 font-mono font-bold text-brand">{spec.value}</td>
                     <td className="py-4 pl-4 font-light text-neutral-500">{spec.desc}</td>
                   </tr>
                 ))}
@@ -376,10 +376,10 @@ export default function TechnologyPage() {
             
             {/* Left Column: Text */}
             <div className="lg:col-span-7 order-2 lg:order-1">
-              <span className="text-xs md:text-sm font-bold tracking-widest text-[#2f55d4] uppercase block mb-3">
+              <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-3">
                 02. 智能控制闭环
               </span>
-              <h2 className="text-3xl md:text-4xl font-black text-[#0d102c] tracking-tight mb-6">
+              <h2 className="text-3xl md:text-4xl font-black text-heading tracking-tight mb-6">
                 {techData.digitalTwin.title}
               </h2>
               <p className="text-neutral-600 text-sm md:text-base leading-relaxed mb-8 font-light">
@@ -388,8 +388,8 @@ export default function TechnologyPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {techData.digitalTwin.features.map((feat) => (
-                  <div key={feat.name} className="p-5 bg-[#f8f9fa] border border-neutral-200/50 rounded-2xl">
-                    <h4 className="text-sm sm:text-base font-bold text-[#0d102c] mb-2">{feat.name}</h4>
+                  <div key={feat.name} className="p-5 bg-surface border border-neutral-200/50 rounded-2xl">
+                    <h4 className="text-sm sm:text-base font-bold text-heading mb-2">{feat.name}</h4>
                     <p className="text-neutral-500 text-xs sm:text-sm font-light leading-relaxed">{feat.desc}</p>
                   </div>
                 ))}
@@ -397,7 +397,7 @@ export default function TechnologyPage() {
             </div>
 
             {/* Right Column: SVG Digital Twin Dashboard */}
-            <div className="lg:col-span-5 order-1 lg:order-2 w-full aspect-square max-w-[450px] mx-auto bg-gradient-to-br from-[#07172b] to-[#0d2545] rounded-3xl p-8 border border-sky-500/10 shadow-xl overflow-hidden relative">
+            <div className="lg:col-span-5 order-1 lg:order-2 w-full aspect-square max-w-[450px] mx-auto bg-gradient-to-br from-dark-from to-dark-via rounded-3xl p-8 border border-sky-500/10 shadow-xl overflow-hidden relative">
               <svg className="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                 {/* Dashboard Grid */}
                 <path d="M 0,20 L 200,20 M 0,180 L 200,180 M 20,0 L 20,200 M 180,0 L 180,200" stroke="rgba(56, 189, 248, 0.05)" strokeWidth="0.5" />
@@ -408,7 +408,7 @@ export default function TechnologyPage() {
                   cx="100" 
                   cy="90" 
                   r="55" 
-                  stroke="#38bdf8" 
+                  stroke="var(--color-brand-light)" 
                   strokeWidth="1.5" 
                   strokeDasharray="25 320" 
                   fill="none"
@@ -419,7 +419,7 @@ export default function TechnologyPage() {
                 {/* Oscilloscope Data wave */}
                 <motionClient.path
                   d="M 25,145 Q 45,120 65,145 T 105,145 T 145,145 T 175,145"
-                  stroke="#38bdf8"
+                  stroke="var(--color-brand-light)"
                   strokeWidth="1.5"
                   fill="none"
                   initial={{ pathLength: 0 }}
@@ -428,12 +428,12 @@ export default function TechnologyPage() {
                 />
                 
                 {/* Center Node Target */}
-                <circle cx="100" cy="90" r="3" fill="#ef4444" />
+                <circle cx="100" cy="90" r="3" fill="var(--color-danger)" />
                 <motionClient.circle 
                   cx="100" 
                   cy="90" 
                   r="10" 
-                  stroke="#ef4444" 
+                  stroke="var(--color-danger)" 
                   strokeWidth="1" 
                   initial={{ scale: 0.2, opacity: 1 }}
                   animate={{ scale: 2, opacity: 0 }}
@@ -441,21 +441,21 @@ export default function TechnologyPage() {
                 />
 
                 {/* Floating data values (animated numbers simulate) */}
-                <text x="30" y="40" fill="#38bdf8" fontSize="8" fontFamily="monospace" fontWeight="bold">TEMP: 180.2℃</text>
-                <text x="30" y="55" fill="#10b981" fontSize="8" fontFamily="monospace" fontWeight="bold">TENSION: 12.5 N</text>
+                <text x="30" y="40" fill="var(--color-brand-light)" fontSize="8" fontFamily="monospace" fontWeight="bold">TEMP: 180.2℃</text>
+                <text x="30" y="55" fill="var(--color-success)" fontSize="8" fontFamily="monospace" fontWeight="bold">TENSION: 12.5 N</text>
                 
-                <text x="130" y="40" fill="#38bdf8" fontSize="8" fontFamily="monospace" fontWeight="bold">SPEED: 42rpm</text>
-                <text x="130" y="55" fill="#f59e0b" fontSize="8" fontFamily="monospace" fontWeight="bold">STATUS: OK</text>
+                <text x="130" y="40" fill="var(--color-brand-light)" fontSize="8" fontFamily="monospace" fontWeight="bold">SPEED: 42rpm</text>
+                <text x="130" y="55" fill="var(--color-warning)" fontSize="8" fontFamily="monospace" fontWeight="bold">STATUS: OK</text>
                 
                 {/* Bar Graph meters at bottom */}
                 <rect x="30" y="165" width="40" height="6" rx="2" fill="rgba(255,255,255,0.05)" />
-                <motionClient.rect x="30" y="165" height="6" rx="2" fill="#38bdf8" animate={{ width: [10, 32, 22, 38, 10] }} transition={{ duration: 5, repeat: Infinity }} />
+                <motionClient.rect x="30" y="165" height="6" rx="2" fill="var(--color-brand-light)" animate={{ width: [10, 32, 22, 38, 10] }} transition={{ duration: 5, repeat: Infinity }} />
                 
                 <rect x="80" y="165" width="40" height="6" rx="2" fill="rgba(255,255,255,0.05)" />
-                <motionClient.rect x="80" y="165" height="6" rx="2" fill="#10b981" animate={{ width: [35, 12, 38, 25, 35] }} transition={{ duration: 4, repeat: Infinity, delay: 0.5 }} />
+                <motionClient.rect x="80" y="165" height="6" rx="2" fill="var(--color-success)" animate={{ width: [35, 12, 38, 25, 35] }} transition={{ duration: 4, repeat: Infinity, delay: 0.5 }} />
 
                 <rect x="130" y="165" width="40" height="6" rx="2" fill="rgba(255,255,255,0.05)" />
-                <motionClient.rect x="130" y="165" height="6" rx="2" fill="#f59e0b" animate={{ width: [20, 38, 10, 30, 20] }} transition={{ duration: 4.5, repeat: Infinity, delay: 1 }} />
+                <motionClient.rect x="130" y="165" height="6" rx="2" fill="var(--color-warning)" animate={{ width: [20, 38, 10, 30, 20] }} transition={{ duration: 4.5, repeat: Infinity, delay: 1 }} />
               </svg>
               <div className="absolute bottom-4 right-4 text-[10px] text-sky-400 font-mono">ONLINE SIMULATION ENG v1.0.8</div>
             </div>
@@ -467,10 +467,10 @@ export default function TechnologyPage() {
       {/* Comparison Table Section */}
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
-          <span className="text-xs md:text-sm font-bold tracking-widest text-[#2f55d4] uppercase block mb-3">
+          <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-3">
             工艺实力对比
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-[#0d102c] tracking-tight mb-4">
+          <h2 className="text-3xl md:text-4xl font-black text-heading tracking-tight mb-4">
             {techData.comparison.title}
           </h2>
           <p className="text-neutral-500 text-sm md:text-base max-w-xl mx-auto font-light">
@@ -487,7 +487,7 @@ export default function TechnologyPage() {
                     <th 
                       key={col} 
                       className={`py-4 ${idx === 0 ? "pr-4 w-[120px]" : "px-4"} ${
-                        idx === 3 ? "text-[#2f55d4] bg-[#2f55d4]/5 rounded-t-xl" : ""
+                        idx === 3 ? "text-brand bg-brand/5 rounded-t-xl" : ""
                       }`}
                     >
                       {col}
@@ -498,10 +498,10 @@ export default function TechnologyPage() {
               <tbody className="divide-y divide-neutral-100 text-neutral-600 font-light">
                 {techData.comparison.rows.map((row) => (
                   <tr key={row.dimension} className="hover:bg-neutral-50/50 transition-colors">
-                    <td className="py-4 pr-4 font-bold text-[#0d102c]">{row.dimension}</td>
+                    <td className="py-4 pr-4 font-bold text-heading">{row.dimension}</td>
                     <td className="py-4 px-4">{row.lamination}</td>
                     <td className="py-4 px-4">{row.winding}</td>
-                    <td className="py-4 px-4 text-neutral-800 font-semibold bg-[#2f55d4]/5">{row.braiding}</td>
+                    <td className="py-4 px-4 text-neutral-800 font-semibold bg-brand/5">{row.braiding}</td>
                   </tr>
                 ))}
               </tbody>
@@ -511,13 +511,13 @@ export default function TechnologyPage() {
       </section>
 
       {/* Part B: Technical Insights & Cases list */}
-      <section id="insights" className="py-16 md:py-24 bg-[#f1f3f6] border-t border-neutral-200/50 scroll-mt-20">
+      <section id="insights" className="py-16 md:py-24 bg-surface-alt border-t border-neutral-200/50 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
           <div className="text-center mb-12">
-            <span className="text-xs md:text-sm font-bold tracking-widest text-[#2f55d4] uppercase block mb-3">
+            <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-3">
               KNOWLEDGE & CASE STUDIES
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-[#0d102c] tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-heading tracking-tight mb-4">
               技术洞察与行业案例
             </h2>
             <p className="text-neutral-500 text-sm md:text-base max-w-xl mx-auto font-light">
@@ -538,7 +538,7 @@ export default function TechnologyPage() {
                 onClick={() => handleTabChange(tab.id as any)}
                 className={`px-5 py-2 rounded-full text-sm font-bold border transition-all duration-300 cursor-pointer ${
                   activeTab === tab.id
-                    ? "bg-[#2f55d4] text-white border-[#2f55d4] shadow-md shadow-blue-500/15 scale-105"
+                    ? "bg-brand text-white border-brand shadow-md shadow-blue-500/15 scale-105"
                     : "bg-white text-neutral-600 border-neutral-200 hover:border-neutral-300 hover:text-neutral-800"
                 }`}
               >
@@ -552,13 +552,13 @@ export default function TechnologyPage() {
             {paginatedNews.map((item, idx) => (
               <motionClient.div
                 key={item.id}
-                className="bg-white border border-neutral-200/60 hover:border-[#2f55d4]/20 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col sm:flex-row gap-6 items-start"
+                className="bg-white border border-neutral-200/60 hover:border-brand/20 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col sm:flex-row gap-6 items-start"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
               >
                 {/* Cover image */}
-                <div className="w-full sm:w-[150px] aspect-[4/3] rounded-xl bg-gradient-to-br from-[#0c1f38] to-[#12365c] shrink-0 overflow-hidden flex items-center justify-center text-white border border-neutral-100">
+                <div className="w-full sm:w-[150px] aspect-[4/3] rounded-xl bg-gradient-to-br from-dark-from to-dark-to shrink-0 overflow-hidden flex items-center justify-center text-white border border-neutral-100">
                   {item.coverImage ? (
                     <img
                       src={`/api/news/image/${item.id}/${encodeURIComponent(item.coverImage)}`}
@@ -586,7 +586,7 @@ export default function TechnologyPage() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-base sm:text-lg font-bold text-[#0d102c] mb-2 leading-snug hover:text-[#2f55d4] transition-colors">
+                    <h3 className="text-base sm:text-lg font-bold text-heading mb-2 leading-snug hover:text-brand transition-colors">
                       <Link href={`/news/${item.id}`}>{item.title}</Link>
                     </h3>
 
@@ -599,7 +599,7 @@ export default function TechnologyPage() {
                   <div className="mt-4 flex items-center justify-between">
                     <Link 
                       href={`/news/${item.id}`}
-                      className="text-xs sm:text-sm font-bold text-[#2f55d4] hover:underline flex items-center gap-1 cursor-pointer"
+                      className="text-xs sm:text-sm font-bold text-brand hover:underline flex items-center gap-1 cursor-pointer"
                     >
                       阅读正文 <span className="text-xs">→</span>
                     </Link>
@@ -621,7 +621,7 @@ export default function TechnologyPage() {
               <button
                 disabled={currentPage === 1}
                 onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                className="w-10 h-10 rounded-full border border-neutral-200 bg-white flex items-center justify-center text-sm hover:border-[#2f55d4] hover:text-[#2f55d4] disabled:opacity-40 disabled:hover:border-neutral-200 disabled:hover:text-neutral-400 cursor-pointer"
+                className="w-10 h-10 rounded-full border border-neutral-200 bg-white flex items-center justify-center text-sm hover:border-brand hover:text-brand disabled:opacity-40 disabled:hover:border-neutral-200 disabled:hover:text-neutral-400 cursor-pointer"
               >
                 ←
               </button>
@@ -633,7 +633,7 @@ export default function TechnologyPage() {
               <button
                 disabled={currentPage === totalPages}
                 onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                className="w-10 h-10 rounded-full border border-neutral-200 bg-white flex items-center justify-center text-sm hover:border-[#2f55d4] hover:text-[#2f55d4] disabled:opacity-40 disabled:hover:border-neutral-200 disabled:hover:text-neutral-400 cursor-pointer"
+                className="w-10 h-10 rounded-full border border-neutral-200 bg-white flex items-center justify-center text-sm hover:border-brand hover:text-brand disabled:opacity-40 disabled:hover:border-neutral-200 disabled:hover:text-neutral-400 cursor-pointer"
               >
                 →
               </button>
@@ -644,7 +644,7 @@ export default function TechnologyPage() {
           <div className="mt-16 text-center">
             <button
               onClick={() => setIsModalOpen(true)}
-              className="px-8 py-3.5 bg-[#2f55d4] hover:bg-[#1d3c9f] text-white text-sm font-bold rounded-xl shadow-lg shadow-blue-500/15 hover:scale-[1.02] transition-all duration-300 cursor-pointer"
+              className="px-8 py-3.5 bg-brand hover:bg-brand-hover text-white text-sm font-bold rounded-xl shadow-lg shadow-blue-500/15 hover:scale-[1.02] transition-all duration-300 cursor-pointer"
             >
               与技术专家深入探讨您的复合材料需求
             </button>
@@ -674,9 +674,9 @@ export default function TechnologyPage() {
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
             >
               {/* Header */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100 bg-[#f8f9fa] shrink-0">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100 bg-surface shrink-0">
                 <div>
-                  <h3 className="text-lg font-bold text-[#0d102c]">
+                  <h3 className="text-lg font-bold text-heading">
                     预约与咨询需求表单
                   </h3>
                   <p className="text-xs text-neutral-500 mt-0.5">

@@ -70,7 +70,7 @@ export default function ProductsPage() {
 
   if (!mounted) {
     return (
-      <section className="w-full bg-[#f8f9fa] py-28 px-6 md:px-12 lg:px-24 min-h-screen">
+      <section className="w-full bg-surface py-28 px-6 md:px-12 lg:px-24 min-h-screen">
         <div className="max-w-7xl mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-black text-neutral-900">产品介绍</h1>
           <p className="text-neutral-400 mt-2">正在载入数据...</p>
@@ -80,7 +80,7 @@ export default function ProductsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f8f9fa] pt-20 md:pt-28 pb-12 md:pb-20 px-4 sm:px-6 md:px-12 lg:px-24">
+    <main className="min-h-screen bg-surface pt-20 md:pt-28 pb-12 md:pb-20 px-4 sm:px-6 md:px-12 lg:px-24">
       {/* Breadcrumb and Back Action */}
       <div className="max-w-7xl mx-auto mb-6 md:mb-8 flex items-center justify-between text-sm">
         <Link href="/" className="text-neutral-500 hover:text-neutral-900 flex items-center gap-2 transition-colors">
@@ -100,10 +100,10 @@ export default function ProductsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-[#2f55d4] text-sm font-bold uppercase tracking-[0.3em] mb-3 block">
+          <span className="text-brand text-sm font-bold uppercase tracking-[0.3em] mb-3 block">
             {landing.hero.subtitle}
           </span>
-          <h1 className="text-4xl md:text-6xl font-black text-[#0d102c] tracking-tight mb-6">
+          <h1 className="text-4xl md:text-6xl font-black text-heading tracking-tight mb-6">
             {landing.hero.title}
           </h1>
           <p className="text-neutral-500 text-lg md:text-xl font-light max-w-3xl leading-relaxed">
@@ -125,7 +125,7 @@ export default function ProductsPage() {
             {products.map((product, idx) => (
               <Link href={`/products/${product.id}`} key={product.id || idx} className="block h-full">
                 <motion.div
-                  className="bg-gradient-to-br from-[#0c1f38] via-[#0d2545] to-[#12365c] rounded-2xl p-8 text-white border border-[#2f55d4]/10 shadow-xl flex flex-col justify-between group cursor-pointer relative overflow-hidden h-full"
+                  className="bg-gradient-to-br from-dark-from via-dark-via to-dark-to rounded-2xl p-8 text-white border border-brand/10 shadow-xl flex flex-col justify-between group cursor-pointer relative overflow-hidden h-full"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: idx * 0.15 }}
@@ -161,7 +161,7 @@ export default function ProductsPage() {
                     <ul className="space-y-2.5">
                       {(product.specs || []).map((spec, i) => (
                         <li key={i} className="text-neutral-300 font-light text-sm flex items-start leading-relaxed">
-                          <span className="text-[#2f55d4] mr-2">▪</span>
+                          <span className="text-brand mr-2">▪</span>
                           <span>{spec}</span>
                         </li>
                       ))}
@@ -189,7 +189,7 @@ export default function ProductsPage() {
       {/* 3. Custom Equipment Contact Section */}
       <section className="max-w-7xl mx-auto bg-white border border-neutral-200/50 rounded-2xl p-10 shadow-sm relative overflow-hidden">
         <div className="relative z-10 max-w-2xl text-center md:text-left">
-          <h2 className="text-2xl md:text-3xl font-black text-[#0d102c] mb-4">{landing.customService.title}</h2>
+          <h2 className="text-2xl md:text-3xl font-black text-heading mb-4">{landing.customService.title}</h2>
           <p className="text-neutral-500 font-light text-base leading-relaxed mb-8">
             {landing.customService.description}
           </p>
@@ -200,7 +200,7 @@ export default function ProductsPage() {
             {landing.customService.buttonText}
           </a>
         </div>
-        <div className="absolute top-1/2 -translate-y-1/2 right-10 w-64 h-64 bg-[#2f55d4]/5 rounded-full blur-xl pointer-events-none hidden md:block" />
+        <div className="absolute top-1/2 -translate-y-1/2 right-10 w-64 h-64 bg-brand/5 rounded-full blur-xl pointer-events-none hidden md:block" />
       </section>
     </main>
   );

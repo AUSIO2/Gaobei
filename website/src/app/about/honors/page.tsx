@@ -53,7 +53,7 @@ export default function HonorsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f8f9fa] pt-20 md:pt-28 pb-12 md:pb-20 px-4 sm:px-6 md:px-12 lg:px-24">
+    <main className="min-h-screen bg-surface pt-20 md:pt-28 pb-12 md:pb-20 px-4 sm:px-6 md:px-12 lg:px-24">
       {/* Breadcrumb and Back Action */}
       <div className="max-w-4xl mx-auto mb-6 md:mb-8 flex items-center justify-between text-sm">
         <Link href="/about" className="text-neutral-500 hover:text-neutral-900 flex items-center gap-2 transition-colors">
@@ -75,10 +75,10 @@ export default function HonorsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-[#2f55d4] text-sm font-bold uppercase tracking-[0.3em] mb-3 block">
+          <span className="text-brand text-sm font-bold uppercase tracking-[0.3em] mb-3 block">
             {landing.hero.subtitle}
           </span>
-          <h1 className="text-4xl md:text-5xl font-black text-[#0d102c] tracking-tight mb-6">
+          <h1 className="text-4xl md:text-5xl font-black text-heading tracking-tight mb-6">
             {landing.hero.title}
           </h1>
           <p className="text-neutral-500 text-lg font-light leading-relaxed">
@@ -100,14 +100,14 @@ export default function HonorsPage() {
             {honorsList.map((honor, idx) => (
               <motion.div
                 key={honor.id || idx}
-                className="bg-white border border-neutral-200/60 rounded-3xl p-8 shadow-sm hover:shadow-md hover:border-[#2f55d4]/40 transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white border border-neutral-200/60 rounded-3xl p-8 shadow-sm hover:shadow-md hover:border-brand/40 transition-all duration-300 flex flex-col justify-between group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.15 }}
               >
                 <div>
-                  <span className="bg-[#2f55d4]/5 text-[#2f55d4] text-[9px] font-bold tracking-wider px-3 py-1 rounded uppercase mb-4 inline-block">
+                  <span className="bg-brand/5 text-brand text-[9px] font-bold tracking-wider px-3 py-1 rounded uppercase mb-4 inline-block">
                     {honor.tag}
                   </span>
                   <h3 className="text-xl font-bold text-neutral-900 mb-4 leading-snug">
@@ -119,7 +119,7 @@ export default function HonorsPage() {
 
                   {/* Certificate Image Box */}
                   {honor.images && honor.images.length > 0 && !failedImages[honor.id] && (
-                    <div className="mt-6 aspect-[4/3] w-full rounded-2xl bg-white border border-dashed border-neutral-300 flex items-center justify-center relative overflow-hidden shadow-inner group-hover:border-[#2f55d4]/50 transition-colors duration-300">
+                    <div className="mt-6 aspect-[4/3] w-full rounded-2xl bg-white border border-dashed border-neutral-300 flex items-center justify-center relative overflow-hidden shadow-inner group-hover:border-brand/50 transition-colors duration-300">
                       <img
                         src={honor.images[0]}
                         alt={`${honor.title} 证书`}

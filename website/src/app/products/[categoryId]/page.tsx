@@ -52,7 +52,7 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
 
   if (loading) {
     return (
-      <section className="w-full bg-[#f8f9fa] py-28 px-6 md:px-12 lg:px-24 min-h-screen">
+      <section className="w-full bg-surface py-28 px-6 md:px-12 lg:px-24 min-h-screen">
         <div className="max-w-7xl mx-auto space-y-6">
           <div className="h-6 w-32 bg-neutral-200 animate-pulse rounded" />
           <div className="h-12 w-full bg-neutral-200 animate-pulse rounded" />
@@ -68,9 +68,9 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
 
   if (!categoryData) {
     return (
-      <section className="w-full bg-[#f8f9fa] py-28 px-6 md:px-12 lg:px-24 min-h-screen flex flex-col items-center justify-center">
+      <section className="w-full bg-surface py-28 px-6 md:px-12 lg:px-24 min-h-screen flex flex-col items-center justify-center">
         <h2 className="text-2xl font-bold text-neutral-800 mb-4">未找到相关产品分类</h2>
-        <Link href="/products" className="text-[#2f55d4] hover:underline flex items-center gap-2">
+        <Link href="/products" className="text-brand hover:underline flex items-center gap-2">
           <span>←</span> 返回产品体系
         </Link>
       </section>
@@ -78,7 +78,7 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
   }
 
   return (
-    <main className="min-h-screen bg-[#f8f9fa] pt-20 md:pt-28 pb-12 md:pb-20 px-4 sm:px-6 md:px-12 lg:px-24">
+    <main className="min-h-screen bg-surface pt-20 md:pt-28 pb-12 md:pb-20 px-4 sm:px-6 md:px-12 lg:px-24">
       {/* Breadcrumb and Back Action */}
       <div className="max-w-7xl mx-auto mb-6 md:mb-8 flex items-center justify-between text-sm">
         <Link href="/products" className="text-neutral-500 hover:text-neutral-900 flex items-center gap-2 transition-colors">
@@ -100,10 +100,10 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-[#2f55d4] text-sm font-bold uppercase tracking-[0.3em] mb-3 block">
+          <span className="text-brand text-sm font-bold uppercase tracking-[0.3em] mb-3 block">
             {categoryData.nameEn}
           </span>
-          <h1 className="text-4xl md:text-5xl font-black text-[#0d102c] tracking-tight mb-6">
+          <h1 className="text-4xl md:text-5xl font-black text-heading tracking-tight mb-6">
             {categoryData.name}
           </h1>
           <p className="text-neutral-500 text-lg font-light max-w-3xl leading-relaxed">
@@ -123,7 +123,7 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
             {categoryData.products.map((product, idx) => (
               <motion.div
                 key={product.id}
-                className="bg-gradient-to-br from-[#0c1f38] via-[#0d2545] to-[#12365c] rounded-2xl p-8 text-white border border-[#2f55d4]/10 shadow-xl flex flex-col justify-between group cursor-pointer relative overflow-hidden"
+                className="bg-gradient-to-br from-dark-from via-dark-via to-dark-to rounded-2xl p-8 text-white border border-brand/10 shadow-xl flex flex-col justify-between group cursor-pointer relative overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.15 }}

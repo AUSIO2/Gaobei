@@ -55,14 +55,14 @@ export default function HeroSection() {
   return (
     <section 
       ref={container} 
-      className="relative min-h-[80vh] md:h-screen w-full overflow-hidden bg-[#f8f9fa] text-neutral-900 flex items-center justify-between px-5 sm:px-8 md:px-10 lg:px-24 perspective-1000"
+      className="relative min-h-[80vh] md:h-screen w-full overflow-hidden bg-surface text-neutral-900 flex items-center justify-between px-5 sm:px-8 md:px-10 lg:px-24 perspective-1000"
     >
 
       
       {/* 文字内容层 */}
       <div ref={textRef} className="relative z-10 w-full flex flex-col items-start text-left mt-10 md:mt-20">
         <div className="overflow-hidden mb-4">
-          <p className="hero-text text-xs sm:text-sm md:text-lg tracking-[0.2em] md:tracking-[0.3em] text-[#2f55d4] font-bold uppercase">
+          <p className="hero-text text-xs sm:text-sm md:text-lg tracking-[0.2em] md:tracking-[0.3em] text-brand font-bold uppercase">
             云路装备 · 大国重器
           </p>
         </div>

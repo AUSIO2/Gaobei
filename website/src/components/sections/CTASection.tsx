@@ -97,7 +97,7 @@ export default function CTASection() {
   };
 
   return (
-    <section id="contact" className="relative w-full bg-gradient-to-br from-[#0c1f38] via-[#0d2545] to-[#12365c] py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24 text-white overflow-hidden">
+    <section id="contact" className="relative w-full bg-gradient-to-br from-dark-from via-dark-via to-dark-to py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24 text-white overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -173,7 +173,7 @@ export default function CTASection() {
                   onClick={() => openForm(card.purpose)}
                   className={`w-full py-3 rounded-xl text-sm font-bold text-center transition-all duration-200 cursor-pointer ${
                     isPopular
-                      ? "bg-[#2f55d4] hover:bg-[#1d3c9f] text-white shadow-lg shadow-blue-500/20"
+                      ? "bg-brand hover:bg-brand-hover text-white shadow-lg shadow-blue-500/20"
                       : "bg-white/10 hover:bg-white/15 text-white border border-white/10"
                   }`}
                 >
@@ -230,9 +230,9 @@ export default function CTASection() {
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
             >
               {/* Header */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100 bg-[#f8f9fa] shrink-0">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100 bg-surface shrink-0">
                 <div>
-                  <h3 className="text-lg font-bold text-[#0d102c]">
+                  <h3 className="text-lg font-bold text-heading">
                     预约与咨询需求表单
                   </h3>
                   <p className="text-xs text-neutral-500 mt-0.5">

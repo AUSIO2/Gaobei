@@ -51,12 +51,12 @@ export default function TechHighlights() {
 
   const cardStyles: Record<string, { gradient: string; accentColor: string }> = {
     braiding: {
-      gradient: "from-[#0c1f38] via-[#0d2545] to-[#12365c]",
-      accentColor: "#2f55d4"
+      gradient: "from-dark-from via-dark-via to-dark-to",
+      accentColor: "var(--color-brand)"
     },
     "digital-twin": {
       gradient: "from-[#091b30] via-[#0b223c] to-[#0f3057]",
-      accentColor: "#38bdf8"
+      accentColor: "var(--color-brand-light)"
     }
   };
 
@@ -67,7 +67,7 @@ export default function TechHighlights() {
           {/* Grid Background */}
           <defs>
             <pattern id="braid-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(47, 85, 212, 0.07)" strokeWidth="0.5" />
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="color-mix(in srgb, var(--color-brand) 7%, transparent)" strokeWidth="0.5" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#braid-grid)" />
@@ -75,7 +75,7 @@ export default function TechHighlights() {
           {/* Animated Braiding Path 1 */}
           <motion.path
             d="M 20,100 Q 60,60 100,100 T 180,100"
-            stroke="#2f55d4"
+            stroke="var(--color-brand)"
             strokeWidth="3"
             strokeLinecap="round"
             fill="none"
@@ -94,7 +94,7 @@ export default function TechHighlights() {
           {/* Animated Braiding Path 2 */}
           <motion.path
             d="M 20,100 Q 60,140 100,100 T 180,100"
-            stroke="#38bdf8"
+            stroke="var(--color-brand-light)"
             strokeWidth="2"
             strokeLinecap="round"
             strokeDasharray="5 5"
@@ -127,9 +127,9 @@ export default function TechHighlights() {
             }}
           />
           {/* Nodes */}
-          <motion.circle cx="100" cy="100" r="5" fill="#2f55d4" animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 2, repeat: Infinity }} />
-          <circle cx="60" cy="80" r="3" fill="#38bdf8" />
-          <circle cx="140" cy="120" r="3" fill="#38bdf8" />
+          <motion.circle cx="100" cy="100" r="5" fill="var(--color-brand)" animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 2, repeat: Infinity }} />
+          <circle cx="60" cy="80" r="3" fill="var(--color-brand-light)" />
+          <circle cx="140" cy="120" r="3" fill="var(--color-brand-light)" />
         </svg>
       );
     }
@@ -138,14 +138,14 @@ export default function TechHighlights() {
       <svg className="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Concentric circles */}
         <circle cx="100" cy="100" r="60" stroke="rgba(56, 189, 248, 0.1)" strokeWidth="1" strokeDasharray="4 4" />
-        <circle cx="100" cy="100" r="45" stroke="rgba(47, 85, 212, 0.15)" strokeWidth="1" />
+        <circle cx="100" cy="100" r="45" stroke="color-mix(in srgb, var(--color-brand) 15%, transparent)" strokeWidth="1" />
         
         {/* Scanning Line */}
         <motion.circle
           cx="100"
           cy="100"
           r="45"
-          stroke="#38bdf8"
+          stroke="var(--color-brand-light)"
           strokeWidth="1.5"
           strokeDasharray="20 120"
           fill="none"
@@ -160,7 +160,7 @@ export default function TechHighlights() {
         {/* Data Bars / Graph in center */}
         <motion.path
           d="M 60,120 L 80,105 L 100,115 L 120,90 L 140,110"
-          stroke="#2f55d4"
+          stroke="var(--color-brand)"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -178,8 +178,8 @@ export default function TechHighlights() {
 
         <defs>
           <linearGradient id="twin-gradient" x1="100" y1="90" x2="100" y2="140" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#2f55d4" />
-            <stop offset="100%" stopColor="#2f55d4" stopOpacity="0" />
+            <stop offset="0%" stopColor="var(--color-brand)" />
+            <stop offset="100%" stopColor="var(--color-brand)" stopOpacity="0" />
           </linearGradient>
         </defs>
 
@@ -189,7 +189,7 @@ export default function TechHighlights() {
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         >
           <rect x="65" y="65" width="24" height="12" rx="2" fill="rgba(56, 189, 248, 0.1)" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="0.5" />
-          <text x="77" y="73" fill="#38bdf8" fontSize="6" fontFamily="monospace" textAnchor="middle">RUN</text>
+          <text x="77" y="73" fill="var(--color-brand-light)" fontSize="6" fontFamily="monospace" textAnchor="middle">RUN</text>
         </motion.g>
 
         <motion.g
@@ -197,19 +197,19 @@ export default function TechHighlights() {
           transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         >
           <rect x="110" y="130" width="30" height="12" rx="2" fill="rgba(47, 85, 212, 0.1)" stroke="rgba(47, 85, 212, 0.3)" strokeWidth="0.5" />
-          <text x="125" y="138" fill="#a5b4fc" fontSize="6" fontFamily="monospace" textAnchor="middle">98.5%</text>
+          <text x="125" y="138" fill="var(--color-brand-muted)" fontSize="6" fontFamily="monospace" textAnchor="middle">98.5%</text>
         </motion.g>
       </svg>
     );
   };
 
   return (
-    <section className="w-full bg-[#f8f9fa] py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24">
+    <section className="w-full bg-surface py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <motion.span 
-            className="text-xs md:text-sm font-bold tracking-widest text-[#2f55d4] uppercase block mb-3"
+            className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-3"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -218,7 +218,7 @@ export default function TechHighlights() {
             {data.subtitle}
           </motion.span>
           <motion.h2 
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0d102c] tracking-tight mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-heading tracking-tight mb-4"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -241,14 +241,14 @@ export default function TechHighlights() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           {data.cards.map((card, idx) => {
             const styles = cardStyles[card.id] || {
-              gradient: "from-[#0c1f38] to-[#12365c]",
-              accentColor: "#2f55d4"
+              gradient: "from-dark-from to-dark-to",
+              accentColor: "var(--color-brand)"
             };
 
             return (
               <motion.div
                 key={card.id}
-                className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${styles.gradient} p-6 sm:p-8 md:p-10 border border-[#2f55d4]/10 shadow-xl flex flex-col md:flex-row gap-6 md:gap-8 justify-between items-stretch group`}
+                className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${styles.gradient} p-6 sm:p-8 md:p-10 border border-brand/10 shadow-xl flex flex-col md:flex-row gap-6 md:gap-8 justify-between items-stretch group`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -300,7 +300,7 @@ export default function TechHighlights() {
 
                 {/* Hover highlight line at bottom */}
                 <div 
-                  className="absolute bottom-0 left-0 h-[3px] bg-[#2f55d4] transition-all duration-300 w-0 group-hover:w-full"
+                  className="absolute bottom-0 left-0 h-[3px] bg-brand transition-all duration-300 w-0 group-hover:w-full"
                   style={{ backgroundColor: styles.accentColor }}
                 />
 

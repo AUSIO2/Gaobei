@@ -67,14 +67,14 @@ export default function Navbar() {
             >
               <path
                 d={logoIconPathString}
-                stroke="#0d102c"
+                stroke="var(--color-heading)"
                 strokeWidth="0.8"
-                fill="#0d102c"
+                fill="var(--color-heading)"
                 fillRule="evenodd"
               />
               <path
                 d={logoTextPathString}
-                fill="#0d102c"
+                fill="var(--color-heading)"
                 fillRule="evenodd"
               />
             </svg>
@@ -89,13 +89,13 @@ export default function Navbar() {
               href={link.href}
               className={`relative py-2 group transition-colors ${
                 isActive(link.href)
-                  ? "text-[#2f55d4]"
+                  ? "text-brand"
                   : "text-neutral-600 hover:text-neutral-900"
               }`}
             >
               {link.label}
               <span
-                className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#2f55d4] transition-transform origin-left duration-300 ${
+                className={`absolute bottom-0 left-0 w-full h-[2px] bg-brand transition-transform origin-left duration-300 ${
                   isActive(link.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                 }`}
               />
@@ -176,12 +176,12 @@ export default function Navbar() {
                       href={link.href}
                       className={`flex items-center px-4 py-3.5 rounded-xl text-base font-medium transition-all duration-200 ${
                         isActive(link.href)
-                          ? "bg-[#2f55d4]/5 text-[#2f55d4]"
+                          ? "bg-brand/5 text-brand"
                           : "text-neutral-700 hover:bg-neutral-50 active:bg-neutral-100"
                       }`}
                     >
                       {isActive(link.href) && (
-                        <span className="w-1 h-4 bg-[#2f55d4] rounded-full mr-3 shrink-0" />
+                        <span className="w-1 h-4 bg-brand rounded-full mr-3 shrink-0" />
                       )}
                       {link.label}
                     </Link>

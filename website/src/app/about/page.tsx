@@ -61,7 +61,7 @@ export default function AboutPage() {
 
   if (loading) {
     return (
-      <section className="w-full bg-[#f8f9fa] py-28 px-6 md:px-12 lg:px-24 min-h-screen">
+      <section className="w-full bg-surface py-28 px-6 md:px-12 lg:px-24 min-h-screen">
         <div className="max-w-4xl mx-auto space-y-6">
           <div className="h-6 w-32 bg-neutral-200 animate-pulse rounded" />
           <div className="h-12 w-full bg-neutral-200 animate-pulse rounded" />
@@ -78,9 +78,9 @@ export default function AboutPage() {
 
   if (!data) {
     return (
-      <section className="w-full bg-[#f8f9fa] py-28 px-6 md:px-12 lg:px-24 min-h-screen flex flex-col items-center justify-center">
+      <section className="w-full bg-surface py-28 px-6 md:px-12 lg:px-24 min-h-screen flex flex-col items-center justify-center">
         <h2 className="text-2xl font-bold text-neutral-800 mb-4">未找到关于我们配置</h2>
-        <Link href="/" className="text-[#2f55d4] hover:underline flex items-center gap-2">
+        <Link href="/" className="text-brand hover:underline flex items-center gap-2">
           <span>←</span> 返回首页
         </Link>
       </section>
@@ -88,7 +88,7 @@ export default function AboutPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f8f9fa] pt-20 md:pt-28 pb-12 md:pb-20 px-4 sm:px-6 md:px-12 lg:px-24">
+    <main className="min-h-screen bg-surface pt-20 md:pt-28 pb-12 md:pb-20 px-4 sm:px-6 md:px-12 lg:px-24">
       {/* Breadcrumb and Back Action */}
       <div className="max-w-7xl mx-auto mb-6 md:mb-8 flex items-center justify-between text-sm">
         <Link href="/" className="text-neutral-500 hover:text-neutral-900 flex items-center gap-2 transition-colors">
@@ -108,10 +108,10 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-[#2f55d4] text-sm font-bold uppercase tracking-[0.3em] mb-3 block">
+          <span className="text-brand text-sm font-bold uppercase tracking-[0.3em] mb-3 block">
             {data.hero.subtitle}
           </span>
-          <h1 className="text-4xl md:text-6xl font-black text-[#0d102c] tracking-tight mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-black text-heading tracking-tight mb-6 leading-tight">
             {data.hero.title}
           </h1>
           <p className="text-neutral-500 text-lg md:text-xl font-light max-w-3xl leading-relaxed">
@@ -134,7 +134,7 @@ export default function AboutPage() {
         </motion.div>
         
         <motion.div 
-          className="lg:col-span-5 bg-gradient-to-br from-[#0c1f38] to-[#12365c] rounded-2xl p-8 text-white relative overflow-hidden shadow-xl"
+          className="lg:col-span-5 bg-gradient-to-br from-dark-from to-dark-to rounded-2xl p-8 text-white relative overflow-hidden shadow-xl"
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -149,12 +149,12 @@ export default function AboutPage() {
 
       {/* 3. 核心实力网格 */}
       <section className="max-w-7xl mx-auto mb-20">
-        <h2 className="text-2xl md:text-3xl font-black text-[#0d102c] mb-10 text-center tracking-tight">我们的核心优势</h2>
+        <h2 className="text-2xl md:text-3xl font-black text-heading mb-10 text-center tracking-tight">我们的核心优势</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {data.strengths.map((item, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-xl p-8 border border-neutral-200/60 shadow-sm hover:shadow-md hover:border-[#2f55d4]/40 transition-all duration-300"
+              className="bg-white rounded-xl p-8 border border-neutral-200/60 shadow-sm hover:shadow-md hover:border-brand/40 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
@@ -170,7 +170,7 @@ export default function AboutPage() {
 
       {/* 4. 企业文化 */}
       <section id="culture" className="max-w-7xl mx-auto mb-20 scroll-mt-28">
-        <h2 className="text-2xl md:text-3xl font-black text-[#0d102c] mb-10 text-center tracking-tight">
+        <h2 className="text-2xl md:text-3xl font-black text-heading mb-10 text-center tracking-tight">
           {data.culture?.title || "企业文化"}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -193,7 +193,7 @@ export default function AboutPage() {
           ]).map((item, idx) => (
             <motion.div
               key={item.key}
-              className="bg-gradient-to-br from-[#0c1f38] to-[#12365c] rounded-2xl p-8 text-white relative overflow-hidden shadow-xl"
+              className="bg-gradient-to-br from-dark-from to-dark-to rounded-2xl p-8 text-white relative overflow-hidden shadow-xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -211,7 +211,7 @@ export default function AboutPage() {
         <div className="mt-10 text-center">
           <Link
             href="/about/culture"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white border border-neutral-200 text-sm font-medium text-[#2f55d4] hover:bg-[#2f55d4] hover:text-white hover:border-[#2f55d4] transition-all duration-300 shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white border border-neutral-200 text-sm font-medium text-brand hover:bg-brand hover:text-white hover:border-brand transition-all duration-300 shadow-sm"
           >
             了解更多关于我们的企业文化 →
           </Link>
@@ -220,7 +220,7 @@ export default function AboutPage() {
 
       {/* 4. 发展历程 */}
       <section id="history" className="max-w-7xl mx-auto mb-20 scroll-mt-28">
-        <h2 className="text-2xl md:text-3xl font-black text-[#0d102c] mb-12 text-center tracking-tight">发展历程</h2>
+        <h2 className="text-2xl md:text-3xl font-black text-heading mb-12 text-center tracking-tight">发展历程</h2>
         <div className="relative pl-8 md:pl-0 border-l border-neutral-200 md:border-l-0 md:grid md:grid-cols-4 md:gap-6">
           {data.milestones.map((item, index) => (
             <motion.div
@@ -231,8 +231,8 @@ export default function AboutPage() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               {/* 点或时间指示器 */}
-              <div className="absolute -left-[41px] md:relative md:left-0 top-1 w-5 h-5 rounded-full border-4 border-[#f8f9fa] bg-[#2f55d4] shadow-sm mb-4" />
-              <span className="text-[#2f55d4] text-3xl font-black mb-2 tracking-tighter">{item.year}</span>
+              <div className="absolute -left-[41px] md:relative md:left-0 top-1 w-5 h-5 rounded-full border-4 border-surface bg-brand shadow-sm mb-4" />
+              <span className="text-brand text-3xl font-black mb-2 tracking-tighter">{item.year}</span>
               <h3 className="text-base font-bold text-neutral-950 mb-2">{item.title}</h3>
               <p className="text-neutral-500 text-xs md:text-sm font-light max-w-xs leading-relaxed md:px-4">{item.desc}</p>
             </motion.div>
@@ -255,7 +255,7 @@ export default function AboutPage() {
             "复合材料学会理事单位",
             "多项自研软著与核心发明专利"
           ]).map((badge) => (
-            <span key={badge} className="px-5 py-2.5 bg-[#f8f9fa] rounded-lg text-xs font-semibold text-neutral-700 border border-neutral-100 hover:border-[#2f55d4]/20 transition-all duration-300 shadow-sm">
+            <span key={badge} className="px-5 py-2.5 bg-surface rounded-lg text-xs font-semibold text-neutral-700 border border-neutral-100 hover:border-brand/20 transition-all duration-300 shadow-sm">
               {badge}
             </span>
           ))}
@@ -263,7 +263,7 @@ export default function AboutPage() {
         <div className="mt-8 text-center">
           <Link
             href="/about/honors"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#2f55d4] text-white text-sm font-medium hover:bg-[#1d3c9f] transition-all duration-300 shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand text-white text-sm font-medium hover:bg-brand-hover transition-all duration-300 shadow-sm"
           >
             查看资质荣誉详情 →
           </Link>

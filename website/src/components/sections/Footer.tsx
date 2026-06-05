@@ -105,7 +105,7 @@ export default function Footer() {
       {isHomepage && (
         <section className="bg-white py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-12 lg:px-24 border-t border-neutral-100">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#2f55d4] mb-6 md:mb-8 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand mb-6 md:mb-8 tracking-tight">
               {activeInfo.contactTitle}
             </h2>
             <div className="space-y-3 md:space-y-4 text-neutral-700 text-sm md:text-base leading-relaxed tracking-wide">
@@ -117,7 +117,7 @@ export default function Footer() {
                     <span className="text-neutral-500">{contact.name}：</span>
                     <a
                       href={`tel:${contact.phone.split("或")[0]}`}
-                      className="text-neutral-900 font-bold hover:text-[#2f55d4] active:text-[#2f55d4] transition-colors text-base md:text-inherit"
+                      className="text-neutral-900 font-bold hover:text-brand active:text-brand transition-colors text-base md:text-inherit"
                     >
                       {contact.phone}
                     </a>

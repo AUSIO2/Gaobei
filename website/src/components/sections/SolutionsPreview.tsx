@@ -59,8 +59,8 @@ export default function SolutionsPreview() {
 
   const industryMeta: Record<string, { colorClass: string; accentColor: string; icon: React.ReactNode }> = {
     aerospace: {
-      colorClass: "bg-[#2f55d4]",
-      accentColor: "#2f55d4",
+      colorClass: "bg-brand",
+      accentColor: "var(--color-brand)",
       icon: (
         <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
@@ -69,7 +69,7 @@ export default function SolutionsPreview() {
     },
     energy: {
       colorClass: "bg-emerald-500",
-      accentColor: "#10b981",
+      accentColor: "var(--color-success)",
       icon: (
         <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -78,7 +78,7 @@ export default function SolutionsPreview() {
     },
     automotive: {
       colorClass: "bg-amber-500",
-      accentColor: "#f59e0b",
+      accentColor: "var(--color-warning)",
       icon: (
         <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 16.5L12 21L5 16.5V7.5L12 3L19 7.5V16.5Z" />
@@ -91,13 +91,13 @@ export default function SolutionsPreview() {
   };
 
   return (
-    <section className="w-full bg-[#f1f3f6] py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24 border-y border-neutral-200/50">
+    <section className="w-full bg-surface-alt py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24 border-y border-neutral-200/50">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-4">
           <div className="max-w-xl">
             <motion.span 
-              className="text-xs md:text-sm font-bold tracking-widest text-[#2f55d4] uppercase block mb-3"
+              className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-3"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -106,7 +106,7 @@ export default function SolutionsPreview() {
               {data.subtitle}
             </motion.span>
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0d102c] tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-black text-heading tracking-tight"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -123,7 +123,7 @@ export default function SolutionsPreview() {
           >
             <Link 
               href="/solutions"
-              className="inline-flex items-center gap-2 text-sm font-bold text-[#2f55d4] hover:text-[#1d3c9f] transition-colors group"
+              className="inline-flex items-center gap-2 text-sm font-bold text-brand hover:text-brand-hover transition-colors group"
             >
               查看所有解决方案 
               <span className="transform group-hover:translate-x-1 transition-transform">→</span>
@@ -135,8 +135,8 @@ export default function SolutionsPreview() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
           {data.industries.map((industry, idx) => {
             const meta = industryMeta[industry.id] || {
-              colorClass: "bg-[#2f55d4]",
-              accentColor: "#2f55d4",
+              colorClass: "bg-brand",
+              accentColor: "var(--color-brand)",
               icon: (
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
@@ -176,7 +176,7 @@ export default function SolutionsPreview() {
                       </span>
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl font-bold text-[#0d102c] mb-3">
+                    <h3 className="text-xl sm:text-2xl font-bold text-heading mb-3">
                       {industry.title}
                     </h3>
                     
@@ -201,10 +201,10 @@ export default function SolutionsPreview() {
                     {/* Button link */}
                     <Link 
                       href={industry.href}
-                      className="inline-flex items-center text-sm font-bold text-neutral-800 group-hover:text-[#2f55d4] transition-colors gap-1 cursor-pointer"
+                      className="inline-flex items-center text-sm font-bold text-neutral-800 group-hover:text-brand transition-colors gap-1 cursor-pointer"
                     >
                       查看行业方案 
-                      <span className="transform group-hover:translate-x-1 transition-transform text-[#2f55d4]">→</span>
+                      <span className="transform group-hover:translate-x-1 transition-transform text-brand">→</span>
                     </Link>
                   </div>
                 </div>
@@ -224,7 +224,7 @@ export default function SolutionsPreview() {
           <p className="text-xs sm:text-sm text-neutral-500 font-light">
             💡 <span className="font-semibold text-neutral-700">定制化服务：</span>
             {data.footerNote}
-            <Link href="/contact" className="text-[#2f55d4] font-semibold hover:underline ml-1">联系我们咨询 →</Link>
+            <Link href="/contact" className="text-brand font-semibold hover:underline ml-1">联系我们咨询 →</Link>
           </p>
         </motion.div>
       </div>

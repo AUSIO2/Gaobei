@@ -147,7 +147,7 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
           placeholder="例如：北京航天精密制造有限公司"
           value={formData.companyName}
           onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-          className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-[#2f55d4] text-sm text-neutral-800 transition-colors"
+          className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-brand text-sm text-neutral-800 transition-colors"
         />
       </div>
 
@@ -163,7 +163,7 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
             placeholder="张经理"
             value={formData.contactPerson}
             onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })}
-            className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-[#2f55d4] text-sm text-neutral-800 transition-colors"
+            className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-brand text-sm text-neutral-800 transition-colors"
           />
         </div>
         <div>
@@ -176,7 +176,7 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
             placeholder="13xxxxxxxx"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-[#2f55d4] text-sm text-neutral-800 transition-colors"
+            className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-brand text-sm text-neutral-800 transition-colors"
           />
         </div>
       </div>
@@ -191,7 +191,7 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
           placeholder="yourname@company.com"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-[#2f55d4] text-sm text-neutral-800 transition-colors"
+          className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-brand text-sm text-neutral-800 transition-colors"
         />
       </div>
 
@@ -203,7 +203,7 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
         <select
           value={formData.interest}
           onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-          className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 bg-white focus:outline-none focus:border-[#2f55d4] text-sm text-neutral-800 transition-colors"
+          className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 bg-white focus:outline-none focus:border-brand text-sm text-neutral-800 transition-colors"
         >
           {interestOptions.map(option => (
             <option key={option} value={option}>{option}</option>
@@ -224,7 +224,7 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
                 key={product} 
                 className={`flex items-center px-3 py-2 rounded-lg border text-xs font-medium cursor-pointer transition-all duration-200 select-none ${
                   isChecked 
-                    ? "bg-[#2f55d4]/5 border-[#2f55d4] text-[#2f55d4]" 
+                    ? "bg-brand/5 border-brand text-brand" 
                     : "bg-neutral-50 border-neutral-200 text-neutral-600 hover:bg-neutral-100"
                 }`}
               >
@@ -235,7 +235,7 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
                   className="sr-only"
                 />
                 <span className="w-3.5 h-3.5 rounded border border-neutral-300 flex items-center justify-center mr-2 shrink-0 bg-white">
-                  {isChecked && <span className="w-2 h-2 bg-[#2f55d4] rounded-sm" />}
+                  {isChecked && <span className="w-2 h-2 bg-brand rounded-sm" />}
                 </span>
                 {product}
               </label>
@@ -254,7 +254,7 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
           placeholder="请简要描述您的应用场景、材料规格要求或采购意向（如：火箭发动机喷管保护套，碳纤维编织）"
           value={formData.description}
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-          className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-[#2f55d4] text-sm text-neutral-800 transition-colors resize-none"
+          className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-brand text-sm text-neutral-800 transition-colors resize-none"
         />
       </div>
 
@@ -272,7 +272,7 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
         <button
           type="submit"
           disabled={loading}
-          className="flex-2 px-6 py-2.5 bg-[#2f55d4] hover:bg-[#1d3c9f] disabled:bg-neutral-300 text-white rounded-lg text-sm font-semibold shadow-sm transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+          className="flex-2 px-6 py-2.5 bg-brand hover:bg-brand-hover disabled:bg-neutral-300 text-white rounded-lg text-sm font-semibold shadow-sm transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
         >
           {loading ? (
             <>
