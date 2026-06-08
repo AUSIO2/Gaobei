@@ -1,0 +1,18 @@
+[Unit]
+Description=Gaobei Webhook Auto Deploy Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/webhook
+ExecStart=/usr/bin/node /root/webhook/server.js
+Restart=always
+RestartSec=5
+Environment=WEBHOOK_SECRET=
+EnvironmentFile=-/root/webhook/.env
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=gaobei-webhook
+
+[Install]
+WantedBy=multi-user.target
