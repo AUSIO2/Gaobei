@@ -10,7 +10,8 @@
         "subtitle": "3D Braiding Technology",
         "description": "以科技创新为核心驱动力，与多家顶尖科研机构共同组建机械结构、自动化控制、复合材料工艺三大研发团队，持续深耕三维编织底层创新技术。以百余项行业细分领域显著领先的国家发明专利，构筑坚实技术护城河",
         "pills": ["1.5m 最大外径", "6m 编织长度", "近净尺寸一次成型"],
-        "href": "/technology#braiding"
+        "href": "/technology#braiding",
+        "image": "braiding.jpg"
       },
       {
         "id": "digital-twin",
@@ -18,7 +19,8 @@
         "subtitle": "Automated Composite Molding Production Line",
         "description": "集成三维编织-铺层-缠绕-拉挤复合工艺，全流程实时协同控制，实现复材构件高效率绿色制造。",
         "pills": ["±1℃ 温控精度", "100% 在线监测", "全工艺数智追溯"],
-        "href": "/technology#digital-twin"
+        "href": "/technology#digital-twin",
+        "image": "digital-twin.jpg"
       }
     ]
   },
@@ -82,7 +84,7 @@
     }
   ],
   "cta": {
-    "title": "为您的项目寻找最优复材解决方案",
+    "title": "为您的项目寻找最优的复材解决方案",
     "description": "无论您处于方案规划阶段还是在大批量采购阶段，云路复材的专业工程服务团队都将为您提供量身定制的支持。",
     "cards": [
       {

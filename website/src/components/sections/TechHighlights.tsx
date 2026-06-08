@@ -11,6 +11,7 @@ interface HighlightCard {
   description: string;
   href: string;
   pills: string[];
+  image?: string;
 }
 
 export default function TechHighlights() {
@@ -25,7 +26,8 @@ export default function TechHighlights() {
         subtitle: "3D Braiding Technology",
         description: "实现纤维多维立体交叉编织，从根本上解决层间剥离难题，为结构件提供极致的抗冲击与轻量化表现。",
         href: "/technology#braiding",
-        pills: ["1.5m 最大外径", "6m 编织长度", "近净尺寸一次成型"]
+        pills: ["1.5m 最大外径", "6m 编织长度", "近净尺寸一次成型"],
+        image: "braiding.jpg"
       },
       {
         id: "digital-twin",
@@ -33,7 +35,8 @@ export default function TechHighlights() {
         subtitle: "Digital Twin Automation",
         description: "通过高精度传感器与三维可视化模型，建立产线物理实体的数字映射，提供全生产流程参数精确监控与追溯。",
         href: "/technology#digital-twin",
-        pills: ["±1℃ 温控精度", "100% 在线监测", "全工艺数智追溯"]
+        pills: ["±1℃ 温控精度", "100% 在线监测", "全工艺数智追溯"],
+        image: "digital-twin.jpg"
       }
     ] as HighlightCard[]
   });
@@ -293,9 +296,17 @@ export default function TechHighlights() {
 
                 {/* Right graphical / animation column */}
                 <div className="w-full md:w-[160px] lg:w-[180px] h-[160px] md:h-auto shrink-0 relative flex items-center justify-center bg-white/2 rounded-xl border border-white/5 overflow-hidden z-10">
-                  <div className="w-full h-full max-w-[140px] max-h-[140px]">
-                    {getCardSvg(card.id)}
-                  </div>
+                  {card.image ? (
+                    <img
+                      src={`/api/homepage/image/${encodeURIComponent(card.image)}`}
+                      alt={card.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full max-w-[140px] max-h-[140px]">
+                      {getCardSvg(card.id)}
+                    </div>
+                  )}
                 </div>
 
                 {/* Hover highlight line at bottom */}
