@@ -26,5 +26,10 @@
       "contactPerson": "明女士",
       "phone": "18068884900"
     }
-  ]
+  ],
+  "partners": {
+    "title": "合作伙伴与客户群体",
+    "subtitle": "TRUSTED BY LEADING ENTERPRISES",
+    "image": "partners.png"
+  }
 }

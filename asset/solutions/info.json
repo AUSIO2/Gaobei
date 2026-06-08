@@ -16,7 +16,8 @@
         { "id": "1", "name": "三维立体编织智能装备" },
         { "id": "2", "name": "三维立体机织智能装备" }
       ],
-      "bgGradient": "from-[#0c1f38] to-[#12365c]"
+      "bgGradient": "from-[#0c1f38] to-[#12365c]",
+      "image": "aerospace.png"
     },
     {
       "id": "energy",
@@ -31,7 +32,8 @@
       "products": [
         { "id": "3", "name": "三维编织智能控制与数据孪生系统" }
       ],
-      "bgGradient": "from-[#091b30] to-[#0f3057]"
+      "bgGradient": "from-[#091b30] to-[#0f3057]",
+      "image": "energy.png"
     },
     {
       "id": "automotive",
@@ -47,7 +49,8 @@
         { "id": "4", "name": "专用核心配件与模块" },
         { "id": "5", "name": "非标自动化定制装备生产线" }
       ],
-      "bgGradient": "from-[#08132b] to-[#122851]"
+      "bgGradient": "from-[#08132b] to-[#122851]",
+      "image": "automotive.png"
     }
   ]
 }

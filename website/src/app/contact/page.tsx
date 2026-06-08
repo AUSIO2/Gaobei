@@ -26,10 +26,17 @@ interface SalesSection {
   phone: string;
 }
 
+interface PartnersSection {
+  title: string;
+  subtitle: string;
+  image: string;
+}
+
 interface ContactData {
   hero: HeroSection;
   info: InfoSection;
   sales: SalesSection[];
+  partners?: PartnersSection;
 }
 
 export default function ContactPage() {
@@ -231,6 +238,33 @@ export default function ContactPage() {
           ))}
         </div>
       </section>
+
+      {/* Partners Section */}
+      {data.partners && data.partners.image && (
+        <motion.section 
+          className="max-w-7xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="mb-10 text-center md:text-left">
+            <span className="text-brand text-xs font-bold uppercase tracking-widest block mb-2">
+              {data.partners.subtitle}
+            </span>
+            <h2 className="text-2xl md:text-3xl font-black text-heading tracking-tight">
+              {data.partners.title}
+            </h2>
+          </div>
+          <div className="bg-white border border-neutral-200/60 rounded-3xl p-6 sm:p-8 md:p-10 shadow-sm flex items-center justify-center overflow-hidden">
+            <img
+              src={`/api/contact/${encodeURIComponent(data.partners.image)}`}
+              alt={data.partners.title}
+              className="max-w-full h-auto object-contain select-none pointer-events-none"
+            />
+          </div>
+        </motion.section>
+      )}
 
       {/* 4. Map and Inquiry Form Two-column Layout */}
       <section className="max-w-7xl mx-auto">

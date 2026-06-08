@@ -35,12 +35,14 @@ interface TechData {
   braiding: {
     title: string;
     description: string;
+    image?: string;
     specs: SpecItem[];
     advantages: AdvantageItem[];
   };
   digitalTwin: {
     title: string;
     description: string;
+    image?: string;
     features: FeatureItem[];
   };
   comparison: {
@@ -221,94 +223,177 @@ export default function TechnologyPage() {
       {/* 3D Braiding Technology */}
       <section id="braiding" className="py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24 max-w-7xl mx-auto scroll-mt-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-          
-          {/* Left Column: SVG Fiber Weaving Loop */}
-          <div className="lg:col-span-5 w-full aspect-square max-w-[450px] mx-auto bg-gradient-to-br from-dark-from to-dark-to rounded-3xl p-8 border border-brand/10 shadow-xl overflow-hidden relative group">
-            <svg className="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="weaving-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="0.5" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#weaving-grid)" />
+          {/* Left Column: Image with dynamic glowing HUD overlay / fallback to SVG Fiber Weaving Loop */}
+          {techData.braiding.image ? (
+            <div className="lg:col-span-5 w-full aspect-[432/264] max-w-[550px] mx-auto bg-white rounded-3xl border border-neutral-200/50 shadow-xl overflow-hidden relative group flex items-center justify-center p-2">
+              <img
+                src={`/api/technology/image/${encodeURIComponent(techData.braiding.image)}`}
+                alt={techData.braiding.title}
+                className="w-full h-full object-contain select-none pointer-events-none rounded-2xl"
+              />
               
-              {/* Dynamic Braiding threads */}
-              {[0, 1, 2, 3, 4].map((i) => (
-                <React.Fragment key={i}>
-                  {/* Diagonal Line Left-To-Right */}
-                  <motionClient.path
-                    d={`M -20,${20 + i * 40} L 220,${60 + i * 40}`}
-                    stroke="var(--color-brand)"
-                    strokeWidth="3.5"
-                    strokeLinecap="round"
-                    fill="none"
-                    initial={{ pathLength: 0, opacity: 0.3 }}
-                    animate={{ 
-                      pathLength: [0, 1, 1, 0],
-                      pathOffset: [0, 0, 0.5, 1],
-                      opacity: [0.3, 1, 1, 0.3]
-                    }}
-                    transition={{
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: i * 0.4
-                    }}
-                  />
-                  {/* Diagonal Line Right-To-Left */}
-                  <motionClient.path
-                    d={`M 220,${20 + i * 40} L -20,${60 + i * 40}`}
-                    stroke="var(--color-brand-light)"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeDasharray="4 4"
-                    fill="none"
-                    initial={{ pathLength: 0, opacity: 0.2 }}
-                    animate={{ 
-                      pathLength: [0, 1, 1, 0],
-                      pathOffset: [0, 0, -0.5, -1],
-                      opacity: [0.2, 0.9, 0.9, 0.2]
-                    }}
-                    transition={{
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: i * 0.4 + 1
-                    }}
-                  />
-                </React.Fragment>
-              ))}
+              {/* Dynamic Braiding Lines overlay */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 432 264" fill="none">
+                {/* Rotating Spindle Rings */}
+                <motionClient.circle
+                  cx="285"
+                  cy="125"
+                  r="85"
+                  stroke="rgba(59, 130, 246, 0.45)"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 20"
+                  fill="none"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                  style={{ transformOrigin: "285px 125px" }}
+                />
+                <motionClient.circle
+                  cx="285"
+                  cy="125"
+                  r="75"
+                  stroke="rgba(59, 130, 246, 0.25)"
+                  strokeWidth="1"
+                  strokeDasharray="3 15"
+                  fill="none"
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  style={{ transformOrigin: "285px 125px" }}
+                />
+                
+                {/* Flowing Weaving Thread lines */}
+                {[-120, -90, -60, -30, 0, 30, 60, 90, 120].map((angle, idx) => {
+                  const rad = (angle * Math.PI) / 180;
+                  const xs = 285 + 85 * Math.cos(rad);
+                  const ys = 125 + 85 * Math.sin(rad);
+                  const xe = 220;
+                  const ye = 125;
+                  return (
+                    <motionClient.path
+                      key={idx}
+                      d={`M ${xs},${ys} L ${xe},${ye}`}
+                      stroke="rgba(59, 130, 246, 0.75)"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      fill="none"
+                      initial={{ pathLength: 0, opacity: 0.1 }}
+                      animate={{
+                        pathLength: [0, 1, 1, 0],
+                        pathOffset: [0, 0, 0.4, 0.8],
+                        opacity: [0.1, 0.9, 0.9, 0.1]
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        repeat: Infinity,
+                        ease: "linear",
+                        delay: idx * 0.25
+                      }}
+                    />
+                  );
+                })}
 
-              {/* Interlocking Central Circle to simulate braiding core */}
-              <circle cx="100" cy="100" r="50" stroke="rgba(255,255,255,0.06)" strokeWidth="8" />
-              <motionClient.circle 
-                cx="100" 
-                cy="100" 
-                r="50" 
-                stroke="var(--color-brand)" 
-                strokeWidth="2" 
-                strokeDasharray="30 150" 
-                fill="none"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-              />
-              <motionClient.circle 
-                cx="100" 
-                cy="100" 
-                r="44" 
-                stroke="var(--color-brand-light)" 
-                strokeWidth="1.5" 
-                strokeDasharray="20 100" 
-                fill="none"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-              />
+                {/* Mandrel target point light pulse */}
+                <circle cx="220" cy="125" r="3" fill="var(--color-brand)" />
+                <motionClient.circle
+                  cx="220"
+                  cy="125"
+                  r="12"
+                  stroke="var(--color-brand-light)"
+                  strokeWidth="1"
+                  initial={{ scale: 0.2, opacity: 1 }}
+                  animate={{ scale: 2.5, opacity: 0 }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </svg>
+              <div className="absolute bottom-4 left-4 text-[9px] text-neutral-400 font-mono tracking-wider bg-white/70 px-2 py-0.5 rounded backdrop-blur-[2px]">3D_RADIAL_BRAIDING v4.0</div>
+            </div>
+          ) : (
+            <div className="lg:col-span-5 w-full aspect-square max-w-[450px] mx-auto bg-gradient-to-br from-dark-from to-dark-to rounded-3xl p-8 border border-brand/10 shadow-xl overflow-hidden relative group">
+              <svg className="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="weaving-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="0.5" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#weaving-grid)" />
+                
+                {/* Dynamic Braiding threads */}
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <React.Fragment key={i}>
+                    {/* Diagonal Line Left-To-Right */}
+                    <motionClient.path
+                      d={`M -20,${20 + i * 40} L 220,${60 + i * 40}`}
+                      stroke="var(--color-brand)"
+                      strokeWidth="3.5"
+                      strokeLinecap="round"
+                      fill="none"
+                      initial={{ pathLength: 0, opacity: 0.3 }}
+                      animate={{ 
+                        pathLength: [0, 1, 1, 0],
+                        pathOffset: [0, 0, 0.5, 1],
+                        opacity: [0.3, 1, 1, 0.3]
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: i * 0.4
+                      }}
+                    />
+                    {/* Diagonal Line Right-To-Left */}
+                    <motionClient.path
+                      d={`M 220,${20 + i * 40} L -20,${60 + i * 40}`}
+                      stroke="var(--color-brand-light)"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeDasharray="4 4"
+                      fill="none"
+                      initial={{ pathLength: 0, opacity: 0.2 }}
+                      animate={{ 
+                        pathLength: [0, 1, 1, 0],
+                        pathOffset: [0, 0, -0.5, -1],
+                        opacity: [0.2, 0.9, 0.9, 0.2]
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: i * 0.4 + 1
+                      }}
+                    />
+                  </React.Fragment>
+                ))}
 
-              <circle cx="100" cy="100" r="8" fill="#ffffff" opacity="0.1" />
-              <circle cx="100" cy="100" r="4" fill="var(--color-brand-light)" />
-            </svg>
-            <div className="absolute bottom-4 left-4 text-[10px] text-neutral-400 font-mono">WEAVING CORE ENGINE v3.1</div>
-          </div>
+                {/* Interlocking Central Circle to simulate braiding core */}
+                <circle cx="100" cy="100" r="50" stroke="rgba(255,255,255,0.06)" strokeWidth="8" />
+                <motionClient.circle 
+                  cx="100" 
+                  cy="100" 
+                  r="50" 
+                  stroke="var(--color-brand)" 
+                  strokeWidth="2" 
+                  strokeDasharray="30 150" 
+                  fill="none"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                />
+                <motionClient.circle 
+                  cx="100" 
+                  cy="100" 
+                  r="44" 
+                  stroke="var(--color-brand-light)" 
+                  strokeWidth="1.5" 
+                  strokeDasharray="20 100" 
+                  fill="none"
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                />
+
+                <circle cx="100" cy="100" r="8" fill="#ffffff" opacity="0.1" />
+                <circle cx="100" cy="100" r="4" fill="var(--color-brand-light)" />
+              </svg>
+              <div className="absolute bottom-4 left-4 text-[10px] text-neutral-400 font-mono">WEAVING CORE ENGINE v3.1</div>
+            </div>
+          )}
 
           {/* Right Column: Descriptions & Advantages */}
           <div className="lg:col-span-7 flex flex-col justify-between">
@@ -396,69 +481,149 @@ export default function TechnologyPage() {
               </div>
             </div>
 
-            {/* Right Column: SVG Digital Twin Dashboard */}
-            <div className="lg:col-span-5 order-1 lg:order-2 w-full aspect-square max-w-[450px] mx-auto bg-gradient-to-br from-dark-from to-dark-via rounded-3xl p-8 border border-sky-500/10 shadow-xl overflow-hidden relative">
-              <svg className="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Dashboard Grid */}
-                <path d="M 0,20 L 200,20 M 0,180 L 200,180 M 20,0 L 20,200 M 180,0 L 180,200" stroke="rgba(56, 189, 248, 0.05)" strokeWidth="0.5" />
-                
-                {/* Circular Radar Scan */}
-                <circle cx="100" cy="90" r="55" stroke="rgba(56,189,248,0.1)" strokeWidth="1" />
-                <motionClient.circle 
-                  cx="100" 
-                  cy="90" 
-                  r="55" 
-                  stroke="var(--color-brand-light)" 
-                  strokeWidth="1.5" 
-                  strokeDasharray="25 320" 
-                  fill="none"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                />
-
-                {/* Oscilloscope Data wave */}
-                <motionClient.path
-                  d="M 25,145 Q 45,120 65,145 T 105,145 T 145,145 T 175,145"
-                  stroke="var(--color-brand-light)"
-                  strokeWidth="1.5"
-                  fill="none"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 3, repeat: Infinity }}
+            {/* Right Column: SVG Digital Twin Dashboard / Fallback to original dashboard SVG */}
+            {techData.digitalTwin.image ? (
+              <div className="lg:col-span-5 order-1 lg:order-2 w-full aspect-[470/266] max-w-[550px] mx-auto bg-white rounded-3xl border border-neutral-200/50 shadow-xl overflow-hidden relative group flex items-center justify-center p-2">
+                <img
+                  src={`/api/technology/image/${encodeURIComponent(techData.digitalTwin.image)}`}
+                  alt={techData.digitalTwin.title}
+                  className="w-full h-full object-contain select-none pointer-events-none rounded-2xl"
                 />
                 
-                {/* Center Node Target */}
-                <circle cx="100" cy="90" r="3" fill="var(--color-danger)" />
-                <motionClient.circle 
-                  cx="100" 
-                  cy="90" 
-                  r="10" 
-                  stroke="var(--color-danger)" 
-                  strokeWidth="1" 
-                  initial={{ scale: 0.2, opacity: 1 }}
-                  animate={{ scale: 2, opacity: 0 }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
+                {/* Dynamic Digital Twin Scanning & HUD Overlay */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 470 266" fill="none">
+                  {/* Vertical scanning laser line */}
+                  <motionClient.line
+                    x1="10"
+                    y1="0"
+                    x2="460"
+                    y2="0"
+                    stroke="rgba(56, 189, 248, 0.45)"
+                    strokeWidth="1.5"
+                    animate={{ y: [40, 220, 40] }}
+                    transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  
+                  {/* Spindle head focus node */}
+                  <circle cx="235" cy="100" r="4" fill="rgba(56, 189, 248, 0.8)" />
+                  <motionClient.circle
+                    cx="235"
+                    cy="100"
+                    r="10"
+                    stroke="rgba(56, 189, 248, 0.5)"
+                    strokeWidth="1"
+                    initial={{ scale: 0.2, opacity: 1 }}
+                    animate={{ scale: 2, opacity: 0 }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  
+                  {/* HUD Label for Spindle */}
+                  <path d="M 235,100 L 210,60 L 120,60" stroke="rgba(56, 189, 248, 0.5)" strokeWidth="1" />
+                  <circle cx="120" cy="60" r="1.5" fill="rgba(56, 189, 248, 0.8)" />
+                  <text x="120" y="52" fill="var(--color-brand-light)" fontSize="8" fontFamily="monospace" fontWeight="bold">SPINDLE ACTIVE (42.5℃)</text>
+                  
+                  {/* Guide rail focus node */}
+                  <circle cx="320" cy="130" r="4" fill="rgba(16, 185, 129, 0.8)" />
+                  <motionClient.circle
+                    cx="320"
+                    cy="130"
+                    r="10"
+                    stroke="rgba(16, 185, 129, 0.5)"
+                    strokeWidth="1"
+                    initial={{ scale: 0.2, opacity: 1 }}
+                    animate={{ scale: 2, opacity: 0 }}
+                    transition={{ duration: 2.2, repeat: Infinity, delay: 0.5 }}
+                  />
+                  
+                  {/* HUD Label for X-axis */}
+                  <path d="M 320,130 L 340,105 L 410,105" stroke="rgba(16, 185, 129, 0.5)" strokeWidth="1" />
+                  <circle cx="410" cy="105" r="1.5" fill="rgba(16, 185, 129, 0.8)" />
+                  <text x="345" y="97" fill="var(--color-success)" fontSize="8" fontFamily="monospace" fontWeight="bold">FEED: 150mm/s</text>
 
-                {/* Floating data values (animated numbers simulate) */}
-                <text x="30" y="40" fill="var(--color-brand-light)" fontSize="8" fontFamily="monospace" fontWeight="bold">TEMP: 180.2℃</text>
-                <text x="30" y="55" fill="var(--color-success)" fontSize="8" fontFamily="monospace" fontWeight="bold">TENSION: 12.5 N</text>
-                
-                <text x="130" y="40" fill="var(--color-brand-light)" fontSize="8" fontFamily="monospace" fontWeight="bold">SPEED: 42rpm</text>
-                <text x="130" y="55" fill="var(--color-warning)" fontSize="8" fontFamily="monospace" fontWeight="bold">STATUS: OK</text>
-                
-                {/* Bar Graph meters at bottom */}
-                <rect x="30" y="165" width="40" height="6" rx="2" fill="rgba(255,255,255,0.05)" />
-                <motionClient.rect x="30" y="165" height="6" rx="2" fill="var(--color-brand-light)" animate={{ width: [10, 32, 22, 38, 10] }} transition={{ duration: 5, repeat: Infinity }} />
-                
-                <rect x="80" y="165" width="40" height="6" rx="2" fill="rgba(255,255,255,0.05)" />
-                <motionClient.rect x="80" y="165" height="6" rx="2" fill="var(--color-success)" animate={{ width: [35, 12, 38, 25, 35] }} transition={{ duration: 4, repeat: Infinity, delay: 0.5 }} />
+                  {/* Bed focus node */}
+                  <circle cx="170" cy="175" r="4" fill="rgba(245, 158, 11, 0.8)" />
+                  <motionClient.circle
+                    cx="170"
+                    cy="175"
+                    r="10"
+                    stroke="rgba(245, 158, 11, 0.5)"
+                    strokeWidth="1"
+                    initial={{ scale: 0.2, opacity: 1 }}
+                    animate={{ scale: 2, opacity: 0 }}
+                    transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
+                  />
+                  
+                  {/* HUD Label for Status */}
+                  <path d="M 170,175 L 140,210 L 40,210" stroke="rgba(245, 158, 11, 0.5)" strokeWidth="1" />
+                  <circle cx="40" cy="210" r="1.5" fill="rgba(245, 158, 11, 0.8)" />
+                  <text x="40" y="202" fill="var(--color-warning)" fontSize="8" fontFamily="monospace" fontWeight="bold">SYS_STATUS: ONLINE</text>
+                </svg>
+                <div className="absolute bottom-4 left-4 text-[9px] text-neutral-400 font-mono tracking-wider bg-white/70 px-2 py-0.5 rounded backdrop-blur-[2px]">MOLDING_LINE_SCAN v1.1</div>
+              </div>
+            ) : (
+              <div className="lg:col-span-5 order-1 lg:order-2 w-full aspect-square max-w-[450px] mx-auto bg-gradient-to-br from-dark-from to-dark-via rounded-3xl p-8 border border-sky-500/10 shadow-xl overflow-hidden relative">
+                <svg className="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Dashboard Grid */}
+                  <path d="M 0,20 L 200,20 M 0,180 L 200,180 M 20,0 L 20,200 M 180,0 L 180,200" stroke="rgba(56, 189, 248, 0.05)" strokeWidth="0.5" />
+                  
+                  {/* Circular Radar Scan */}
+                  <circle cx="100" cy="90" r="55" stroke="rgba(56,189,248,0.1)" strokeWidth="1" />
+                  <motionClient.circle 
+                    cx="100" 
+                    cy="90" 
+                    r="55" 
+                    stroke="var(--color-brand-light)" 
+                    strokeWidth="1.5" 
+                    strokeDasharray="25 320" 
+                    fill="none"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                  />
 
-                <rect x="130" y="165" width="40" height="6" rx="2" fill="rgba(255,255,255,0.05)" />
-                <motionClient.rect x="130" y="165" height="6" rx="2" fill="var(--color-warning)" animate={{ width: [20, 38, 10, 30, 20] }} transition={{ duration: 4.5, repeat: Infinity, delay: 1 }} />
-              </svg>
-              <div className="absolute bottom-4 right-4 text-[10px] text-sky-400 font-mono">ONLINE SIMULATION ENG v1.0.8</div>
-            </div>
+                  {/* Oscilloscope Data wave */}
+                  <motionClient.path
+                    d="M 25,145 Q 45,120 65,145 T 105,145 T 145,145 T 175,145"
+                    stroke="var(--color-brand-light)"
+                    strokeWidth="1.5"
+                    fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  />
+                  
+                  {/* Center Target */}
+                  <circle cx="100" cy="90" r="3" fill="var(--color-danger)" />
+                  <motionClient.circle 
+                    cx="100" 
+                    cy="90" 
+                    r="10" 
+                    stroke="var(--color-danger)" 
+                    strokeWidth="1" 
+                    initial={{ scale: 0.2, opacity: 1 }}
+                    animate={{ scale: 2, opacity: 0 }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+
+                  {/* Floating data values */}
+                  <text x="30" y="40" fill="var(--color-brand-light)" fontSize="8" fontFamily="monospace" fontWeight="bold">TEMP: 180.2℃</text>
+                  <text x="30" y="55" fill="var(--color-success)" fontSize="8" fontFamily="monospace" fontWeight="bold">TENSION: 12.5 N</text>
+                  
+                  <text x="130" y="40" fill="var(--color-brand-light)" fontSize="8" fontFamily="monospace" fontWeight="bold">SPEED: 42rpm</text>
+                  <text x="130" y="55" fill="var(--color-warning)" fontSize="8" fontFamily="monospace" fontWeight="bold">STATUS: OK</text>
+                  
+                  {/* Bar Graph meters */}
+                  <rect x="30" y="165" width="40" height="6" rx="2" fill="rgba(255,255,255,0.05)" />
+                  <motionClient.rect x="30" y="165" height="6" rx="2" fill="var(--color-brand-light)" animate={{ width: [10, 32, 22, 38, 10] }} transition={{ duration: 5, repeat: Infinity }} />
+                  
+                  <rect x="80" y="165" width="40" height="6" rx="2" fill="rgba(255,255,255,0.05)" />
+                  <motionClient.rect x="80" y="165" height="6" rx="2" fill="var(--color-success)" animate={{ width: [35, 12, 38, 25, 35] }} transition={{ duration: 4, repeat: Infinity, delay: 0.5 }} />
+
+                  <rect x="130" y="165" width="40" height="6" rx="2" fill="rgba(255,255,255,0.05)" />
+                  <motionClient.rect x="130" y="165" height="6" rx="2" fill="var(--color-warning)" animate={{ width: [20, 38, 10, 30, 20] }} transition={{ duration: 4.5, repeat: Infinity, delay: 1 }} />
+                </svg>
+                <div className="absolute bottom-4 right-4 text-[10px] text-sky-400 font-mono">ONLINE SIMULATION ENG v1.0.8</div>
+              </div>
+            )}
             
           </div>
         </div>

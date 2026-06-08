@@ -34,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
-      <body style={{ fontFamily: "system-ui, sans-serif" }}>
+    <html lang="zh-CN" suppressHydrationWarning>
+      <body style={{ fontFamily: "system-ui, sans-serif" }} suppressHydrationWarning>
         <SmoothScrollProvider>
           <IntroManager>
             {children}
