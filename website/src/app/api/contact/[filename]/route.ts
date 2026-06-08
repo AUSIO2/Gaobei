@@ -20,6 +20,21 @@ export async function GET(
       return new NextResponse("File not found", { status: 404 });
     }
 
+    const stat = fs.statSync(filePath);
+    const etag = `W/"${stat.size}-${stat.mtime.getTime()}"`;
+
+    // Check If-None-Match header
+    const ifNoneMatch = request.headers.get("if-none-match");
+    if (ifNoneMatch && ifNoneMatch === etag) {
+      return new NextResponse(null, {
+        status: 304,
+        headers: {
+          "ETag": etag,
+          "Cache-Control": "public, max-age=3600, must-revalidate",
+        },
+      });
+    }
+
     const fileBuffer = fs.readFileSync(filePath);
     const ext = path.extname(decodedFilename).toLowerCase();
     
@@ -37,7 +52,9 @@ export async function GET(
     return new NextResponse(fileBuffer, {
       headers: {
         "Content-Type": contentType,
-        "Cache-Control": "no-store, must-revalidate",
+        "ETag": etag,
+        "Last-Modified": stat.mtime.toUTCString(),
+        "Cache-Control": "public, max-age=3600, must-revalidate",
       },
     });
   } catch (error) {

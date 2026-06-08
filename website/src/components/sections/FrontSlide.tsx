@@ -3,19 +3,43 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, type PanInfo } from "framer-motion";
 
+let globalSlidesCache: string[] | null = null;
+
 export default function FrontSlide() {
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useState<string[]>(globalSlidesCache || []);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!globalSlidesCache);
   const [direction, setDirection] = useState(0);
 
-
   useEffect(() => {
+    // Attempt to read from localStorage if memory cache is not populated
+    if (!globalSlidesCache) {
+      try {
+        const cached = localStorage.getItem("gaobei-slides");
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            globalSlidesCache = parsed;
+            setImages(parsed);
+            setLoading(false);
+          }
+        }
+      } catch (e) {
+        console.error("Failed to read slides cache from localStorage", e);
+      }
+    }
+
     fetch("/api/slides")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
           setImages(data);
+          globalSlidesCache = data;
+          try {
+            localStorage.setItem("gaobei-slides", JSON.stringify(data));
+          } catch (e) {
+            console.error(e);
+          }
         }
         setLoading(false);
       })
