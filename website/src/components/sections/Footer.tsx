@@ -57,7 +57,7 @@ export default function Footer() {
     footer: {
       email: "info@yunlu-composites.com",
       address: "智能制造研发中心",
-      copyright: "版权所有 渝ICP备2023004561号-1",
+      copyright: "版权所有 苏ICP备2026031187号",
       support: "技术支持：智造团队",
       qrCodes: [
         { label: "官方微信", image: "official.png" },
@@ -68,6 +68,27 @@ export default function Footer() {
   };
 
   const activeInfo = info || defaultInfo;
+
+  const renderCopyright = (text: string) => {
+    const regex = /([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]ICP备\d+号(?:-\d+)?)/;
+    const parts = text.split(regex);
+    return parts.map((part, index) => {
+      if (regex.test(part)) {
+        return (
+          <a
+            key={index}
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline hover:text-neutral-300 transition-colors"
+          >
+            {part}
+          </a>
+        );
+      }
+      return <span key={index}>{part}</span>;
+    });
+  };
 
   // Handles dynamic loading of QR code images and falls back to vector SVG on failure
   function QRCodeDisplay({ qr }: { qr: QRCodeConfig }) {
@@ -158,7 +179,7 @@ export default function Footer() {
 
           {/* 版权信息 */}
           <div className="text-[10px] sm:text-[11px] text-neutral-500 font-light flex flex-col sm:flex-row flex-wrap gap-1 sm:gap-2 md:gap-4 items-start sm:items-center border-t border-neutral-800 pt-4 md:pt-6">
-            <span>{activeInfo.footer.copyright}</span>
+            <span>{renderCopyright(activeInfo.footer.copyright)}</span>
             <span className="hidden sm:inline text-neutral-700">|</span>
             <span>{activeInfo.footer.support}</span>
           </div>
