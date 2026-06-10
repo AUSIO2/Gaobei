@@ -63,7 +63,7 @@ export default function HeroSection() {
       <div ref={textRef} className="relative z-10 w-full flex flex-col items-start text-left mt-10 md:mt-20">
         <div className="overflow-hidden mb-4">
           <p className="hero-text text-xs sm:text-sm md:text-lg tracking-[0.2em] md:tracking-[0.3em] text-brand font-bold uppercase">
-            云路装备 · 大国重器
+            高倍装备 · 大国重器
           </p>
         </div>
         <div className="overflow-hidden">

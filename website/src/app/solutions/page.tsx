@@ -185,7 +185,7 @@ export default function SolutionsPage() {
               <div className="mb-8">
                 <h4 className="text-xs font-extrabold text-brand uppercase tracking-widest mb-3 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand" />
-                  云路三维编织解决方案
+                  高倍三维编织解决方案
                 </h4>
                 <p className="text-neutral-700 text-sm sm:text-base font-light leading-relaxed">
                   {ind.solution}
@@ -224,7 +224,7 @@ export default function SolutionsPage() {
                   推荐核心产品/装备
                 </h3>
                 <p className="text-neutral-300 text-xs font-light mb-6">
-                  以下云路核心设备与服务是该解决方案的核心载体，支持高度非标定制。
+                  以下高倍核心设备与服务是该解决方案的核心载体，支持高度非标定制。
                 </p>
                 <div className="space-y-3">
                   {ind.products.map((prod) => (

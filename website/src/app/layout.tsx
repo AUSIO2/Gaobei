@@ -15,13 +15,13 @@ function getCompanyInfo() {
   } catch (e) {
     console.error("Failed to load company info in layout:", e);
   }
-  return { name: "云路复材", nameEn: "YUNLU COMPOSITES" };
+  return { name: "江苏高倍", nameEn: "GAOBEI" };
 }
 
 export async function generateMetadata(): Promise<Metadata> {
   const info = getCompanyInfo();
-  const shortName = info.shortName || info.name || "云路复材";
-  const shortNameEn = info.shortNameEn || info.nameEn || "YUNLU COMPOSITES";
+  const shortName = info.shortName || info.name || "江苏高倍";
+  const shortNameEn = info.shortNameEn || info.nameEn || "GAOBEI";
   return {
     title: `${shortName} ${shortNameEn}`.trim(),
     description: info.description || "极致视觉体验与前沿科技",

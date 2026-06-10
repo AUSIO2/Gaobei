@@ -160,7 +160,7 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
 
                 {/* 卡片底层按钮 */}
                 <div className="z-10 mt-auto flex items-center justify-between text-sm">
-                  <span className="text-neutral-400 font-light">{(companyInfo?.shortName || "云路复材")}原厂技术支持</span>
+                  <span className="text-neutral-400 font-light">{(companyInfo?.shortName || "江苏高倍")}原厂技术支持</span>
                   <Link
                     href={`/products/${categoryData.id}/${product.id}`}
                     className="px-5 py-2.5 rounded-full bg-white text-neutral-950 font-bold hover:bg-neutral-100 transition-colors shadow-md group-hover:scale-105 transition-transform duration-300"

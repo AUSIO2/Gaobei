@@ -34,7 +34,7 @@ export default function CTASection() {
         tag: "专业级 • 高效定制"
       }
     ],
-    trustTitle: "云路智造 • 值得信赖的合作伙伴",
+    trustTitle: "高倍智造 • 值得信赖的合作伙伴",
     trustSub: "拥有从工艺研发、预制体打样到产线非标定制的闭环智造体系",
     badges: [
       "ISO 9001 质量管理体系",

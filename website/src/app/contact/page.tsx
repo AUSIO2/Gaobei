@@ -283,7 +283,7 @@ export default function ContactPage() {
               </span>
               <h2 className="text-xl sm:text-2xl font-bold text-heading mt-3">地理位置示意图</h2>
               <p className="text-neutral-500 text-xs sm:text-sm mt-1.5 font-light">
-                {data.info.mapDescription || `${data.info.centerName || "云路复材智能制造研发中心"} · ${data.info.address}`}
+                {data.info.mapDescription || `${data.info.centerName || "高倍智能制造研发中心"} · ${data.info.address}`}
               </p>
             </div>
 
@@ -292,7 +292,7 @@ export default function ContactPage() {
               {data.info.mapImage ? (
                 <img
                   src={`/api/contact/${encodeURIComponent(data.info.mapImage)}`}
-                  alt={`${data.info.centerName || "云路复材智能制造研发中心"}位置`}
+                  alt={`${data.info.centerName || "高倍智能制造研发中心"}位置`}
                   className="w-full h-full object-cover rounded-2xl"
                 />
               ) : (
@@ -307,7 +307,7 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div className="bg-heading text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md tracking-wider">
-                      {data.info.centerName || "云路复材智能制造研发中心"}
+                      {data.info.centerName || "高倍智能制造研发中心"}
                     </div>
                   </div>
                 </>

@@ -183,7 +183,7 @@ export default function ProductDetailPage(props: { params: Promise<{ categoryId:
           <div className="mt-12 pt-8 border-t border-neutral-100 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
               <h4 className="text-base font-bold text-neutral-900 mb-1">对该型号装备有技术咨询需求？</h4>
-              <p className="text-neutral-500 text-xs font-light">{(companyInfo?.shortName || "云路复材")}专业技术支持团队将为您量身定制成型工艺解决方案</p>
+              <p className="text-neutral-500 text-xs font-light">{(companyInfo?.shortName || "江苏高倍")}专业技术支持团队将为您量身定制成型工艺解决方案</p>
             </div>
             <Link
               href="/#contact"
