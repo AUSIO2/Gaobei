@@ -1,7 +1,4 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
-import IntroManager from "@/components/animations/IntroManager";
 
 import fs from "fs";
 import path from "path";
@@ -33,15 +30,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="zh-CN" suppressHydrationWarning>
-      <body style={{ fontFamily: "system-ui, sans-serif" }} suppressHydrationWarning>
-        <SmoothScrollProvider>
-          <IntroManager>
-            {children}
-          </IntroManager>
-        </SmoothScrollProvider>
-      </body>
-    </html>
-  );
+  return children;
 }

@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { localizeData, getLocaleFromRequest } from "@/lib/localize";
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const locale = getLocaleFromRequest(request);
     const productsDir = path.join(process.cwd(), "../asset/products");
     const categories: any[] = [];
 
@@ -31,7 +33,7 @@ export async function GET() {
     // Sort categories by id (ascending, e.g. "1", "2", "3", "4")
     categories.sort((a, b) => a.id.localeCompare(b.id));
 
-    return NextResponse.json(categories);
+    return NextResponse.json(localizeData(categories, locale));
   } catch (error) {
     console.error("Error reading products categories asset:", error);
     return NextResponse.json({ error: "Failed to read products categories" }, { status: 500 });

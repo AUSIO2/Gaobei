@@ -1,8 +1,9 @@
 "use client";
 
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 interface CultureData {
   hero: {
@@ -28,11 +29,14 @@ interface CultureData {
 }
 
 export default function CulturePage() {
+  const locale = useLocale();
+  const t = useTranslations("about");
+  const tc = useTranslations("common");
   const [data, setData] = useState<CultureData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/about/culture")
+    fetch(`/api/about/culture?locale=${locale}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -42,7 +46,7 @@ export default function CulturePage() {
         console.error("Failed to load culture data:", err);
         setLoading(false);
       });
-  }, []);
+  }, [locale]);
 
   if (loading) {
     return (
@@ -63,9 +67,9 @@ export default function CulturePage() {
   if (!data) {
     return (
       <section className="w-full bg-surface py-28 px-6 md:px-12 lg:px-24 min-h-screen flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-bold text-neutral-800 mb-4">未找到企业文化配置</h2>
+        <h2 className="text-2xl font-bold text-neutral-800 mb-4">{t("cultureNotFound")}</h2>
         <Link href="/about" className="text-brand hover:underline flex items-center gap-2">
-          <span>←</span> 返回关于我们
+          <span>←</span> {t("backToAbout")}
         </Link>
       </section>
     );
@@ -76,14 +80,14 @@ export default function CulturePage() {
       {/* Breadcrumb and Back Action */}
       <div className="max-w-4xl mx-auto mb-6 md:mb-8 flex items-center justify-between text-sm">
         <Link href="/about" className="text-neutral-500 hover:text-neutral-900 flex items-center gap-2 transition-colors">
-          <span className="text-base">←</span> 返回关于我们
+          <span className="text-base">←</span> {t("backToAbout")}
         </Link>
         <div className="hidden md:flex text-neutral-400 font-light gap-2">
-          <Link href="/" className="hover:text-neutral-600">首页</Link>
+          <Link href="/" className="hover:text-neutral-600">{tc("home")}</Link>
           <span>/</span>
-          <Link href="/about" className="hover:text-neutral-600">关于我们</Link>
+          <Link href="/about" className="hover:text-neutral-600">{t("breadcrumb")}</Link>
           <span>/</span>
-          <span className="text-neutral-600 font-medium">企业文化</span>
+          <span className="text-neutral-600 font-medium">{t("cultureBreadcrumb")}</span>
         </div>
       </div>
 

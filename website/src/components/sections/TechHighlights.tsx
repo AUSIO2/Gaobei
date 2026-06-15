@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 interface HighlightCard {
   id: string;
@@ -15,7 +16,34 @@ interface HighlightCard {
 }
 
 export default function TechHighlights() {
-  const [data, setData] = useState({
+  const locale = useLocale();
+  const tc = useTranslations("common");
+
+  const fallbackData = locale === "en" ? {
+    title: "Defining the Future of Composites with Self-Developed Tech",
+    subtitle: "Technical Barriers · Core Advantages",
+    description: "Overcoming bottleneck of 3D braiding, combining digital twin and automated manufacturing system to deliver high-strength, customized and highly consistent composite solutions.",
+    cards: [
+      {
+        id: "braiding",
+        title: "3D Braiding Technology",
+        subtitle: "3D Braiding Technology",
+        description: "Enabling multi-dimensional fiber intersection braiding, fundamentally solving the layer delamination issue, delivering ultimate crashworthiness and lightweight performance for structural parts.",
+        href: "/technology#braiding",
+        pills: ["1.5m Max OD", "6m Braiding Length", "Near-net shape molding"],
+        image: "braiding.jpg"
+      },
+      {
+        id: "digital-twin",
+        title: "Digital Twin Automation",
+        subtitle: "Digital Twin Automation",
+        description: "Building physical digital mappings via high-precision sensors and 3D models to provide precise parameter monitoring and traceability throughout the production process.",
+        href: "/technology#digital-twin",
+        pills: ["±1℃ Temp Precision", "100% Online Monitoring", "Full-process Traceability"],
+        image: "digital-twin.jpg"
+      }
+    ] as HighlightCard[]
+  } : {
     title: "以自主研发科技，定义复材制造未来",
     subtitle: "技术壁垒 • 核心优势",
     description: "攻克三维立体编织工艺瓶颈，结合数字孪生与自动化智造系统，提供高强度、定制化、高一致性的前沿复合材料方案。",
@@ -39,10 +67,13 @@ export default function TechHighlights() {
         image: "digital-twin.jpg"
       }
     ] as HighlightCard[]
-  });
+  };
+
+  const [data, setData] = useState(fallbackData);
 
   useEffect(() => {
-    fetch("/api/homepage")
+    setData(fallbackData);
+    fetch(`/api/homepage?locale=${locale}`)
       .then(res => res.json())
       .then(val => {
         if (val && val.techHighlights) {
@@ -50,7 +81,7 @@ export default function TechHighlights() {
         }
       })
       .catch(err => console.error("Failed to load tech highlights:", err));
-  }, []);
+  }, [locale]);
 
   const cardStyles: Record<string, { gradient: string; accentColor: string }> = {
     braiding: {
@@ -320,7 +351,7 @@ export default function TechHighlights() {
                 <div className="absolute -top-10 -left-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-2xl pointer-events-none" />
                 
                 {/* Overlay Link */}
-                <Link href={card.href} className="absolute inset-0 z-20 cursor-pointer" aria-label={`了解更多关于${card.title}`} />
+                <Link href={card.href} className="absolute inset-0 z-20 cursor-pointer" aria-label={tc("learnMoreAbout", { name: card.title })} />
               </motion.div>
             );
           })}

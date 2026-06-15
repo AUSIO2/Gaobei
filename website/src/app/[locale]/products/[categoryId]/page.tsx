@@ -1,8 +1,9 @@
 "use client";
 
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState, use } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useRouter } from "next/navigation";
 
 interface ProductItem {
@@ -17,12 +18,14 @@ interface ProductItem {
 interface CategoryData {
   id: string;
   name: string;
-  nameEn: string;
   icon: string;
   products: ProductItem[];
 }
 
 export default function CategoryProductsPage(props: { params: Promise<{ categoryId: string }> }) {
+  const locale = useLocale();
+  const t = useTranslations("products");
+  const tc = useTranslations("common");
   const params = use(props.params);
   const router = useRouter();
   const [categoryData, setCategoryData] = useState<CategoryData | null>(null);
@@ -31,11 +34,11 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
 
   useEffect(() => {
     Promise.all([
-      fetch(`/api/products/${params.categoryId}`).then((res) => {
+      fetch(`/api/products/${params.categoryId}?locale=${locale}`).then((res) => {
         if (!res.ok) throw new Error("Failed to load category");
         return res.json();
       }),
-      fetch("/api/company-info").then((res) => res.json()).catch(() => null)
+      fetch(`/api/company-info?locale=${locale}`).then((res) => res.json()).catch(() => null)
     ])
       .then(([data, infoData]) => {
         setCategoryData(data);
@@ -48,7 +51,7 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
         console.error("Failed to load category products:", err);
         setLoading(false);
       });
-  }, [params.categoryId]);
+  }, [params.categoryId, locale]);
 
   if (loading) {
     return (
@@ -69,9 +72,9 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
   if (!categoryData) {
     return (
       <section className="w-full bg-surface py-28 px-6 md:px-12 lg:px-24 min-h-screen flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-bold text-neutral-800 mb-4">未找到相关产品分类</h2>
+        <h2 className="text-2xl font-bold text-neutral-800 mb-4">{t("categoryNotFound")}</h2>
         <Link href="/products" className="text-brand hover:underline flex items-center gap-2">
-          <span>←</span> 返回产品体系
+          <span>←</span> {t("backToProducts")}
         </Link>
       </section>
     );
@@ -82,12 +85,12 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
       {/* Breadcrumb and Back Action */}
       <div className="max-w-7xl mx-auto mb-6 md:mb-8 flex items-center justify-between text-sm">
         <Link href="/products" className="text-neutral-500 hover:text-neutral-900 flex items-center gap-2 transition-colors">
-          <span className="text-base">←</span> 返回产品体系
+          <span className="text-base">←</span> {t("backToProducts")}
         </Link>
         <div className="hidden md:flex text-neutral-400 font-light gap-2">
-          <Link href="/" className="hover:text-neutral-600">首页</Link>
+          <Link href="/" className="hover:text-neutral-600">{tc("home")}</Link>
           <span>/</span>
-          <Link href="/products" className="hover:text-neutral-600">产品与解决方案</Link>
+          <Link href="/products" className="hover:text-neutral-600">{t("breadcrumb")}</Link>
           <span>/</span>
           <span className="text-neutral-600 font-medium">{categoryData.name}</span>
         </div>
@@ -101,13 +104,13 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
           transition={{ duration: 0.8 }}
         >
           <span className="text-brand text-sm font-bold uppercase tracking-[0.3em] mb-3 block">
-            {categoryData.nameEn}
+            {categoryData.name}
           </span>
           <h1 className="text-4xl md:text-5xl font-black text-heading tracking-tight mb-6">
             {categoryData.name}
           </h1>
           <p className="text-neutral-500 text-lg font-light max-w-3xl leading-relaxed">
-            为您展示我们在 {categoryData.name} 领域的自研智能高端软硬件设备与技术方案。
+            {t("categoryDesc", { name: categoryData.name })}
           </p>
         </motion.div>
       </section>
@@ -116,7 +119,7 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
       <section className="max-w-7xl mx-auto mb-20">
         {categoryData.products.length === 0 ? (
           <div className="text-center py-20 bg-white rounded-2xl border border-neutral-200/60 shadow-sm">
-            <p className="text-neutral-400 text-lg font-light">该分类下暂无产品详情。</p>
+            <p className="text-neutral-400 text-lg font-light">{t("noProductsInCategory")}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -133,7 +136,6 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
                   boxShadow: "0 25px 50px rgba(13, 37, 69, 0.3)",
                 }}
               >
-                {/* 顶部标题与图标 */}
                 <div className="flex items-start justify-between mb-6 z-10">
                   <div className="flex flex-col pr-4">
                     <h3 className="text-2xl font-bold tracking-wide mb-2 group-hover:text-blue-300 transition-colors">
@@ -145,7 +147,6 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
                   </div>
                 </div>
 
-                {/* 产品指标介绍 */}
                 <div className="z-10 mb-8 border-t border-blue-900/30 pt-4">
                   <ul className="space-y-2.5">
                     {product.specs.map((spec, i) => (
@@ -157,19 +158,18 @@ export default function CategoryProductsPage(props: { params: Promise<{ category
                   </ul>
                 </div>
 
-
-                {/* 卡片底层按钮 */}
                 <div className="z-10 mt-auto flex items-center justify-between text-sm">
-                  <span className="text-neutral-400 font-light">{(companyInfo?.shortName || "江苏高倍")}原厂技术支持</span>
+                  <span className="text-neutral-400 font-light">
+                    {t("factorySupport", { company: companyInfo?.shortName || "Gaobei" })}
+                  </span>
                   <Link
                     href={`/products/${categoryData.id}/${product.id}`}
                     className="px-5 py-2.5 rounded-full bg-white text-neutral-950 font-bold hover:bg-neutral-100 transition-colors shadow-md group-hover:scale-105 transition-transform duration-300"
                   >
-                    获取产品详情 →
+                    {t("getDetails")}
                   </Link>
                 </div>
 
-                {/* 装饰性背景斑点 */}
                 <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-blue-500/5 rounded-full blur-xl pointer-events-none" />
               </motion.div>
             ))}

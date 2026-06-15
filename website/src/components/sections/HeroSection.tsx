@@ -3,12 +3,14 @@
 import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useTranslations } from "next-intl";
 import MotionButton from "../ui/MotionButton";
 
 export default function HeroSection() {
   const container = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const t = useTranslations("hero");
 
   // Detect mobile to conditionally apply GSAP pin
   useEffect(() => {
@@ -63,27 +65,27 @@ export default function HeroSection() {
       <div ref={textRef} className="relative z-10 w-full flex flex-col items-start text-left mt-10 md:mt-20">
         <div className="overflow-hidden mb-4">
           <p className="hero-text text-xs sm:text-sm md:text-lg tracking-[0.2em] md:tracking-[0.3em] text-brand font-bold uppercase">
-            高倍装备 · 大国重器
+            {t("tagline")}
           </p>
         </div>
         <div className="overflow-hidden">
           <h1 className="hero-text text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-4 md:mb-6 tracking-tighter leading-tight">
-            三维编织领军者<br/>
+            {t("title1")}<br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 to-neutral-500">
-              先进制造新引擎
+              {t("title2")}
             </span>
           </h1>
         </div>
         <div className="overflow-hidden">
           <p className="hero-text text-sm sm:text-base md:text-lg lg:text-xl text-neutral-600 mb-6 md:mb-10 max-w-xl font-light leading-relaxed">
-            掌握三维编织核心技术，打造数字孪生自动化产线。为航空航天、新能源与汽车轻量化提供国际先进的复合材料高端制造解决方案。
+            {t("description")}
           </p>
         </div>
         
         <div className="hero-text flex flex-col sm:flex-row gap-3 sm:gap-6 w-full sm:w-auto">
-           <MotionButton>获取设备方案</MotionButton>
+           <MotionButton>{t("ctaPrimary")}</MotionButton>
            <button className="px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-neutral-300 hover:bg-neutral-100 active:bg-neutral-200 transition-colors text-sm font-bold tracking-widest text-neutral-800 uppercase">
-             了解我们
+             {t("ctaSecondary")}
            </button>
         </div>
       </div>

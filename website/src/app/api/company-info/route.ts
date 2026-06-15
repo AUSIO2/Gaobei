@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { localizeData, getLocaleFromRequest } from "@/lib/localize";
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const locale = getLocaleFromRequest(request);
     const assetDir = path.join(process.cwd(), "../asset");
     const companyInfoPath = path.join(assetDir, "company_info.json");
     
@@ -56,7 +58,7 @@ export async function GET() {
 
     info.news = newsItems;
 
-    return NextResponse.json(info);
+    return NextResponse.json(localizeData(info, locale));
   } catch (error) {
     console.error("Error reading company info asset:", error);
     return NextResponse.json({ error: "Failed to read company info" }, { status: 500 });

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { localizeData, getLocaleFromRequest } from "@/lib/localize";
 
 // Helper to get filepath
 const getInfoPath = () => path.join(process.cwd(), "../asset/service/info.json");
@@ -27,16 +28,17 @@ const defaultInfo = {
   }
 };
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const locale = getLocaleFromRequest(request);
     const filePath = getInfoPath();
     if (!fs.existsSync(filePath)) {
       // Return defaults if not exists yet
-      return NextResponse.json(defaultInfo);
+      return NextResponse.json(localizeData(defaultInfo, locale));
     }
     const content = fs.readFileSync(filePath, "utf-8");
     const data = JSON.parse(content);
-    return NextResponse.json(data);
+    return NextResponse.json(localizeData(data, locale));
   } catch (error) {
     console.error("Error reading service config:", error);
     return NextResponse.json({ error: "Failed to read service config" }, { status: 500 });

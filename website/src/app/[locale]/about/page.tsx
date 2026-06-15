@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useTranslations , useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 interface AboutData {
   hero: {
@@ -43,11 +44,14 @@ interface AboutData {
 }
 
 export default function AboutPage() {
+  const locale = useLocale();
   const [data, setData] = useState<AboutData | null>(null);
   const [loading, setLoading] = useState(true);
+  const t = useTranslations("about");
+  const tc = useTranslations("common");
 
   useEffect(() => {
-    fetch("/api/about")
+    fetch(`/api/about?locale=${locale}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -57,7 +61,7 @@ export default function AboutPage() {
         console.error("Failed to load about data", err);
         setLoading(false);
       });
-  }, []);
+  }, [locale]);
 
   if (loading) {
     return (
@@ -79,9 +83,9 @@ export default function AboutPage() {
   if (!data) {
     return (
       <section className="w-full bg-surface py-28 px-6 md:px-12 lg:px-24 min-h-screen flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-bold text-neutral-800 mb-4">未找到关于我们配置</h2>
+        <h2 className="text-2xl font-bold text-neutral-800 mb-4">{t("notFound")}</h2>
         <Link href="/" className="text-brand hover:underline flex items-center gap-2">
-          <span>←</span> 返回首页
+          <span>←</span> {tc("backHome")}
         </Link>
       </section>
     );
@@ -92,12 +96,12 @@ export default function AboutPage() {
       {/* Breadcrumb and Back Action */}
       <div className="max-w-7xl mx-auto mb-6 md:mb-8 flex items-center justify-between text-sm">
         <Link href="/" className="text-neutral-500 hover:text-neutral-900 flex items-center gap-2 transition-colors">
-          <span className="text-base">←</span> 返回首页
+          <span className="text-base">←</span> {tc("backHome")}
         </Link>
         <div className="hidden md:flex text-neutral-400 font-light gap-2">
-          <Link href="/" className="hover:text-neutral-600">首页</Link>
+          <Link href="/" className="hover:text-neutral-600">{tc("home")}</Link>
           <span>/</span>
-          <span className="text-neutral-600 font-medium">关于我们</span>
+          <span className="text-neutral-600 font-medium">{t("breadcrumb")}</span>
         </div>
       </div>
 
@@ -149,7 +153,7 @@ export default function AboutPage() {
 
       {/* 3. 核心实力网格 */}
       <section className="max-w-7xl mx-auto mb-20">
-        <h2 className="text-2xl md:text-3xl font-black text-heading mb-10 text-center tracking-tight">我们的核心优势</h2>
+        <h2 className="text-2xl md:text-3xl font-black text-heading mb-10 text-center tracking-tight">{t("coreStrengths")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {data.strengths.map((item, index) => (
             <motion.div
@@ -171,7 +175,7 @@ export default function AboutPage() {
       {/* 4. 企业文化 */}
       <section id="culture" className="max-w-7xl mx-auto mb-20 scroll-mt-28">
         <h2 className="text-2xl md:text-3xl font-black text-heading mb-10 text-center tracking-tight">
-          {data.culture?.title || "企业文化"}
+          {data.culture?.title || t("cultureTitle")}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {(data.culture?.items || [
@@ -213,14 +217,14 @@ export default function AboutPage() {
             href="/about/culture"
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white border border-neutral-200 text-sm font-medium text-brand hover:bg-brand hover:text-white hover:border-brand transition-all duration-300 shadow-sm"
           >
-            了解更多关于我们的企业文化 →
+            {t("cultureLink")}
           </Link>
         </div>
       </section>
 
       {/* 4. 发展历程 */}
       <section id="history" className="max-w-7xl mx-auto mb-20 scroll-mt-28">
-        <h2 className="text-2xl md:text-3xl font-black text-heading mb-12 text-center tracking-tight">发展历程</h2>
+        <h2 className="text-2xl md:text-3xl font-black text-heading mb-12 text-center tracking-tight">{t("historyTitle")}</h2>
         <div className="relative pl-8 md:pl-0 border-l border-neutral-200 md:border-l-0 md:grid md:grid-cols-4 md:gap-6">
           {data.milestones.map((item, index) => (
             <motion.div
@@ -265,7 +269,7 @@ export default function AboutPage() {
             href="/about/honors"
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand text-white text-sm font-medium hover:bg-brand-hover transition-all duration-300 shadow-sm"
           >
-            查看资质荣誉详情 →
+            {t("honorsLink")}
           </Link>
         </div>
       </section>

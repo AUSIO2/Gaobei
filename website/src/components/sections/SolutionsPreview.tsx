@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useTranslations , useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 interface IndustryItem {
   id: string;
@@ -14,7 +15,40 @@ interface IndustryItem {
 }
 
 export default function SolutionsPreview() {
-  const [data, setData] = useState({
+  const locale = useLocale();
+  const t = useTranslations("solutions");
+
+  const fallbackData = locale === "en" ? {
+    title: "Serving Three Core Industries",
+    subtitle: "Business Landscape · Industry Applications",
+    industries: [
+      {
+        id: "aerospace",
+        title: "Aerospace & Defense",
+        subtitle: "Aerospace & Defense",
+        description: "For extreme operating conditions, providing 3D braiding solutions for high-strength, zero-defect critical load-bearing components like fuselage frames, engine nozzle layers, fairings, and wing leading edges.",
+        href: "/solutions#aerospace",
+        highlights: ["No delamination structure", "Extreme temperature/thermal resistance", "Near-net-shape molding"]
+      },
+      {
+        id: "energy",
+        title: "New Energy & Clean Energy",
+        subtitle: "New Energy & Power",
+        description: "For energy storage and heavy transportation, developing carbon fiber braided outer shells for high-pressure gas cylinders (e.g. 70MPa hydrogen cylinders), large wind turbine blade roots, and hydrogen storage equipment.",
+        href: "/solutions#energy",
+        highlights: ["Multi-dimensional carbon fiber winding", "High-pressure gas sealing layer", "Large preform processing"]
+      },
+      {
+        id: "automotive",
+        title: "Automotive Lightweighting",
+        subtitle: "Automotive Lightweighting",
+        description: "Supporting mass production and high-performance racing cars, customizing chassis drive shaft tubes, body collision beams, and new energy battery pack enclosures to achieve up to 30%-50% lightweight reduction.",
+        href: "/solutions#automotive",
+        highlights: ["Automated mass production molding", "High energy absorption collision defense", "Modular quick assembly"]
+      }
+    ] as IndustryItem[],
+    footerNote: "We have comprehensive non-standard manufacturing capabilities and can also provide customized composite material process equipment for defense, marine engineering, rail transit, and high-end medical devices."
+  } : {
     title: "服务三大核心产业",
     subtitle: "业务版图 • 行业应用",
     industries: [
@@ -44,10 +78,13 @@ export default function SolutionsPreview() {
       }
     ] as IndustryItem[],
     footerNote: "我们拥有完善的非标制造开发能力，亦可为 国防科工、海洋工程、轨道交通及高端医疗器械 等特种行业提供定制化复合材料工艺装备。"
-  });
+  };
+
+  const [data, setData] = useState(fallbackData);
 
   useEffect(() => {
-    fetch("/api/homepage")
+    setData(fallbackData);
+    fetch(`/api/homepage?locale=${locale}`)
       .then((res) => res.json())
       .then((val) => {
         if (val && val.solutionsPreview) {
@@ -55,7 +92,7 @@ export default function SolutionsPreview() {
         }
       })
       .catch((err) => console.error("Failed to load solutions preview:", err));
-  }, []);
+  }, [locale]);
 
   const industryMeta: Record<string, { colorClass: string; accentColor: string; icon: React.ReactNode }> = {
     aerospace: {
@@ -125,7 +162,7 @@ export default function SolutionsPreview() {
               href="/solutions"
               className="inline-flex items-center gap-2 text-sm font-bold text-brand hover:text-brand-hover transition-colors group"
             >
-              查看所有解决方案 
+              {t("viewAll")} 
               <span className="transform group-hover:translate-x-1 transition-transform">→</span>
             </Link>
           </motion.div>
@@ -203,7 +240,7 @@ export default function SolutionsPreview() {
                       href={industry.href}
                       className="inline-flex items-center text-sm font-bold text-neutral-800 group-hover:text-brand transition-colors gap-1 cursor-pointer"
                     >
-                      查看行业方案 
+                      {t("viewIndustry")} 
                       <span className="transform group-hover:translate-x-1 transition-transform text-brand">→</span>
                     </Link>
                   </div>
@@ -222,9 +259,9 @@ export default function SolutionsPreview() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <p className="text-xs sm:text-sm text-neutral-500 font-light">
-            💡 <span className="font-semibold text-neutral-700">定制化服务：</span>
+            💡 <span className="font-semibold text-neutral-700">{t("customService")}</span>
             {data.footerNote}
-            <Link href="/contact" className="text-brand font-semibold hover:underline ml-1">联系我们咨询 →</Link>
+            <Link href="/contact" className="text-brand font-semibold hover:underline ml-1">{t("contactUs")}</Link>
           </p>
         </motion.div>
       </div>

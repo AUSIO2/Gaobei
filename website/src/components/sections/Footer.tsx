@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useTranslations , useLocale } from "next-intl";
 
 interface Contact {
   role: string;
@@ -27,25 +28,34 @@ interface CompanyInfo {
 }
 
 export default function Footer() {
+  const locale = useLocale();
   const [info, setInfo] = useState<CompanyInfo | null>(null);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
-  const isHomepage = pathname === "/";
+  const isHomepage = pathname === "/" || pathname === "/zh" || pathname === "/en";
+  const t = useTranslations("footer");
 
-  useEffect(() => {
-    setMounted(true);
-    fetch("/api/company-info")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.contacts) {
-          setInfo(data);
-        }
-      })
-      .catch((err) => console.error("Failed to load footer company info:", err));
-  }, []);
-
-  // Standard fallback data for hydration safety
-  const defaultInfo: CompanyInfo = {
+  const fallbackInfo: CompanyInfo = locale === "en" ? {
+    contactTitle: "Industry Contacts",
+    contacts: [
+      { role: "3D Braiding Intelligent Equipment", name: "Mr. Luo", phone: "13203705005" },
+      { role: "Specialized Core Accessories", name: "Mr. Liao", phone: "13911123978" },
+      { role: "Composite Materials Pilot & Molding Platform", name: "Mr. Zhao", phone: "18032899119 or 13739783590" },
+      { role: "International (All Products)", name: "Mr. Wu", phone: "18618319979" },
+      { role: "Custom Non-Standard Automation Equipment", name: "Mr. Chen", phone: "13108956091" }
+    ],
+    footer: {
+      email: "info@yunlu-composites.com",
+      address: "Intelligent Manufacturing R&D Center",
+      copyright: "All Rights Reserved 苏ICP备2026031187号",
+      support: "Technical Support: Intelligent Manufacturing Team",
+      qrCodes: [
+        { label: "Official WeChat", image: "official.jpg" },
+        { label: "WeChat Contact", image: "wechat.jpg" },
+        { label: "Tech Support", image: "support.jpg" }
+      ]
+    }
+  } : {
     contactTitle: "行业联系人电话",
     contacts: [
       { role: "三维编织智能设备", name: "罗先生", phone: "13203705005" },
@@ -60,14 +70,27 @@ export default function Footer() {
       copyright: "版权所有 苏ICP备2026031187号",
       support: "技术支持：智造团队",
       qrCodes: [
-        { label: "官方微信", image: "official.png" },
-        { label: "官方微信", image: "wechat.png" },
-        { label: "技术支持", image: "support.png" }
+        { label: "官方微信", image: "official.jpg" },
+        { label: "官方微信", image: "wechat.jpg" },
+        { label: "技术支持", image: "support.jpg" }
       ]
     }
   };
 
-  const activeInfo = info || defaultInfo;
+  useEffect(() => {
+    setMounted(true);
+    setInfo(fallbackInfo);
+    fetch(`/api/company-info?locale=${locale}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.contacts) {
+          setInfo(data);
+        }
+      })
+      .catch((err) => console.error("Failed to load footer company info:", err));
+  }, [locale]);
+
+  const activeInfo = info || fallbackInfo;
 
   const renderCopyright = (text: string) => {
     const regex = /([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]ICP备\d+号(?:-\d+)?)/;
@@ -158,13 +181,13 @@ export default function Footer() {
             {/* 左侧文字信息 */}
             <div className="flex flex-col gap-2 sm:gap-3 text-xs md:text-sm leading-loose">
               <p className="flex items-center gap-2">
-                <span className="font-semibold text-neutral-300 shrink-0">邮箱:</span>
+                <span className="font-semibold text-neutral-300 shrink-0">{t("emailLabel")}</span>
                 <a href={`mailto:${activeInfo.footer.email}`} className="hover:text-white active:text-white transition-colors break-all">
                   {activeInfo.footer.email}
                 </a>
               </p>
               <p className="flex items-start gap-2">
-                <span className="font-semibold text-neutral-300 shrink-0">地址:</span>
+                <span className="font-semibold text-neutral-300 shrink-0">{t("addressLabel")}</span>
                 <span className="text-neutral-400 font-light">{activeInfo.footer.address}</span>
               </p>
             </div>

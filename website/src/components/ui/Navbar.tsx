@@ -2,30 +2,69 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations, useLocale } from "next-intl";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { logoViewBox, logoIconPathString, logoTextPathString } from "./Logo";
 
-const navLinks = [
-  { href: "/", label: "首页" },
-  { href: "/technology", label: "核心技术" },
-  { href: "/solutions", label: "解决方案" },
-  { href: "/products", label: "产品中心" },
-  { href: "/about", label: "关于我们" },
-  { href: "/contact", label: "联系我们" },
-];
+function LanguageSwitcher() {
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const toggleLocale = () => {
+    router.replace(pathname, { locale: locale === "zh" ? "en" : "zh" });
+  };
+
+  return (
+    <button
+      onClick={toggleLocale}
+      className="relative flex items-center h-8 rounded-full border border-neutral-200 bg-white/80 backdrop-blur-sm text-xs font-bold tracking-wide overflow-hidden transition-all duration-300 hover:border-brand/40 hover:shadow-sm cursor-pointer select-none"
+      aria-label={locale === "zh" ? "Switch to English" : "切换到中文"}
+    >
+      <span
+        className={`px-3 py-1 transition-all duration-300 ${
+          locale === "zh"
+            ? "bg-brand text-white rounded-full"
+            : "text-neutral-500"
+        }`}
+      >
+        中
+      </span>
+      <span
+        className={`px-3 py-1 transition-all duration-300 ${
+          locale === "en"
+            ? "bg-brand text-white rounded-full"
+            : "text-neutral-500"
+        }`}
+      >
+        EN
+      </span>
+    </button>
+  );
+}
 
 export default function Navbar() {
+  const locale = useLocale();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const t = useTranslations("nav");
   const [companyInfo, setCompanyInfo] = useState<{ shortName?: string; shortNameEn?: string; name?: string; nameEn?: string } | null>(null);
 
+  const navLinks = [
+    { href: "/", label: t("home") },
+    { href: "/technology", label: t("technology") },
+    { href: "/solutions", label: t("solutions") },
+    { href: "/products", label: t("products") },
+    { href: "/about", label: t("about") },
+    { href: "/contact", label: t("contact") },
+  ];
+
   useEffect(() => {
-    fetch("/api/company-info")
+    fetch(`/api/company-info?locale=${locale}`)
       .then((res) => res.json())
       .then((data) => setCompanyInfo(data))
       .catch((err) => console.error("Failed to load company info in navbar:", err));
-  }, []);
+  }, [locale]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -103,28 +142,36 @@ export default function Navbar() {
           ))}
         </div>
 
+        {/* Desktop Language Switcher */}
+        <div className="hidden md:flex items-center gap-3">
+          <LanguageSwitcher />
+        </div>
+
         {/* Mobile Hamburger Button */}
-        <button
-          className="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg hover:bg-neutral-100 active:bg-neutral-200 transition-colors"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? "关闭菜单" : "打开菜单"}
-        >
-          <motion.span
-            className="block w-5 h-[2px] bg-neutral-800 rounded-full"
-            animate={mobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.25 }}
-          />
-          <motion.span
-            className="block w-5 h-[2px] bg-neutral-800 rounded-full mt-1"
-            animate={mobileMenuOpen ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
-            transition={{ duration: 0.2 }}
-          />
-          <motion.span
-            className="block w-5 h-[2px] bg-neutral-800 rounded-full mt-1"
-            animate={mobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.25 }}
-          />
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageSwitcher />
+          <button
+            className="flex flex-col items-center justify-center w-10 h-10 rounded-lg hover:bg-neutral-100 active:bg-neutral-200 transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? t("closeMenu") : t("openMenu")}
+          >
+            <motion.span
+              className="block w-5 h-[2px] bg-neutral-800 rounded-full"
+              animate={mobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.25 }}
+            />
+            <motion.span
+              className="block w-5 h-[2px] bg-neutral-800 rounded-full mt-1"
+              animate={mobileMenuOpen ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
+              transition={{ duration: 0.2 }}
+            />
+            <motion.span
+              className="block w-5 h-[2px] bg-neutral-800 rounded-full mt-1"
+              animate={mobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.25 }}
+            />
+          </button>
+        </div>
       </motion.nav>
 
       {/* Mobile Menu Overlay + Drawer */}
@@ -151,11 +198,11 @@ export default function Navbar() {
             >
               {/* Menu Header */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-neutral-100">
-                <span className="text-xs font-bold tracking-widest text-neutral-400 uppercase">导航菜单</span>
+                <span className="text-xs font-bold tracking-widest text-neutral-400 uppercase">{t("menuTitle")}</span>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-neutral-100 active:bg-neutral-200 transition-colors"
-                  aria-label="关闭菜单"
+                  aria-label={t("closeMenu")}
                 >
                   <svg className="w-5 h-5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />

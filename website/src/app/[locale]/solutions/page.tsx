@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import { useTranslations , useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import InquiryForm from "@/components/ui/InquiryForm";
 
 interface SolutionProduct {
@@ -43,11 +44,15 @@ interface ServiceData {
 }
 
 export default function SolutionsPage() {
+  const locale = useLocale();
   const [solutionsData, setSolutionsData] = useState<SolutionsData | null>(null);
   const [serviceData, setServiceData] = useState<ServiceData | null>(null);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPurpose, setSelectedPurpose] = useState("定制方案咨询");
+  const t = useTranslations("solutions");
+  const tc = useTranslations("common");
+  const tCta = useTranslations("cta");
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -63,8 +68,8 @@ export default function SolutionsPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch("/api/solutions").then(res => res.json()),
-      fetch("/api/service").then(res => res.json())
+      fetch(`/api/solutions?locale=${locale}`).then(res => res.json()),
+      fetch(`/api/service?locale=${locale}`).then(res => res.json())
     ])
       .then(([solVal, serVal]) => {
         setSolutionsData(solVal);
@@ -75,7 +80,7 @@ export default function SolutionsPage() {
         console.error("Failed to load solutions page data:", err);
         setLoading(false);
       });
-  }, []);
+  }, [locale]);
 
   // Handle hash navigation scroll on mount
   useEffect(() => {
@@ -123,9 +128,9 @@ export default function SolutionsPage() {
         <div className="max-w-5xl mx-auto relative z-10 text-center">
           {/* Breadcrumbs */}
           <div className="flex justify-center text-xs md:text-sm text-neutral-400 font-light gap-2 mb-6">
-            <Link href="/" className="hover:text-white transition-colors">首页</Link>
+            <Link href="/" className="hover:text-white transition-colors">{tc("home")}</Link>
             <span>/</span>
-            <span className="text-neutral-200">解决方案</span>
+            <span className="text-neutral-200">{t("breadcrumb")}</span>
           </div>
 
           <motion.h1 
@@ -138,7 +143,7 @@ export default function SolutionsPage() {
           </motion.h1>
           
           <motion.p 
-            className="text-brand-light text-xs sm:text-sm md:text-base font-bold tracking-widest uppercase mb-6"
+            className="text-brand-light text-xs sm:text-sm md:text-base font-bold tracking-widest uppercase mb-6 text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -169,7 +174,7 @@ export default function SolutionsPage() {
               <div className="mb-6">
                 <h4 className="text-xs font-extrabold text-neutral-400 uppercase tracking-widest mb-3 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                  产业技术痛点
+                  {t("painpointsTitle")}
                 </h4>
                 <ul className="space-y-2">
                   {ind.painpoints.map((pt, pIdx) => (
@@ -185,7 +190,7 @@ export default function SolutionsPage() {
               <div className="mb-8">
                 <h4 className="text-xs font-extrabold text-brand uppercase tracking-widest mb-3 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand" />
-                  高倍三维编织解决方案
+                  {t("solutionTitle")}
                 </h4>
                 <p className="text-neutral-700 text-sm sm:text-base font-light leading-relaxed">
                   {ind.solution}
@@ -194,10 +199,10 @@ export default function SolutionsPage() {
 
               {/* Action Button */}
               <button
-                onClick={() => openForm(`针对${ind.title}的方案咨询`)}
+                onClick={() => openForm(locale === "en" ? `Consultation for ${ind.title}` : `针对${ind.title}的方案咨询`)}
                 className="px-6 py-2.5 bg-brand hover:bg-brand-hover text-white text-xs sm:text-sm font-bold rounded-lg shadow-sm cursor-pointer"
               >
-                针对该行业咨询专属方案
+                {t("consultBtn")}
               </button>
             </div>
 
@@ -221,10 +226,10 @@ export default function SolutionsPage() {
                   <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                   </svg>
-                  推荐核心产品/装备
+                  {t("recommendedProducts")}
                 </h3>
                 <p className="text-neutral-300 text-xs font-light mb-6">
-                  以下高倍核心设备与服务是该解决方案的核心载体，支持高度非标定制。
+                  {t("recommendedDesc")}
                 </p>
                 <div className="space-y-3">
                   {ind.products.map((prod) => (
@@ -238,7 +243,7 @@ export default function SolutionsPage() {
                           {prod.name}
                         </span>
                         <span className="text-xs text-neutral-400 group-hover:text-white transition-colors transform group-hover:translate-x-1 transition-transform">
-                          详情 →
+                          {tc("details")} →
                         </span>
                       </div>
                     </Link>
@@ -259,10 +264,10 @@ export default function SolutionsPage() {
                 SERVICE NETWORK & METRICS
               </span>
               <h2 className="text-3xl md:text-4xl font-black text-heading tracking-tight mb-4">
-                全球服务保障与市场声誉
+                {t("serviceTitle")}
               </h2>
               <p className="text-neutral-500 text-sm md:text-base max-w-xl mx-auto font-light">
-                我们建立了一体化的售后技术支持与协同研发网络，全生命周期保障设备稳定运行和新产品快速试产。
+                {t("serviceDesc")}
               </p>
             </div>
 
@@ -348,16 +353,16 @@ export default function SolutionsPage() {
               <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100 bg-surface shrink-0">
                 <div>
                   <h3 className="text-lg font-bold text-heading">
-                    预约与咨询需求表单
+                    {tCta("modalTitle")}
                   </h3>
                   <p className="text-xs text-neutral-500 mt-0.5">
-                    我们将根据您的诉求，为您匹配最合适的资深业务与技术顾问。
+                    {tCta("modalDesc")}
                   </p>
                 </div>
                 <button
                   onClick={() => setIsModalOpen(false)}
                   className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-neutral-200 text-neutral-600 active:bg-neutral-300 transition-colors"
-                  aria-label="关闭"
+                  aria-label={tc("close")}
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />

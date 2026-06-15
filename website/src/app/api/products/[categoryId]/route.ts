@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { localizeData, getLocaleFromRequest } from "@/lib/localize";
 
 export async function GET(
   request: NextRequest,
@@ -8,6 +9,7 @@ export async function GET(
 ) {
   try {
     const { categoryId } = await props.params;
+    const locale = getLocaleFromRequest(request);
     const assetDir = path.join(process.cwd(), "../asset/products", categoryId);
     
     if (!fs.existsSync(assetDir) || !fs.statSync(assetDir).isDirectory()) {
@@ -78,7 +80,7 @@ export async function GET(
 
     categoryData.products = products;
 
-    return NextResponse.json(categoryData);
+    return NextResponse.json(localizeData(categoryData, locale));
   } catch (error) {
     console.error("Error loading category details:", error);
     return NextResponse.json({ error: "Failed to load category details" }, { status: 500 });

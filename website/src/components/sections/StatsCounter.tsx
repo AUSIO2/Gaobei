@@ -1,5 +1,6 @@
 "use client";
 
+import { useLocale } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
@@ -79,7 +80,35 @@ function StatItem({ prefix = "", value, suffix = "", label, sublabel, duration =
 }
 
 export default function StatsCounter() {
-  const [stats, setStats] = useState<StatItemProps[]>([
+  const locale = useLocale();
+
+  const fallbackStats = locale === "en" ? [
+    {
+      value: 100,
+      suffix: "%",
+      label: "Proprietary Tech R&D",
+      sublabel: "100% self-developed core algorithms and software copyright"
+    },
+    {
+      value: 34,
+      suffix: "+",
+      label: "Countries & Regions",
+      sublabel: "Excellent quality recognized in global composites and manufacturing markets"
+    },
+    {
+      value: 6,
+      suffix: "m",
+      label: "Max Braiding Length",
+      sublabel: "Capable of processing large aerospace components and wing spars"
+    },
+    {
+      prefix: "±",
+      value: 1,
+      suffix: "℃",
+      label: "Molding Temperature Accuracy",
+      sublabel: "High-precision control of molding process based on digital twin"
+    }
+  ] : [
     {
       value: 100,
       suffix: "%",
@@ -105,10 +134,13 @@ export default function StatsCounter() {
       label: "产线闭环温控精度",
       sublabel: "基于数字孪生模型的成型工艺高精度控制"
     }
-  ]);
+  ];
+
+  const [stats, setStats] = useState<StatItemProps[]>(fallbackStats);
 
   useEffect(() => {
-    fetch("/api/homepage")
+    setStats(fallbackStats);
+    fetch(`/api/homepage?locale=${locale}`)
       .then((res) => res.json())
       .then((data) => {
         if (data && Array.isArray(data.stats)) {
@@ -116,7 +148,7 @@ export default function StatsCounter() {
         }
       })
       .catch((err) => console.error("Failed to fetch stats:", err));
-  }, []);
+  }, [locale]);
 
   return (
     <section className="relative w-full bg-gradient-to-b from-[#0a1128] to-[#101f42] py-12 md:py-16 overflow-hidden">

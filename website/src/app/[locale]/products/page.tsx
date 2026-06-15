@@ -1,8 +1,9 @@
 "use client";
 
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 interface Product {
   id: string;
@@ -26,6 +27,10 @@ interface LandingData {
 }
 
 export default function ProductsPage() {
+  const locale = useLocale();
+  const t = useTranslations("products");
+  const tc = useTranslations("common");
+  
   const [products, setProducts] = useState<Product[]>([]);
   const [landingData, setLandingData] = useState<LandingData | null>(null);
   const [companyInfo, setCompanyInfo] = useState<{ shortName?: string; name?: string } | null>(null);
@@ -35,9 +40,9 @@ export default function ProductsPage() {
   useEffect(() => {
     setMounted(true);
     Promise.all([
-      fetch("/api/products").then((res) => res.json()),
-      fetch("/api/products/landing").then((res) => res.json()),
-      fetch("/api/company-info").then((res) => res.json()).catch(() => null)
+      fetch(`/api/products?locale=${locale}`).then((res) => res.json()),
+      fetch(`/api/products/landing?locale=${locale}`).then((res) => res.json()),
+      fetch(`/api/company-info?locale=${locale}`).then((res) => res.json()).catch(() => null)
     ])
       .then(([productsData, landingVal, infoData]) => {
         if (Array.isArray(productsData)) {
@@ -53,13 +58,24 @@ export default function ProductsPage() {
         console.error("Failed to load products page data", err);
         setLoading(false);
       });
-  }, []);
+  }, [locale]);
 
-  const landing = landingData || {
+  const fallbackLanding = locale === "en" ? {
+    hero: {
+      title: "Advanced 3D Braiding Equipment & Molding Platforms",
+      subtitle: "Products & Solutions · PRODUCTS",
+      description: "Yunlu Composites provides research institutes and enterprise clients with a full-process closed-loop hardware and software product system from fiber braiding to resin molding."
+    },
+    customService: {
+      title: "Custom Non-standard Automation Equipment Service",
+      description: "Our R&D capabilities extend beyond standard 3D braiding equipment. We can also customize dedicated automated production lines and control trajectories for your specialized 3D braided components such as high-pressure hydrogen tanks and aircraft wing frames.",
+      buttonText: "Discuss Custom Requirements with Experts"
+    }
+  } : {
     hero: {
       title: "先进三维编织装备与成型平台",
       subtitle: "产品与解决方案 · PRODUCTS",
-      description: "为科研院所及企业客户提供从纤维编织到树脂成型的全流程闭环软硬件产品体系。"
+      description: "云路复材为科研院所及企业客户提供从纤维编织到树脂成型的全流程闭环软硬件产品体系。"
     },
     customService: {
       title: "非标自动化装备定制服务",
@@ -68,12 +84,14 @@ export default function ProductsPage() {
     }
   };
 
+  const landing = landingData || fallbackLanding;
+
   if (!mounted) {
     return (
       <section className="w-full bg-surface py-28 px-6 md:px-12 lg:px-24 min-h-screen">
         <div className="max-w-7xl mx-auto mb-16 text-center">
-          <h1 className="text-4xl md:text-5xl font-black text-neutral-900">产品介绍</h1>
-          <p className="text-neutral-400 mt-2">正在载入数据...</p>
+          <h1 className="text-4xl md:text-5xl font-black text-neutral-900">{t("pageTitle")}</h1>
+          <p className="text-neutral-400 mt-2">{tc("loading")}</p>
         </div>
       </section>
     );
@@ -84,12 +102,12 @@ export default function ProductsPage() {
       {/* Breadcrumb and Back Action */}
       <div className="max-w-7xl mx-auto mb-6 md:mb-8 flex items-center justify-between text-sm">
         <Link href="/" className="text-neutral-500 hover:text-neutral-900 flex items-center gap-2 transition-colors">
-          <span className="text-base">←</span> 返回首页
+          <span className="text-base">←</span> {tc("backHome")}
         </Link>
         <div className="hidden md:flex text-neutral-400 font-light gap-2">
-          <Link href="/" className="hover:text-neutral-600">首页</Link>
+          <Link href="/" className="hover:text-neutral-600">{tc("home")}</Link>
           <span>/</span>
-          <span className="text-neutral-600 font-medium">产品与解决方案</span>
+          <span className="text-neutral-600 font-medium">{t("breadcrumb")}</span>
         </div>
       </div>
 
@@ -138,9 +156,11 @@ export default function ProductsPage() {
                   {/* 顶部标题与图标 */}
                   <div className="flex items-start justify-between mb-6 z-10">
                     <div className="flex flex-col">
-                      <span className="text-xs font-bold text-blue-300/60 uppercase tracking-widest mb-1">
-                        {product.nameEn}
-                      </span>
+                      {locale === "zh" && product.nameEn && (
+                        <span className="text-xs font-bold text-blue-300/60 uppercase tracking-widest mb-1">
+                          {product.nameEn}
+                        </span>
+                      )}
                       <h3 className="text-2xl font-bold tracking-wide">
                         {product.name}
                       </h3>
@@ -156,7 +176,7 @@ export default function ProductsPage() {
 
                   <div className="z-10 mb-8">
                     <h4 className="text-xs font-bold uppercase tracking-wider text-blue-300 mb-3 border-b border-blue-900/30 pb-2">
-                      技术指标与特性
+                      {t("specsTitle")}
                     </h4>
                     <ul className="space-y-2.5">
                       {(product.specs || []).map((spec, i) => (
@@ -168,12 +188,13 @@ export default function ProductsPage() {
                     </ul>
                   </div>
 
-
                   {/* 卡片底层按钮 */}
                   <div className="z-10 mt-auto flex items-center justify-between text-sm">
-                    <span className="text-neutral-400 font-light">{(companyInfo?.shortName || "江苏高倍")}原厂技术支持</span>
+                    <span className="text-neutral-400 font-light">
+                      {t("factorySupport", { company: companyInfo?.shortName || (locale === "en" ? "GAOBEI" : "江苏高倍") })}
+                    </span>
                     <span className="px-5 py-2.5 rounded-full bg-white text-neutral-950 font-bold hover:bg-neutral-100 transition-colors shadow-md group-hover:scale-105 transition-transform duration-300">
-                      查看产品列表 →
+                      {t("viewCategoryList")}
                     </span>
                   </div>
 
@@ -193,12 +214,12 @@ export default function ProductsPage() {
           <p className="text-neutral-500 font-light text-base leading-relaxed mb-8">
             {landing.customService.description}
           </p>
-          <a
+          <Link
             href="/contact"
             className="inline-block px-8 py-4 rounded-full bg-neutral-950 text-white font-bold tracking-wider hover:bg-neutral-800 transition-colors shadow-lg hover:shadow-xl"
           >
             {landing.customService.buttonText}
-          </a>
+          </Link>
         </div>
         <div className="absolute top-1/2 -translate-y-1/2 right-10 w-64 h-64 bg-brand/5 rounded-full blur-xl pointer-events-none hidden md:block" />
       </section>

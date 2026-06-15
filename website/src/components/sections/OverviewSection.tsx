@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useTranslations , useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 interface Product {
   id: string;
@@ -20,16 +21,18 @@ interface CompanyInfo {
 }
 
 export default function OverviewSection() {
+  const locale = useLocale();
   const [products, setProducts] = useState<Product[]>([]);
   const [companyInfo, setCompanyInfo] = useState<CompanyInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const t = useTranslations("overview");
 
   useEffect(() => {
     setMounted(true);
     Promise.all([
-      fetch("/api/company-info").then((res) => res.json()),
-      fetch("/api/products").then((res) => res.json())
+      fetch(`/api/company-info?locale=${locale}`).then((res) => res.json()),
+      fetch(`/api/products?locale=${locale}`).then((res) => res.json())
     ])
       .then(([infoData, productsData]) => {
         setCompanyInfo(infoData);
@@ -42,7 +45,7 @@ export default function OverviewSection() {
         console.error("Failed to load page data", err);
         setLoading(false);
       });
-  }, []);
+  }, [locale]);
 
   const info = companyInfo || {
     name: "江苏高倍",
@@ -63,14 +66,14 @@ export default function OverviewSection() {
             <div className="flex justify-between items-end mb-8">
               <div>
                 <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-2">
-                  产品与装备
+                  {t("productsSubtitle")}
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-black text-heading tracking-tight">
-                  四大核心产品矩阵
+                  {t("productsTitle")}
                 </h2>
               </div>
               <span className="text-xs sm:text-sm font-bold text-brand cursor-pointer">
-                产品中心 →
+                {t("productsLink")} →
               </span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -84,10 +87,10 @@ export default function OverviewSection() {
               <div className="flex justify-between items-end mb-8">
                 <div>
                   <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-2">
-                    行业见解
+                    {t("insightsSubtitle")}
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-black text-heading tracking-tight">
-                    最新技术洞察
+                    {t("insightsTitle")}
                   </h2>
                 </div>
               </div>
@@ -107,17 +110,17 @@ export default function OverviewSection() {
           <div className="flex justify-between items-end mb-8">
             <div>
               <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-2">
-                产品与装备
+                {t("productsSubtitle")}
               </span>
               <h2 className="text-2xl sm:text-3xl font-black text-heading tracking-tight">
-                四大核心产品矩阵
+                {t("productsTitle")}
               </h2>
             </div>
             <Link 
               href="/products" 
               className="text-xs sm:text-sm font-bold text-brand hover:underline flex items-center gap-1 cursor-pointer"
             >
-              产品中心 <span className="text-xs">→</span>
+              {t("productsLink")} <span className="text-xs">→</span>
             </Link>
           </div>
           
@@ -143,9 +146,11 @@ export default function OverviewSection() {
                   >
                     {/* Left text column */}
                     <div className="flex flex-col pr-4 z-10">
-                      <span className="text-[10px] md:text-xs font-bold tracking-wider text-blue-300/60 mb-1 leading-tight uppercase font-mono">
-                        {product.nameEn}
-                      </span>
+                      {locale === "zh" && product.nameEn && (
+                        <span className="text-[10px] md:text-xs font-bold tracking-wider text-blue-300/60 mb-1 leading-tight uppercase font-mono">
+                          {product.nameEn}
+                        </span>
+                      )}
                       <h3 className="text-base md:text-lg font-bold tracking-wide leading-snug">
                         {product.name}
                       </h3>
@@ -175,17 +180,17 @@ export default function OverviewSection() {
             <div className="flex justify-between items-end mb-8">
               <div>
                 <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-2">
-                  行业见解
+                  {t("insightsSubtitle")}
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-black text-heading tracking-tight">
-                  最新技术洞察
+                  {t("insightsTitle")}
                 </h2>
               </div>
               <Link 
                 href="/technology#insights" 
                 className="text-xs sm:text-sm font-bold text-brand hover:underline flex items-center gap-1 cursor-pointer"
               >
-                查看更多 <span className="text-xs">→</span>
+                {t("viewMore")} <span className="text-xs">→</span>
               </Link>
             </div>
 
@@ -204,7 +209,7 @@ export default function OverviewSection() {
                 </li>
               ))}
               {!loading && info.news.length === 0 && (
-                <li className="text-neutral-400 text-sm py-4">暂无最新动态</li>
+                <li className="text-neutral-400 text-sm py-4">{t("noNews")}</li>
               )}
             </ul>
           </div>

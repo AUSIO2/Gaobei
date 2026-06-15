@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 interface InquiryFormProps {
   presetPurpose?: string;
@@ -10,6 +11,23 @@ interface InquiryFormProps {
 }
 
 export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: InquiryFormProps) {
+  const t = useTranslations("inquiry");
+
+  const interestOptions = [
+    { value: "获取产品手册", label: t("purposeOptions.brochure") },
+    { value: "索取样件", label: t("purposeOptions.sample") },
+    { value: "预约产线参观", label: t("purposeOptions.visit") },
+    { value: "定制方案咨询", label: t("purposeOptions.consult") },
+    { value: "设备采购咨询", label: t("purposeOptions.purchase") },
+  ];
+
+  const productOptions = [
+    { value: "三维编织智能设备", label: t("productOptions.braiding") },
+    { value: "专用核心配件", label: t("productOptions.accessories") },
+    { value: "复合材料中试与成型平台", label: t("productOptions.platform") },
+    { value: "非标自动化定制装备", label: t("productOptions.automation") },
+  ];
+
   const [formData, setFormData] = useState({
     companyName: "",
     contactPerson: "",
@@ -26,29 +44,14 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
     message: ""
   });
 
-  const interestOptions = [
-    "获取产品手册",
-    "索取样件",
-    "预约产线参观",
-    "定制方案咨询",
-    "设备采购咨询"
-  ];
-
-  const productOptions = [
-    "三维编织智能设备",
-    "专用核心配件",
-    "复合材料中试与成型平台",
-    "非标自动化定制装备"
-  ];
-
-  const handleProductChange = (productName: string) => {
+  const handleProductChange = (productValue: string) => {
     setFormData(prev => {
-      const alreadySelected = prev.products.includes(productName);
+      const alreadySelected = prev.products.includes(productValue);
       return {
         ...prev,
         products: alreadySelected
-          ? prev.products.filter(p => p !== productName)
-          : [...prev.products, productName]
+          ? prev.products.filter(p => p !== productValue)
+          : [...prev.products, productValue]
       };
     });
   };
@@ -58,19 +61,21 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
     
     // Validations
     if (!formData.companyName.trim()) {
-      setStatus({ type: "error", message: "请输入公司名称" });
+      setStatus({ type: "error", message: t("validationCompany") });
       return;
     }
     if (!formData.contactPerson.trim()) {
-      setStatus({ type: "error", message: "请输入联系人姓名" });
+      setStatus({ type: "error", message: t("validationContact") });
       return;
     }
     if (!formData.phone.trim()) {
-      setStatus({ type: "error", message: "请输入手机号码" });
+      setStatus({ type: "error", message: t("validationPhone") });
       return;
     }
-    if (!/^1[3-9]\d{9}$/.test(formData.phone.trim())) {
-      setStatus({ type: "error", message: "请输入正确的手机号码格式" });
+    // Support both Chinese mobile and international phone formats
+    const phoneClean = formData.phone.trim().replace(/[\s\-\(\)]/g, '');
+    if (!/^(\+?\d{7,15}|1[3-9]\d{9})$/.test(phoneClean)) {
+      setStatus({ type: "error", message: t("validationPhoneFormat") });
       return;
     }
 
@@ -88,7 +93,7 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
       if (result.success) {
         setStatus({
           type: "success",
-          message: "您的需求已成功提交！技术顾问将在24小时内与您取得联系。"
+          message: t("successMessage")
         });
         
         // Reset form
@@ -108,14 +113,14 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
       } else {
         setStatus({
           type: "error",
-          message: result.error || "提交失败，请稍后重试。"
+          message: result.error || t("errorMessage")
         });
       }
     } catch (err) {
       console.error("Failed to submit form", err);
       setStatus({
         type: "error",
-        message: "网络连接失败，请检查网络或稍后重试。"
+        message: t("networkError")
       });
     } finally {
       setLoading(false);
@@ -139,12 +144,12 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
       {/* Row 1: Company Name */}
       <div>
         <label className="block text-xs font-bold text-neutral-500 uppercase tracking-wider mb-1">
-          公司名称 <span className="text-rose-500">*</span>
+          {t("companyName")} <span className="text-rose-500">*</span>
         </label>
         <input
           type="text"
           required
-          placeholder="例如：北京航天精密制造有限公司"
+          placeholder={t("companyPlaceholder")}
           value={formData.companyName}
           onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
           className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-brand text-sm text-neutral-800 transition-colors"
@@ -155,12 +160,12 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-xs font-bold text-neutral-500 uppercase tracking-wider mb-1">
-            联系人姓名 <span className="text-rose-500">*</span>
+            {t("contactPerson")} <span className="text-rose-500">*</span>
           </label>
           <input
             type="text"
             required
-            placeholder="张经理"
+            placeholder={t("contactPlaceholder")}
             value={formData.contactPerson}
             onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })}
             className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-brand text-sm text-neutral-800 transition-colors"
@@ -168,12 +173,12 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
         </div>
         <div>
           <label className="block text-xs font-bold text-neutral-500 uppercase tracking-wider mb-1">
-            手机号码 <span className="text-rose-500">*</span>
+            {t("phone")} <span className="text-rose-500">*</span>
           </label>
           <input
             type="tel"
             required
-            placeholder="13xxxxxxxx"
+            placeholder={t("phonePlaceholder")}
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-brand text-sm text-neutral-800 transition-colors"
@@ -184,11 +189,11 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
       {/* Row 3: Email */}
       <div>
         <label className="block text-xs font-bold text-neutral-500 uppercase tracking-wider mb-1">
-          电子邮箱 <span className="text-neutral-400 font-light">(选填)</span>
+          {t("email")} <span className="text-neutral-400 font-light">{t("emailOptional")}</span>
         </label>
         <input
           type="email"
-          placeholder="yourname@company.com"
+          placeholder={t("emailPlaceholder")}
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-brand text-sm text-neutral-800 transition-colors"
@@ -198,7 +203,7 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
       {/* Row 4: Interest Area */}
       <div>
         <label className="block text-xs font-bold text-neutral-500 uppercase tracking-wider mb-1">
-          咨询目的
+          {t("purpose")}
         </label>
         <select
           value={formData.interest}
@@ -206,7 +211,7 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
           className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 bg-white focus:outline-none focus:border-brand text-sm text-neutral-800 transition-colors"
         >
           {interestOptions.map(option => (
-            <option key={option} value={option}>{option}</option>
+            <option key={option.value} value={option.value}>{option.label}</option>
           ))}
         </select>
       </div>
@@ -214,14 +219,14 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
       {/* Row 5: Products of Interest (Checkboxes) */}
       <div>
         <label className="block text-xs font-bold text-neutral-500 uppercase tracking-wider mb-2">
-          感兴趣的产品 (可多选)
+          {t("products")}
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {productOptions.map(product => {
-            const isChecked = formData.products.includes(product);
+            const isChecked = formData.products.includes(product.value);
             return (
               <label 
-                key={product} 
+                key={product.value} 
                 className={`flex items-center px-3 py-2 rounded-lg border text-xs font-medium cursor-pointer transition-all duration-200 select-none ${
                   isChecked 
                     ? "bg-brand/5 border-brand text-brand" 
@@ -231,13 +236,13 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
                 <input
                   type="checkbox"
                   checked={isChecked}
-                  onChange={() => handleProductChange(product)}
+                  onChange={() => handleProductChange(product.value)}
                   className="sr-only"
                 />
                 <span className="w-3.5 h-3.5 rounded border border-neutral-300 flex items-center justify-center mr-2 shrink-0 bg-white">
                   {isChecked && <span className="w-2 h-2 bg-brand rounded-sm" />}
                 </span>
-                {product}
+                {product.label}
               </label>
             );
           })}
@@ -247,11 +252,11 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
       {/* Row 6: Description */}
       <div>
         <label className="block text-xs font-bold text-neutral-500 uppercase tracking-wider mb-1">
-          需求描述
+          {t("description")}
         </label>
         <textarea
           rows={3}
-          placeholder="请简要描述您的应用场景、材料规格要求或采购意向（如：火箭发动机喷管保护套，碳纤维编织）"
+          placeholder={t("descPlaceholder")}
           value={formData.description}
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           className="w-full px-4 py-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-brand text-sm text-neutral-800 transition-colors resize-none"
@@ -266,7 +271,7 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
             onClick={onClose}
             className="flex-1 px-4 py-2.5 border border-neutral-200 rounded-lg text-sm font-semibold text-neutral-500 hover:bg-neutral-50 active:bg-neutral-100 transition-colors"
           >
-            取消
+            {t("cancelBtn")}
           </button>
         )}
         <button
@@ -280,10 +285,10 @@ export default function InquiryForm({ presetPurpose = "", onClose, onSuccess }: 
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
               </svg>
-              正在提交...
+              {t("submitting")}
             </>
           ) : (
-            "提交咨询需求"
+            t("submitBtn")
           )}
         </button>
       </div>

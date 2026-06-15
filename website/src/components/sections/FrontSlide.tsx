@@ -2,14 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, type PanInfo } from "framer-motion";
+import { useTranslations , useLocale } from "next-intl";
 
 let globalSlidesCache: string[] | null = null;
 
 export default function FrontSlide() {
+  const locale = useLocale();
   const [images, setImages] = useState<string[]>(globalSlidesCache || []);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(!globalSlidesCache);
   const [direction, setDirection] = useState(0);
+  const t = useTranslations("common");
 
   useEffect(() => {
     // Attempt to read from localStorage if memory cache is not populated
@@ -99,7 +102,7 @@ export default function FrontSlide() {
     return (
       <div className="w-full aspect-[16/9] max-w-6xl mx-auto px-4 md:px-8 mt-20 md:mt-24 mb-8 md:mb-12">
         <div className="w-full h-full flex items-center justify-center bg-neutral-100 rounded-2xl animate-pulse border border-neutral-200/50">
-          <span className="text-neutral-400 font-medium text-sm md:text-base">正在加载滑动图片栏...</span>
+          <span className="text-neutral-400 font-medium text-sm md:text-base">{t("loadingSlides")}</span>
         </div>
       </div>
     );

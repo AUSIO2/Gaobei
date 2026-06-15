@@ -2,11 +2,15 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations , useLocale } from "next-intl";
 import InquiryForm from "../ui/InquiryForm";
 
 export default function CTASection() {
+  const locale = useLocale();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedPurpose, setSelectedPurpose] = useState("");
+  const t = useTranslations("cta");
+  const tc = useTranslations("common");
 
   const [ctaData, setCtaData] = useState({
     title: "为您的项目寻找最优复材解决方案",
@@ -45,7 +49,7 @@ export default function CTASection() {
   });
 
   useEffect(() => {
-    fetch("/api/homepage")
+    fetch(`/api/homepage?locale=${locale}`)
       .then((res) => res.json())
       .then((val) => {
         if (val && val.cta) {
@@ -53,7 +57,7 @@ export default function CTASection() {
         }
       })
       .catch((err) => console.error("Failed to load CTA data:", err));
-  }, []);
+  }, [locale]);
 
   const getCardIcon = (purpose: string) => {
     switch (purpose) {
@@ -145,7 +149,7 @@ export default function CTASection() {
                 {/* Popular tag */}
                 {isPopular && (
                   <div className="absolute top-0 right-0 bg-blue-500 text-white font-black text-[9px] uppercase tracking-wider px-3.5 py-1 rounded-bl-xl">
-                    推荐选择
+                    {t("popular")}
                   </div>
                 )}
 
@@ -233,16 +237,16 @@ export default function CTASection() {
               <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100 bg-surface shrink-0">
                 <div>
                   <h3 className="text-lg font-bold text-heading">
-                    预约与咨询需求表单
+                    {t("modalTitle")}
                   </h3>
                   <p className="text-xs text-neutral-500 mt-0.5">
-                    我们将根据您的诉求，为您匹配最合适的资深业务与技术顾问。
+                    {t("modalDesc")}
                   </p>
                 </div>
                 <button
                   onClick={() => setModalOpen(false)}
                   className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-neutral-200 text-neutral-600 active:bg-neutral-300 transition-colors"
-                  aria-label="关闭"
+                  aria-label={tc("close")}
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />

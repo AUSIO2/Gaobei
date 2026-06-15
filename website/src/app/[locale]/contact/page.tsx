@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useTranslations , useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import InquiryForm from "@/components/ui/InquiryForm";
 
 interface HeroSection {
@@ -40,11 +41,14 @@ interface ContactData {
 }
 
 export default function ContactPage() {
+  const locale = useLocale();
   const [data, setData] = useState<ContactData | null>(null);
   const [loading, setLoading] = useState(true);
+  const t = useTranslations("contact");
+  const tc = useTranslations("common");
 
   useEffect(() => {
-    fetch("/api/contact-details")
+    fetch(`/api/contact-details?locale=${locale}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -54,7 +58,7 @@ export default function ContactPage() {
         console.error("Failed to load contact data", err);
         setLoading(false);
       });
-  }, []);
+  }, [locale]);
 
   if (loading) {
     return (
@@ -77,9 +81,9 @@ export default function ContactPage() {
   if (!data) {
     return (
       <section className="w-full bg-surface py-28 px-6 md:px-12 lg:px-24 min-h-screen flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-bold text-neutral-800 mb-4">未找到联系我们配置</h2>
+        <h2 className="text-2xl font-bold text-neutral-800 mb-4">{t("notFound")}</h2>
         <Link href="/" className="text-brand hover:underline flex items-center gap-2">
-          <span>←</span> 返回首页
+          <span>←</span> {tc("backHome")}
         </Link>
       </section>
     );
@@ -90,12 +94,12 @@ export default function ContactPage() {
       {/* Breadcrumb and Back Action */}
       <div className="max-w-7xl mx-auto mb-6 md:mb-8 flex items-center justify-between text-sm">
         <Link href="/" className="text-neutral-500 hover:text-neutral-900 flex items-center gap-2 transition-colors">
-          <span className="text-base">←</span> 返回首页
+          <span className="text-base">←</span> {tc("backHome")}
         </Link>
         <div className="hidden md:flex text-neutral-400 font-light gap-2">
-          <Link href="/" className="hover:text-neutral-600">首页</Link>
+          <Link href="/" className="hover:text-neutral-600">{tc("home")}</Link>
           <span>/</span>
-          <span className="text-neutral-600 font-medium">联系我们</span>
+          <span className="text-neutral-600 font-medium">{t("breadcrumb")}</span>
         </div>
       </div>
 
@@ -134,7 +138,7 @@ export default function ContactPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </div>
-            <h3 className="text-lg font-bold text-heading mb-3">公司地址</h3>
+            <h3 className="text-lg font-bold text-heading mb-3">{t("addressTitle")}</h3>
             <p className="text-neutral-500 text-sm font-light leading-relaxed mb-4">
               {data.info.address}
             </p>
@@ -153,7 +157,7 @@ export default function ContactPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
             </div>
-            <h3 className="text-lg font-bold text-heading mb-3">服务热线</h3>
+            <h3 className="text-lg font-bold text-heading mb-3">{t("phoneTitle")}</h3>
             <a
               href={`tel:${data.info.servicePhone}`}
               className="text-neutral-900 font-bold text-xl hover:text-brand transition-colors mb-4"
@@ -175,7 +179,7 @@ export default function ContactPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
-            <h3 className="text-lg font-bold text-heading mb-3">电子邮箱</h3>
+            <h3 className="text-lg font-bold text-heading mb-3">{t("emailTitle")}</h3>
             <a
               href={`mailto:${data.info.recruitmentEmail}`}
               className="text-neutral-900 font-semibold hover:text-brand transition-colors mb-4 break-all"
@@ -191,10 +195,10 @@ export default function ContactPage() {
       <section className="max-w-7xl mx-auto mb-16">
         <div className="mb-10 text-center md:text-left">
           <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest block mb-2">
-            SECTOR CONTACTS
+            {t("sectorTag")}
           </span>
           <h2 className="text-2xl md:text-3xl font-black text-heading tracking-tight">
-            业务板块联系人
+            {t("sectorContacts")}
           </h2>
         </div>
 
@@ -281,7 +285,7 @@ export default function ContactPage() {
               <span className="bg-brand/10 text-brand text-[10px] font-bold tracking-wider px-3 py-1 rounded uppercase">
                 LOCATION MAP
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold text-heading mt-3">地理位置示意图</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-heading mt-3">{t("mapTitle")}</h2>
               <p className="text-neutral-500 text-xs sm:text-sm mt-1.5 font-light">
                 {data.info.mapDescription || `${data.info.centerName || "高倍智能制造研发中心"} · ${data.info.address}`}
               </p>
@@ -327,9 +331,9 @@ export default function ContactPage() {
               <span className="bg-brand/10 text-brand text-[10px] font-bold tracking-wider px-3 py-1 rounded uppercase">
                 ONLINE INQUIRY
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold text-heading mt-3">提交您的咨询需求</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-heading mt-3">{t("inquiryTitle")}</h2>
               <p className="text-neutral-500 text-xs sm:text-sm mt-1.5 font-light">
-                请在下方留下您的联系人信息与工艺要求，我们会在最快的时间内指派专人与您联系。
+                {t("inquiryDesc")}
               </p>
             </div>
             

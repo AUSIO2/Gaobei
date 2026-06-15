@@ -1,16 +1,18 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { localizeData, getLocaleFromRequest } from "@/lib/localize";
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const locale = getLocaleFromRequest(request);
     const assetDir = path.join(process.cwd(), "../asset");
     const techInfoPath = path.join(assetDir, "technology/info.json");
     
     if (fs.existsSync(techInfoPath)) {
       const fileContent = fs.readFileSync(techInfoPath, "utf-8");
       const data = JSON.parse(fileContent);
-      return NextResponse.json(data);
+      return NextResponse.json(localizeData(data, locale));
     } else {
       return NextResponse.json({ error: "Technology info file not found" }, { status: 404 });
     }

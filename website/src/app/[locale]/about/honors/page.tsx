@@ -1,8 +1,9 @@
 "use client";
 
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 interface HonorItem {
   id: string;
@@ -21,6 +22,9 @@ interface LandingData {
 }
 
 export default function HonorsPage() {
+  const locale = useLocale();
+  const t = useTranslations("about");
+  const tc = useTranslations("common");
   const [honorsList, setHonorsList] = useState<HonorItem[]>([]);
   const [landingData, setLandingData] = useState<LandingData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -28,8 +32,8 @@ export default function HonorsPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch("/api/honors").then((res) => res.json()),
-      fetch("/api/honors/landing").then((res) => res.json())
+      fetch(`/api/honors?locale=${locale}`).then((res) => res.json()),
+      fetch(`/api/honors/landing?locale=${locale}`).then((res) => res.json())
     ])
       .then(([honorsData, landingVal]) => {
         if (Array.isArray(honorsData)) {
@@ -42,9 +46,15 @@ export default function HonorsPage() {
         console.error("Failed to fetch honors data:", err);
         setLoading(false);
       });
-  }, []);
+  }, [locale]);
 
-  const landing = landingData || {
+  const fallbackLanding = locale === "en" ? {
+    hero: {
+      title: "Deep Integration of Industry, Academia & Research and Core Tech Assets",
+      subtitle: "Qualifications & Honors · HONORS & CERTIFICATES",
+      description: "Adhering to the principle that science and technology are the primary productive forces, we have built a solid reputation in the industry through independent innovation and rigorous validation."
+    }
+  } : {
     hero: {
       title: "产学研深度融合与核心科技资产",
       subtitle: "资质荣誉 · HONORS & CERTIFICATES",
@@ -52,19 +62,21 @@ export default function HonorsPage() {
     }
   };
 
+  const landing = landingData || fallbackLanding;
+
   return (
     <main className="min-h-screen bg-surface pt-20 md:pt-28 pb-12 md:pb-20 px-4 sm:px-6 md:px-12 lg:px-24">
       {/* Breadcrumb and Back Action */}
       <div className="max-w-4xl mx-auto mb-6 md:mb-8 flex items-center justify-between text-sm">
         <Link href="/about" className="text-neutral-500 hover:text-neutral-900 flex items-center gap-2 transition-colors">
-          <span className="text-base">←</span> 返回关于我们
+          <span className="text-base">←</span> {t("backToAbout")}
         </Link>
         <div className="hidden md:flex text-neutral-400 font-light gap-2">
-          <Link href="/" className="hover:text-neutral-600">首页</Link>
+          <Link href="/" className="hover:text-neutral-600">{tc("home")}</Link>
           <span>/</span>
-          <Link href="/about" className="hover:text-neutral-600">关于我们</Link>
+          <Link href="/about" className="hover:text-neutral-600">{t("breadcrumb")}</Link>
           <span>/</span>
-          <span className="text-neutral-600 font-medium">资质荣誉</span>
+          <span className="text-neutral-600 font-medium">{t("honorsBreadcrumb")}</span>
         </div>
       </div>
 
@@ -122,7 +134,7 @@ export default function HonorsPage() {
                     <div className="mt-6 aspect-[4/3] w-full rounded-2xl bg-white border border-dashed border-neutral-300 flex items-center justify-center relative overflow-hidden shadow-inner group-hover:border-brand/50 transition-colors duration-300">
                       <img
                         src={honor.images[0]}
-                        alt={`${honor.title} 证书`}
+                        alt={t("certificateAlt", { title: honor.title })}
                         className="w-full h-full object-contain p-2"
                         onError={() => {
                           setFailedImages((prev) => ({ ...prev, [honor.id]: true }));

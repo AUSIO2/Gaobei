@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import { motion as motionClient, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import { useTranslations , useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import InquiryForm from "@/components/ui/InquiryForm";
 
 interface SpecItem {
@@ -65,6 +66,7 @@ interface NewsItem {
 }
 
 export default function TechnologyPage() {
+  const locale = useLocale();
   const [techData, setTechData] = useState<TechData | null>(null);
   const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -72,6 +74,9 @@ export default function TechnologyPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const itemsPerPage = 5;
+  const t = useTranslations("technology");
+  const tc = useTranslations("common");
+  const tCta = useTranslations("cta");
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -87,8 +92,8 @@ export default function TechnologyPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch("/api/technology").then(res => res.json()),
-      fetch("/api/company-info").then(res => res.json())
+      fetch(`/api/technology?locale=${locale}`).then(res => res.json()),
+      fetch(`/api/company-info?locale=${locale}`).then(res => res.json())
     ])
       .then(([techVal, infoVal]) => {
         setTechData(techVal);
@@ -101,7 +106,7 @@ export default function TechnologyPage() {
         console.error("Failed to load technology page data:", err);
         setLoading(false);
       });
-  }, []);
+  }, [locale]);
 
   // Sync tab hash anchor on mount
   useEffect(() => {
@@ -143,10 +148,10 @@ export default function TechnologyPage() {
 
   const getTypeName = (type: string) => {
     switch (type) {
-      case "blog": return "技术博客";
-      case "case": return "应用案例";
-      case "news": return "企业动态";
-      default: return "技术文章";
+      case "blog": return t("typeBlog");
+      case "case": return t("typeCase");
+      case "news": return t("typeNews");
+      default: return t("typeDefault");
     }
   };
 
@@ -184,9 +189,9 @@ export default function TechnologyPage() {
         <div className="max-w-5xl mx-auto relative z-10 text-center">
           {/* Breadcrumbs */}
           <div className="flex justify-center text-xs md:text-sm text-neutral-400 font-light gap-2 mb-6">
-            <Link href="/" className="hover:text-white transition-colors">首页</Link>
+            <Link href="/" className="hover:text-white transition-colors">{tc("home")}</Link>
             <span>/</span>
-            <span className="text-neutral-200">核心技术</span>
+            <span className="text-neutral-200">{t("breadcrumb")}</span>
           </div>
 
           <motionClient.h1 
@@ -199,7 +204,7 @@ export default function TechnologyPage() {
           </motionClient.h1>
           
           <motionClient.p 
-            className="text-brand-light text-sm sm:text-base md:text-xl font-bold tracking-widest uppercase mb-6"
+            className="text-brand-light text-sm sm:text-base md:text-xl font-bold tracking-widest uppercase mb-6 text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -399,7 +404,7 @@ export default function TechnologyPage() {
           <div className="lg:col-span-7 flex flex-col justify-between">
             <div>
               <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-3">
-                01. 核心编织工艺
+                {t("braidingLabel")}
               </span>
               <h2 className="text-3xl md:text-4xl font-black text-heading tracking-tight mb-6">
                 {techData.braiding.title}
@@ -429,15 +434,15 @@ export default function TechnologyPage() {
         <div className="mt-12 md:mt-16 bg-white border border-neutral-200/60 rounded-3xl p-6 sm:p-8 shadow-sm">
           <h3 className="text-lg md:text-xl font-bold text-heading mb-6 flex items-center gap-2">
             <span className="w-1.5 h-5 bg-brand rounded-full" />
-            核心技术参数指标
+            {t("specsTitle")}
           </h3>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm border-collapse">
               <thead>
                 <tr className="border-b border-neutral-200 text-neutral-500 font-bold">
-                  <th className="py-3.5 pr-4 w-[250px]">技术参数项</th>
-                  <th className="py-3.5 px-4 w-[200px]">性能指标</th>
-                  <th className="py-3.5 pl-4">应用与说明</th>
+                  <th className="py-3.5 pr-4 w-[250px]">{t("specsColParam")}</th>
+                  <th className="py-3.5 px-4 w-[200px]">{t("specsColValue")}</th>
+                  <th className="py-3.5 pl-4">{t("specsColDesc")}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-neutral-100 text-neutral-700">
@@ -462,7 +467,7 @@ export default function TechnologyPage() {
             {/* Left Column: Text */}
             <div className="lg:col-span-7 order-2 lg:order-1">
               <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-3">
-                02. 智能控制闭环
+                {t("digitalTwinLabel")}
               </span>
               <h2 className="text-3xl md:text-4xl font-black text-heading tracking-tight mb-6">
                 {techData.digitalTwin.title}
@@ -633,7 +638,7 @@ export default function TechnologyPage() {
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <span className="text-xs md:text-sm font-bold tracking-widest text-brand uppercase block mb-3">
-            工艺实力对比
+            {t("comparisonLabel")}
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-heading tracking-tight mb-4">
             {techData.comparison.title}
@@ -683,20 +688,20 @@ export default function TechnologyPage() {
               KNOWLEDGE & CASE STUDIES
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-heading tracking-tight mb-4">
-              技术洞察与行业案例
+              {t("insightsTitle")}
             </h2>
             <p className="text-neutral-500 text-sm md:text-base max-w-xl mx-auto font-light">
-              分享关于三维立体编织、数字孪生产线以及复合材料轻量化结构制造的前沿应用和研发报告。
+              {t("insightsDesc")}
             </p>
           </div>
 
           {/* Tab Filter buttons */}
           <div className="flex flex-wrap justify-center gap-2 mb-8 md:mb-12 border-b border-neutral-200 pb-6">
             {[
-              { id: "all", label: "全部资讯" },
-              { id: "blog", label: "技术博客" },
-              { id: "case", label: "应用案例" },
-              { id: "news", label: "企业动态" }
+              { id: "all", label: t("tabAll") },
+              { id: "blog", label: t("tabBlog") },
+              { id: "case", label: t("tabCase") },
+              { id: "news", label: t("tabNews") }
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -766,7 +771,7 @@ export default function TechnologyPage() {
                       href={`/news/${item.id}`}
                       className="text-xs sm:text-sm font-bold text-brand hover:underline flex items-center gap-1 cursor-pointer"
                     >
-                      阅读正文 <span className="text-xs">→</span>
+                      {tc("readMore")} <span className="text-xs">→</span>
                     </Link>
                   </div>
                 </div>
@@ -775,7 +780,7 @@ export default function TechnologyPage() {
 
             {filteredNews.length === 0 && (
               <div className="text-center py-12 bg-white rounded-2xl border border-neutral-200/50">
-                <p className="text-neutral-400 text-sm">暂无该分类的文章内容</p>
+                <p className="text-neutral-400 text-sm">{t("noArticles")}</p>
               </div>
             )}
           </div>
@@ -792,7 +797,7 @@ export default function TechnologyPage() {
               </button>
               
               <span className="text-xs text-neutral-500 font-bold font-mono px-4">
-                第 {currentPage} 页 / 共 {totalPages} 页
+                {t("pageInfo", { current: currentPage, total: totalPages })}
               </span>
 
               <button
@@ -842,16 +847,16 @@ export default function TechnologyPage() {
               <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100 bg-surface shrink-0">
                 <div>
                   <h3 className="text-lg font-bold text-heading">
-                    预约与咨询需求表单
+                    {tCta("modalTitle")}
                   </h3>
                   <p className="text-xs text-neutral-500 mt-0.5">
-                    我们将根据您的诉求，为您匹配最合适的资深业务与技术顾问。
+                    {tCta("modalDesc")}
                   </p>
                 </div>
                 <button
                   onClick={() => setIsModalOpen(false)}
                   className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-neutral-200 text-neutral-600 active:bg-neutral-300 transition-colors"
-                  aria-label="关闭"
+                  aria-label={tc("close")}
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />

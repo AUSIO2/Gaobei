@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { localizeData, getLocaleFromRequest } from "@/lib/localize";
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const locale = getLocaleFromRequest(request);
     const honorsDir = path.join(process.cwd(), "../asset/honors");
     const honors: any[] = [];
 
@@ -42,7 +44,7 @@ export async function GET() {
     // Sort honors by id (ascending, e.g. "1", "2", "3", "4")
     honors.sort((a, b) => a.id.localeCompare(b.id));
 
-    return NextResponse.json(honors);
+    return NextResponse.json(localizeData(honors, locale));
   } catch (error) {
     console.error("Error reading honors asset:", error);
     return NextResponse.json({ error: "Failed to read honors" }, { status: 500 });
