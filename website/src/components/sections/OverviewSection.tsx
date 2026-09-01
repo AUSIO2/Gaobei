@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslations , useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { productIconUrl } from "@/lib/asset-urls";
 
 interface Product {
   id: string;
@@ -159,7 +160,7 @@ export default function OverviewSection() {
                     {/* Right Icon */}
                     <div className="w-12 h-12 md:w-14 md:h-14 shrink-0 relative flex items-center justify-center text-blue-400 group-hover:text-blue-300 transition-colors duration-300 z-10">
                       <img
-                        src={`/api/products/icon/${encodeURIComponent(product.icon)}`}
+                        src={productIconUrl(product.icon)}
                         alt={product.name}
                         className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                       />

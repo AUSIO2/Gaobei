@@ -1,13 +1,22 @@
 {
   "id": "3-1",
   "name": "YTR系列柔性三维缝合设备",
+  "nameEn": "YTR Series Flexible 3D Stitching Equipment",
   "summary": "PLC控制主动放纱、张力恒定，Z字形、螺旋线形、弧线形等方式缝合，可定制",
+  "summaryEn": "PLC-controlled active yarn feeding with constant tension, Z-pattern, spiral, arc stitching modes, customizable",
   "specs": [
     "产品定位：适用面积达2x2米，可缝合5-100毫米厚度的复合材料，尤其适合大型工件的复杂轨迹缝合",
     "生产规格：可实现PLC精准控制与张力恒定，缝线间距可调（2-20毫米），缝合效率30-120毫米²/分钟",
     "技术特点：支持直线、曲线、Z字形、螺旋形等多种复杂轨迹，适应不规则缝合路径",
     "核心价值：在特定行列结构中实现极速缝合，是追求产能与标准化作业的理想选择"
   ],
+  "specsEn": [
+    "Positioning: 2×2m stitching area, 5-100mm composite thickness, ideal for complex trajectory stitching of large workpieces",
+    "Production Specs: PLC precision control with constant tension, adjustable stitch spacing (2-20mm), stitching efficiency 30-120 mm²/min",
+    "Technical Features: Supports straight, curved, Z-pattern, spiral, and other complex trajectories for irregular stitching paths",
+    "Core Value: Ultra-fast stitching in specific row-column structures, ideal for high-capacity standardized operations"
+  ],
   "content": "YTR系列柔性三维缝合设备是一款专为大型、厚壁及异形工件设计的柔性缝合装备。它支持最大2000×2000 mm²的缝合面积和5~100 mm的超厚缝合，能够处理各种复杂的非线性轨迹（如Z字形、螺旋形）。凭借PLC精准张力控制，该设备在保证大尺寸包容性的同时维持高质量缝合，是解决大型复合材料预制体缝合难题的全能型利器。",
+  "contentEn": "The YTR Series Flexible 3D Stitching Equipment is designed for large, thick-wall, and irregular workpieces. Supporting up to 2000×2000 mm² stitching area and 5~100mm ultra-thick stitching, it handles various complex non-linear trajectories (Z-pattern, spiral). With PLC precision tension control, it maintains high-quality stitching while accommodating large sizes, making it the ultimate solution for large composite preform stitching challenges.",
   "images": []
 }

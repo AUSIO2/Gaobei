@@ -1,13 +1,22 @@
 {
   "id": "2-2",
   "name": "YWH系列综框式三维机织设备",
+  "nameEn": "YWH Series Harness Frame 3D Weaving Equipment",
   "summary": "正交、层间角联锁、贯穿角联锁等多种组织",
+  "summaryEn": "Multiple structures including orthogonal, interlayer angle interlocking, and through-thickness angle interlocking",
   "specs": [
     "产品定位：专注于常规复杂结构（如正交、联锁等），适合幅宽较大的工业纺织品。",
     "生产规格：织物幅宽 400~1000 mm，长度 2000 mm 以上，层数可达30层以上",
     "技术参数：织物厚度 2~20 mm，参数设置简单，操作门槛低，稳定性",
     "综合价值：。维护成本低、生产稳定，适合高性价比、快速交付的常规三维织物订单"
   ],
+  "specsEn": [
+    "Positioning: Focused on standard complex structures (orthogonal, interlocking, etc.), suitable for wider industrial textiles",
+    "Production Specs: Fabric width 400~1000 mm, length over 2000 mm, up to 30+ layers",
+    "Technical Parameters: Fabric thickness 2~20 mm, simple parameter setup, low operation threshold, high stability",
+    "Value: Low maintenance cost, stable production, ideal for cost-effective and fast-delivery standard 3D textile orders"
+  ],
   "content": "YWH系列综框式三维机织设备是一款专注于标准化与高效批量生产的稳健型设备，它去除了复杂的提花模块，专注于常规的复杂结构织造。该设备在保持与YWT相同的宽幅（400~1000mm）和长尺寸（2000mm以上）基础能力的同时，将织物厚度控制在2~20mm范围内，操作门槛低、维护成本少，非常适合生产工艺成熟、结构相对固定的产业用纺织品，能满足快速交付与高性价比的批量订单需求。",
+  "contentEn": "The YWH Series Harness Frame 3D Weaving Equipment is a robust device focused on standardization and efficient batch production, removing complex jacquard modules to focus on standard complex structure weaving. Maintaining the same width (400~1000mm) and length (2000mm+) capabilities as YWT while controlling fabric thickness to 2~20mm range, it features low operation threshold and maintenance costs, ideal for mature-process, fixed-structure industrial textiles, meeting fast-delivery and cost-effective batch order requirements.",
   "images": []
 }

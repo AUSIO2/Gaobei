@@ -5,6 +5,7 @@ import { motion as motionClient, AnimatePresence } from "framer-motion";
 import { useTranslations , useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import InquiryForm from "@/components/ui/InquiryForm";
+import { newsImageUrl, technologyImageUrl } from "@/lib/asset-urls";
 
 interface SpecItem {
   name: string;
@@ -232,7 +233,7 @@ export default function TechnologyPage() {
           {techData.braiding.image ? (
             <div className="lg:col-span-5 w-full aspect-[432/264] max-w-[550px] mx-auto bg-white rounded-3xl border border-neutral-200/50 shadow-xl overflow-hidden relative group flex items-center justify-center p-2">
               <img
-                src={`/api/technology/image/${encodeURIComponent(techData.braiding.image)}`}
+                src={technologyImageUrl(techData.braiding.image)}
                 alt={techData.braiding.title}
                 className="w-full h-full object-contain select-none pointer-events-none rounded-2xl"
               />
@@ -490,7 +491,7 @@ export default function TechnologyPage() {
             {techData.digitalTwin.image ? (
               <div className="lg:col-span-5 order-1 lg:order-2 w-full aspect-[470/266] max-w-[550px] mx-auto bg-white rounded-3xl border border-neutral-200/50 shadow-xl overflow-hidden relative group flex items-center justify-center p-2">
                 <img
-                  src={`/api/technology/image/${encodeURIComponent(techData.digitalTwin.image)}`}
+                  src={technologyImageUrl(techData.digitalTwin.image)}
                   alt={techData.digitalTwin.title}
                   className="w-full h-full object-contain select-none pointer-events-none rounded-2xl"
                 />
@@ -731,7 +732,7 @@ export default function TechnologyPage() {
                 <div className="w-full sm:w-[150px] aspect-[4/3] rounded-xl bg-gradient-to-br from-dark-from to-dark-to shrink-0 overflow-hidden flex items-center justify-center text-white border border-neutral-100">
                   {item.coverImage ? (
                     <img
-                      src={`/api/news/image/${item.id}/${encodeURIComponent(item.coverImage)}`}
+                      src={newsImageUrl(item.id, item.coverImage)}
                       alt={item.title}
                       className="w-full h-full object-cover"
                     />

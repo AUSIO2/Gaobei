@@ -1,20 +1,30 @@
 {
   "domestic": {
     "title": "国内服务网络",
+    "titleEn": "Domestic Service Network",
     "description": "覆盖国内所有省级、地级市城市的产品服务网络",
+    "descriptionEn": "Product service network covering all provincial and prefecture-level cities nationwide",
     "images": []
   },
   "international": {
     "title": "国际服务网络",
+    "titleEn": "International Service Network",
     "description": "产品远销美洲、欧洲、非洲、亚洲等34个国家和地区",
+    "descriptionEn": "Products exported to 34 countries and regions across the Americas, Europe, Africa, and Asia",
     "images": []
   },
   "cases": {
     "title": "客户案例",
+    "titleEn": "Customer Cases",
     "points": [
       "三维智能织造成型系统装机量行业领先",
       "军品级碳纤维三维结构件特种压力容器研发市占率第一",
       "三维环形织造机、曲面织造机在航空航天领域深度服役"
+    ],
+    "pointsEn": [
+      "Industry-leading installation volume of 3D intelligent braiding and molding systems",
+      "Top market share in military-grade carbon fiber 3D structural special pressure vessel R&D",
+      "3D annular braiding machines and curved surface braiding machines serving extensively in aerospace"
     ],
     "images": []
   }

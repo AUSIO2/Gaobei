@@ -1,13 +1,22 @@
 {
   "id": "1-2",
   "name": "YBIS系列内环球面三维编织机技术",
+  "nameEn": "YBIS Series Internal Ring Spherical 3D Braiding Machine",
   "summary": "针对复杂变截面、曲面中空复合构件的高精度三维随动织造设备。",
+  "summaryEn": "High-precision 3D follow-up braiding equipment for complex variable cross-section, curved hollow composite components.",
   "specs": [
     "规格尺寸：提供三种尺寸，最大型号可达 5250×3500×5200 mm",
     "编织尺寸：支持从 Φ10 到 Φ380 mm的编织件，全系支持 10°-85°大范围调节，精度控制在 ±3°以内",
     "核心性能：纱锭最大转速可达 100 r/min，支持 2环、3环、5环多种配置，且支持双机协同模式",
     "机型矩阵：提供YBIS-144型、YBIS-192型和YBIS-500型三种不同配置"
   ],
+  "specsEn": [
+    "Dimensions: Three sizes available, largest model up to 5250×3500×5200 mm",
+    "Braiding Size: Supports braided parts from Φ10 to Φ380 mm, with 10°-85° wide-range adjustment, accuracy within ±3°",
+    "Core Performance: Max spindle speed up to 100 r/min, supports 2-ring, 3-ring, and 5-ring configurations with dual-machine coordination",
+    "Model Matrix: Three configurations available - YBIS-144, YBIS-192, and YBIS-500"
+  ],
   "content": "YBIS 系列内环柱面编织机是一款高精度、高灵活性的智能化纺织装备，专为精密到中大型管状、柱面编织件而设计。设备提供 144 锭、192 锭和 500 锭三种核心配置，覆盖 Φ10mm 至 Φ380mm 的广泛直径范围，并支持 10°–85° 大范围编织角度调节，角度精度可达 ±3°。采用 PLC 伺服控制系统，纱锭最高转速达 100 r/min，运行平稳、响应迅捷。该系列支持 2 环、3 环、5 环不同编织环数配置，并可实现双机协同作业，大幅提升产能与生产柔性。设备兼容多种纱管规格，还可选配自主开发的编织仿真软件系统、操作平台和牵引装置，实现从织造到后处理的全程可控与智能化支持，适用于医疗导管、工业软管、复合材料预成型体等高端领域的精密编织需求。",
+  "contentEn": "The YBIS Series is a high-precision, highly flexible intelligent textile equipment specifically designed for precision to medium-large tubular and cylindrical braided parts. The equipment offers three core configurations of 144, 192, and 500 spindles, covering a wide diameter range from Φ10mm to Φ380mm, with 10°-85° wide-range braiding angle adjustment and ±3° angle accuracy. Utilizing PLC servo control system with maximum spindle speed of 100 r/min, it ensures stable and responsive operation. The series supports 2, 3, and 5 ring configurations for dual-machine coordination, significantly enhancing capacity and production flexibility. Compatible with various bobbin sizes, it can be equipped with independently developed braiding simulation software, operating platforms, and traction devices for full-process control from braiding to post-processing, suitable for precision braiding in medical catheters, industrial hoses, and composite preforms.",
   "images": []
 }

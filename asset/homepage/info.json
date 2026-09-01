@@ -1,24 +1,33 @@
 {
   "techHighlights": {
     "title": "江苏高倍智能装备有限公司 ",
+    "titleEn": "Jiangsu Gaobei Intelligent Equipment Co., Ltd.",
     "subtitle": "聚焦编织 • 智造复材 ",
-    "description": "江苏高倍智能装备有限公司（简称“江苏高倍”），是云路复合材料集团全资子公司，坐落于江苏省盐城市盐南高新区，专注于特种纤维复合材料等智能装备研发、制造与销售领域，是集技术研发、装备制造、产品应用于一体的高新技术企业。依托集团全球领先的三维编织技术，江苏高倍致力于为航空航天、轨道交通、新能源汽车等领域提供智造高性能复合材料产品整体解决方案。",
+    "subtitleEn": "Focus on Braiding • Smart Composite Manufacturing",
+    "description": "江苏高倍智能装备有限公司（简称「江苏高倍」），是云路复合材料集团全资子公司，坐落于江苏省盐城市盐南高新区，专注于特种纤维复合材料等智能装备研发、制造与销售领域，是集技术研发、装备制造、产品应用于一体的高新技术企业。依托集团全球领先的三维编织技术，江苏高倍致力于为航空航天、轨道交通、新能源汽车等领域提供智造高性能复合材料产品整体解决方案。",
+    "descriptionEn": "Jiangsu Gaobei Intelligent Equipment Co., Ltd., a wholly-owned subsidiary of Yunlu Composite Materials Group, is located in Yannan High-tech Zone, Yancheng, Jiangsu Province. Specializing in R&D, manufacturing, and sales of intelligent equipment for specialty fiber composite materials, it is a high-tech enterprise integrating technology R&D, equipment manufacturing, and product applications. Leveraging the group's globally leading 3D braiding technology, Jiangsu Gaobei is committed to providing smart manufacturing solutions for high-performance composite materials in aerospace, rail transit, and new energy vehicles.",
     "cards": [
       {
         "id": "braiding",
         "title": "三维编织技术",
+        "titleEn": "3D Braiding Technology",
         "subtitle": "3D Braiding Technology",
         "description": "以科技创新为核心驱动力，与多家顶尖科研机构共同组建机械结构、自动化控制、复合材料工艺三大研发团队，持续深耕三维编织底层创新技术。以百余项行业细分领域显著领先的国家发明专利，构筑坚实技术护城河",
+        "descriptionEn": "Driven by technological innovation, we have jointly established three R&D teams in mechanical structure, automation control, and composite material processes with top research institutions. With over 100 leading national invention patents in specialized industry segments, we have built a solid technological moat.",
         "pills": ["1.5m 最大外径", "6m 编织长度", "近净尺寸一次成型"],
+        "pillsEn": ["1.5m Max OD", "6m Braiding Length", "Near-net-shape Forming"],
         "href": "/technology#braiding",
         "image": "braiding.jpg"
       },
       {
         "id": "digital-twin",
         "title": "复合成型自动化生产线",
+        "titleEn": "Automated Composite Molding Line",
         "subtitle": "Automated Composite Molding Production Line",
         "description": "集成三维编织-铺层-缠绕-拉挤复合工艺，全流程实时协同控制，实现复材构件高效率绿色制造。",
+        "descriptionEn": "Integrating 3D braiding, lay-up, winding, and pultrusion composite processes with full-process real-time collaborative control for efficient and green composite component manufacturing.",
         "pills": ["±1℃ 温控精度", "100% 在线监测", "全工艺数智追溯"],
+        "pillsEn": ["±1°C Temp Control", "100% Online Monitoring", "Full-process Digital Traceability"],
         "href": "/technology#digital-twin",
         "image": "digital-twin.jpg"
       }
@@ -26,96 +35,137 @@
   },
   "solutionsPreview": {
     "title": "服务三大核心产业",
+    "titleEn": "Serving Three Core Industries",
     "subtitle": "业务版图 • 行业应用",
+    "subtitleEn": "Business Portfolio • Industry Applications",
     "industries": [
       {
         "id": "aerospace",
         "title": "航空航天",
+        "titleEn": "Aerospace",
         "subtitle": "Aerospace & Defense",
         "description": "针对极端工况要求，提供包括机身肋梁、发动机喷管保护层、整流罩、机翼前缘等高强度、零缺陷关键承力件的三维立体编织解决方案。",
+        "descriptionEn": "For extreme operating conditions, providing 3D braiding solutions for high-strength, zero-defect critical load-bearing components including fuselage ribs, engine nozzle protection layers, fairings, and wing leading edges.",
         "href": "/solutions#aerospace",
-        "highlights": ["无层间剥离结构", "极端耐温与防热", "近净尺寸一次成型"]
+        "highlights": ["无层间剥离结构", "极端耐温与防热", "近净尺寸一次成型"],
+        "highlightsEn": ["Delamination-free Structure", "Extreme Heat Resistance", "Near-net-shape Forming"]
       },
-
       {
         "id": "automotive",
         "title": "汽车轻量化",
+        "titleEn": "Automotive Lightweighting",
         "subtitle": "Automotive Lightweighting",
         "description": "助力量产与高性能赛车，定制底盘传动轴管件、车身防撞横梁、新能源电池包壳体等结构件，实现高达30%-50%的以碳代钢轻量化减重。",
+        "descriptionEn": "Supporting mass production and high-performance racing with custom chassis driveshaft tubes, body crash beams, and new energy battery pack housings, achieving 30%-50% weight reduction by replacing steel with carbon fiber.",
         "href": "/solutions#automotive",
-        "highlights": ["碳纤维车身", "电池包壳体", "轻量化底盘件"]
+        "highlights": ["碳纤维车身", "电池包壳体", "轻量化底盘件"],
+        "highlightsEn": ["Carbon Fiber Body", "Battery Pack Housing", "Lightweight Chassis Parts"]
       },
-
       {
         "id": "energy",
         "title": "新能源与清洁能源",
+        "titleEn": "New Energy & Clean Energy",
         "subtitle": "New Energy & Power",
         "description": "面公司的光伏热场产品已持续量产，通过工艺的颠覆式创新，以及配套自主研发的生产设备（产线），其自动化程序处于行业最先进水平；其中托杆、埚托、坩埚预制体已经具有绝对的市场竞争优势，未来将逐步扩大市场占有率。",
+        "descriptionEn": "Our photovoltaic thermal field products are in continuous mass production. Through disruptive process innovation and supporting independently developed production equipment, the automation level is at the industry's most advanced level. Our support rods, crucible holders, and crucible preforms have achieved absolute market competitive advantage.",
         "href": "/solutions#energy",
-        "highlights": ["光伏热场", "储能预制体产品", "针刺预制体产品"]
+        "highlights": ["光伏热场", "储能预制体产品", "针刺预制体产品"],
+        "highlightsEn": ["PV Thermal Field", "Energy Storage Preforms", "Needle-punched Preforms"]
       }
     ],
-    "footerNote": "我们拥有完善的非标制造开发能力，亦可为 国防科工、海洋工程、轨道交通及高端医疗器械 等特种行业提供定制化复合材料工艺装备。"
+    "footerNote": "我们拥有完善的非标制造开发能力，亦可为 国防科工、海洋工程、轨道交通及高端医疗器械 等特种行业提供定制化复合材料工艺装备。",
+    "footerNoteEn": "We have comprehensive non-standard manufacturing capabilities and can also provide customized composite material process equipment for defense, marine engineering, rail transit, and high-end medical devices."
   },
   "stats": [
     {
       "value": 6,
       "suffix": "大",
+      "suffixEn": "",
       "label": "产品系列",
-      "sublabel": "多类型产品可供选择，满足多元需求"
+      "labelEn": "Product Lines",
+      "sublabel": "多类型产品可供选择，满足多元需求",
+      "sublabelEn": "Multiple product types to meet diverse needs"
     },
     {
       "value": 200,
       "suffix": "+",
       "label": "知识产权",
-      "sublabel": "拥有多项科研专利，技术自主性高"
+      "labelEn": "IP Rights",
+      "sublabel": "拥有多项科研专利，技术自主性高",
+      "sublabelEn": "Multiple R&D patents with high technological independence"
     },
     {
       "value": 100,
       "suffix": "+",
       "label": "客户验证",
-      "sublabel": "产品质量好，用户回头率高"
+      "labelEn": "Client Verified",
+      "sublabel": "产品质量好，用户回头率高",
+      "sublabelEn": "High product quality with excellent customer retention"
     },
     {
       "value": "1000",
       "suffix": "+",
       "label": "服务案例",
-      "sublabel": "拥有完备的服务体系"
+      "labelEn": "Service Cases",
+      "sublabel": "拥有完备的服务体系",
+      "sublabelEn": "Comprehensive service system"
     }
   ],
   "cta": {
     "title": "为您的项目寻找最优的复材解决方案",
+    "titleEn": "Find the Optimal Composite Solution for Your Project",
     "description": "无论您处于方案规划阶段还是在大批量采购阶段，云路复材的专业工程服务团队都将为您提供量身定制的支持。",
+    "descriptionEn": "Whether you're in the planning phase or bulk procurement stage, our professional engineering service team will provide you with tailored support.",
     "cards": [
       {
         "title": "获取产品手册",
+        "titleEn": "Get Product Brochure",
         "description": "全面了解云路复材三维编织装备、专用核心配件及成型平台的详细技术参数与产品谱系。",
+        "descriptionEn": "Comprehensive understanding of our 3D braiding equipment, specialized core accessories, and molding platforms with detailed technical specifications.",
         "buttonText": "获取电子手册",
+        "buttonTextEn": "Get E-Brochure",
         "purpose": "获取产品手册",
-        "tag": "低门槛 • 快速获取"
+        "tag": "低门槛 • 快速获取",
+        "tagEn": "Low Barrier • Quick Access"
       },
       {
         "title": "预约参观 / 索取样件",
+        "titleEn": "Schedule Visit / Request Samples",
         "description": "亲临现代化数字化中试车间，直观感受数字孪生自动化产线运作，或申请符合规格的三维编织测试样件。",
+        "descriptionEn": "Visit our modern digital pilot workshop to experience digital twin automated production lines firsthand, or request 3D braiding test samples to your specifications.",
         "buttonText": "索取及预约",
+        "buttonTextEn": "Request & Schedule",
         "purpose": "预约产线参观",
-        "tag": "中门槛 • 深度对接"
+        "tag": "中门槛 • 深度对接",
+        "tagEn": "Medium Barrier • Deep Engagement"
       },
       {
         "title": "联系顾问，获取方案",
+        "titleEn": "Consult an Expert, Get Solutions",
         "description": "资深复合材料研发与设备专家一对一评估您的工艺需求，提供最适宜的三维编织结构设计与成型装备报价方案。",
+        "descriptionEn": "Senior composite material R&D and equipment experts provide one-on-one assessment of your process needs, delivering the most suitable 3D braiding structural design and molding equipment quotation.",
         "buttonText": "获取定制方案",
+        "buttonTextEn": "Get Custom Solution",
         "purpose": "定制方案咨询",
-        "tag": "专业级 • 高效定制"
+        "tag": "专业级 • 高效定制",
+        "tagEn": "Professional • Efficient Custom"
       }
     ],
     "trustTitle": "高倍智造 • 值得信赖的合作伙伴",
+    "trustTitleEn": "Gaobei Smart Manufacturing • Trusted Partner",
     "trustSub": "拥有从工艺研发、预制体打样到产线非标定制的闭环智造体系",
+    "trustSubEn": "Complete closed-loop smart manufacturing system from process R&D, preform prototyping to production line customization",
     "badges": [
       "ISO 9001 质量管理体系",
       "国家高新技术企业",
       "高精细三维编织专利保护",
       "软硬件100%自主可控"
+    ],
+    "badgesEn": [
+      "ISO 9001 Quality Management",
+      "National High-tech Enterprise",
+      "3D Braiding Patent Protection",
+      "100% Independent Software & Hardware"
     ]
   }
 }

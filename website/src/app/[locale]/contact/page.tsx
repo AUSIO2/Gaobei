@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useTranslations , useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import InquiryForm from "@/components/ui/InquiryForm";
+import { contactImageUrl } from "@/lib/asset-urls";
 
 interface HeroSection {
   title: string;
@@ -262,7 +263,7 @@ export default function ContactPage() {
           </div>
           <div className="bg-white border border-neutral-200/60 rounded-3xl p-6 sm:p-8 md:p-10 shadow-sm flex items-center justify-center overflow-hidden">
             <img
-              src={`/api/contact/${encodeURIComponent(data.partners.image)}`}
+              src={contactImageUrl(data.partners.image)}
               alt={data.partners.title}
               className="max-w-full h-auto object-contain select-none pointer-events-none"
             />
@@ -295,7 +296,7 @@ export default function ContactPage() {
             <div className="aspect-[4/3] w-full rounded-2xl bg-neutral-50 border border-dashed border-neutral-300 flex flex-col items-center justify-center gap-4 relative overflow-hidden shadow-inner group-hover:border-brand/50 transition-colors duration-300">
               {data.info.mapImage ? (
                 <img
-                  src={`/api/contact/${encodeURIComponent(data.info.mapImage)}`}
+                  src={contactImageUrl(data.info.mapImage)}
                   alt={`${data.info.centerName || "高倍智能制造研发中心"}位置`}
                   className="w-full h-full object-cover rounded-2xl"
                 />

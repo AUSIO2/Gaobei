@@ -5,6 +5,7 @@ import { useEffect, useState, use } from "react";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 import { useRouter } from "next/navigation";
+import { newsImageUrl, toImageBasename } from "@/lib/asset-urls";
 
 interface NewsItem {
   id: string;
@@ -142,7 +143,7 @@ export default function NewsDetailPage(props: { params: Promise<{ id: string }> 
                 {newsItem.images.map((image, idx) => (
                   <div key={idx} className="border border-neutral-200/50 rounded-2xl overflow-hidden shadow-sm bg-neutral-50 flex items-center justify-center">
                     <img
-                      src={image.startsWith('/') ? image : `/api/news/image/${newsItem.id}/${encodeURIComponent(image)}`}
+                      src={newsImageUrl(newsItem.id, toImageBasename(image))}
                       alt={`${newsItem.title} - ${idx + 1}`}
                       className="w-full h-auto object-cover max-h-[400px]"
                     />

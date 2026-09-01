@@ -1,7 +1,10 @@
 {
   "hero": {
     "title": "产学研深度融合与核心科技资产",
+    "titleEn": "Deep Integration of Industry-Academia-Research & Core Technology Assets",
     "subtitle": "资质荣誉 · HONORS & CERTIFICATES",
-    "description": "坚持科学技术是第一生产力，云路复材通过自主创新与严谨验证，铸就扎实的行业声誉。"
+    "subtitleEn": "Honors & Certificates · HONORS & CERTIFICATES",
+    "description": "坚持科学技术是第一生产力，云路复材通过自主创新与严谨验证，铸就扎实的行业声誉。",
+    "descriptionEn": "Adhering to the principle that science and technology are the primary productive forces, Yunlu Composites has forged a solid industry reputation through independent innovation and rigorous verification."
   }
 }

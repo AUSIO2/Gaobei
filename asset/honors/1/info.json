@@ -1,7 +1,12 @@
 {
   "id": "1",
   "title": "中国纺织工业联合会科学技术奖",
+  "titleEn": "CNTAC Science & Technology Award",
   "tag": "中国纺织工业联合会认定",
+  "tagEn": "Certified by China National Textile and Apparel Council",
   "desc": "为表彰在全国纺织行业科学研究、技术创新、成果推广、高新技术产业化中做出的突出贡献，特发此证，以资鼓励。",
-  "images": ["/api/honors/image/1/img.png"]
+  "descEn": "Awarded for outstanding contributions in scientific research, technological innovation, achievement promotion, and high-tech industrialization in the national textile industry.",
+  "images": [
+    "img.png"
+  ]
 }

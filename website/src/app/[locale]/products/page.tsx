@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
+import { productIconUrl } from "@/lib/asset-urls";
 
 interface Product {
   id: string;
@@ -167,7 +168,7 @@ export default function ProductsPage() {
                     </div>
                     <div className="w-16 h-16 shrink-0 text-blue-400 group-hover:text-blue-300 transition-colors duration-300">
                       <img
-                        src={`/api/products/icon/${encodeURIComponent(product.icon)}`}
+                        src={productIconUrl(product.icon)}
                         alt={product.name}
                         className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity"
                       />

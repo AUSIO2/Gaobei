@@ -1,13 +1,22 @@
 {
   "id": "2-1",
   "name": "YWT系列提花式三维机织设备",
+  "nameEn": "YWT Series Jacquard 3D Weaving Equipment",
   "summary": "正交、层间角联锁、贯穿角联锁等多种组织",
+  "summaryEn": "Multiple structures including orthogonal, interlayer angle interlocking, and through-thickness angle interlocking",
   "specs": [
     "产品定位：适合高端装饰、特种复合材料等复杂图案与异形结构场景",
     "生产规格：织物幅宽 400~1000 mm，长度 2000 mm 以上，层数可达40层以上",
     "技术参数：提花针数 4000~10000 根，织物厚度 2~40 mm，可织造复杂纹理与极厚预制体",
     "综合价值：设计自由度高，适合高端异形复合材料的研发与生产"
   ],
+  "specsEn": [
+    "Positioning: Suitable for high-end decorative and specialty composite materials with complex patterns and irregular structures",
+    "Production Specs: Fabric width 400~1000 mm, length over 2000 mm, up to 40+ layers",
+    "Technical Parameters: 4000~10000 jacquard needles, fabric thickness 2~40 mm, capable of weaving complex textures and ultra-thick preforms",
+    "Value: High design freedom, ideal for R&D and production of high-end irregular composite materials"
+  ],
   "content": "YWT系列提花式三维机织设备是一款主打高复杂度与定制化的高端织造装备，核心优势在于配备了4000~10000根提花针数，支持正交、层间角联锁、贯穿角联锁等多种复杂组织，能够织造出具有复杂花纹与异形结构的立体织物。在规格上，该设备幅宽可达400~1000mm，长度超过2000mm，且具备高达40层的织造能力与2~40mm的厚度适应性，是研发和生产高端异形复合材料、特种装饰织物的理想选择。",
+  "contentEn": "The YWT Series Jacquard 3D Weaving Equipment is a high-end weaving device focused on high complexity and customization. Its core advantage lies in 4000~10000 jacquard needles, supporting orthogonal, interlayer angle interlocking, and through-thickness angle interlocking structures, capable of weaving 3D fabrics with complex patterns and irregular structures. With fabric width up to 400~1000mm, length exceeding 2000mm, and weaving capability of up to 40 layers with 2~40mm thickness adaptability, it is ideal for R&D and production of high-end irregular composite materials and specialty decorative fabrics.",
   "images": []
 }

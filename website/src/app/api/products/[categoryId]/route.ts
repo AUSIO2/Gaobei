@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import { localizeData, getLocaleFromRequest } from "@/lib/localize";
+import { productImageUrl } from "@/lib/asset-urls";
+import { resolveImageList } from "@/lib/serve-asset";
 
 export async function GET(
   request: NextRequest,
@@ -11,7 +13,7 @@ export async function GET(
     const { categoryId } = await props.params;
     const locale = getLocaleFromRequest(request);
     const assetDir = path.join(process.cwd(), "../asset/products", categoryId);
-    
+
     if (!fs.existsSync(assetDir) || !fs.statSync(assetDir).isDirectory()) {
       return NextResponse.json({ error: "Category not found" }, { status: 404 });
     }
@@ -24,7 +26,6 @@ export async function GET(
     const categoryContent = fs.readFileSync(categoryInfoPath, "utf-8");
     const categoryData = JSON.parse(categoryContent);
 
-    // Load products in this category
     const products: any[] = [];
     const files = fs.readdirSync(assetDir);
     for (const fileName of files) {
@@ -37,35 +38,11 @@ export async function GET(
             const productData = JSON.parse(productContent);
             if (productData && productData.id) {
               const productId = productData.id;
-              let productImages = productData.images || [];
-
-              // If images array is empty, dynamically scan the folder for images
-              if (productImages.length === 0) {
-                const imageExtensions = [".png", ".jpg", ".jpeg", ".webp", ".svg", ".gif"];
-                try {
-                  const pFiles = fs.readdirSync(productDir);
-                  const scannedImages = pFiles
-                    .filter((f) => {
-                      const ext = path.extname(f).toLowerCase();
-                      const isFile = fs.statSync(path.join(productDir, f)).isFile();
-                      return isFile && imageExtensions.includes(ext);
-                    })
-                    .map((f) => `/api/products/image/${categoryId}/${productId}/${f}`);
-                  productImages = scannedImages;
-                } catch (e) {
-                  console.error(`Failed to scan product directory for images: ${productDir}`, e);
-                }
-              } else {
-                // Map existing relative image paths to the api endpoint
-                productImages = productImages.map((img: string) => {
-                  if (img.startsWith("/") || img.startsWith("http")) {
-                    return img;
-                  }
-                  return `/api/products/image/${categoryId}/${productId}/${img}`;
-                });
-              }
-
-              productData.images = productImages;
+              productData.images = resolveImageList(
+                productData.images,
+                productDir,
+                (f) => productImageUrl(categoryId, productId, f)
+              );
               products.push(productData);
             }
           } catch (err) {
@@ -75,9 +52,7 @@ export async function GET(
       }
     }
 
-    // Sort products by id ascending
     products.sort((a, b) => a.id.localeCompare(b.id));
-
     categoryData.products = products;
 
     return NextResponse.json(localizeData(categoryData, locale));

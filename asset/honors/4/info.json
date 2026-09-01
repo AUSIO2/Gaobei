@@ -1,7 +1,12 @@
 {
   "id": "4",
   "title": "AAA级信用企业",
+  "titleEn": "AAA Credit Enterprise",
   "tag": "国家级信誉企业",
+  "tagEn": "National-level Credit Enterprise",
   "desc": "企业标准信息服务平台、国信中诚（北京）认证有限公司和全国诚信企业信息服务平台三方认证",
-  "images": ["/api/honors/image/4/img.png"]
+  "descEn": "Triple-certified by Enterprise Standard Information Service Platform, Guoxin Zhongcheng (Beijing) Certification Co., Ltd., and National Integrity Enterprise Information Service Platform.",
+  "images": [
+    "img.png"
+  ]
 }

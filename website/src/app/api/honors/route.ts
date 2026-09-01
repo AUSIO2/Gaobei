@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import { localizeData, getLocaleFromRequest } from "@/lib/localize";
+import { honorsImageUrl } from "@/lib/asset-urls";
+import { resolveImageList } from "@/lib/serve-asset";
 
 export async function GET(request: Request) {
   try {
@@ -20,17 +22,11 @@ export async function GET(request: Request) {
               const content = fs.readFileSync(infoJsonPath, "utf-8");
               const honorInfo = JSON.parse(content);
               if (honorInfo && honorInfo.id) {
-                // Dynamically scan honors subdirectories for image files
-                const files = fs.readdirSync(itemDir);
-                const images: string[] = [];
-                const imgExtensions = [".png", ".jpg", ".jpeg", ".webp", ".gif"];
-                for (const file of files) {
-                  const ext = path.extname(file).toLowerCase();
-                  if (imgExtensions.includes(ext)) {
-                    images.push(`/api/honors/image/${honorInfo.id}/${encodeURIComponent(file)}`);
-                  }
-                }
-                honorInfo.images = images;
+                honorInfo.images = resolveImageList(
+                  honorInfo.images,
+                  itemDir,
+                  (f) => honorsImageUrl(honorInfo.id, f)
+                );
                 honors.push(honorInfo);
               }
             } catch (err) {
@@ -41,7 +37,6 @@ export async function GET(request: Request) {
       }
     }
 
-    // Sort honors by id (ascending, e.g. "1", "2", "3", "4")
     honors.sort((a, b) => a.id.localeCompare(b.id));
 
     return NextResponse.json(localizeData(honors, locale));

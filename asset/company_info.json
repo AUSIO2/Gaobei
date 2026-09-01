@@ -1,49 +1,66 @@
 {
   "name": "江苏高倍科技有限公司",
-  "nameEn": "",
+  "nameEn": "Jiangsu Gaobei Technology Co., Ltd.",
   "description": "掌握三维编织核心技术，打造数字孪生自动化产线。为航空航天、新能源与汽车轻量化提供国际先进的复合材料高端制造解决方案。",
+  "descriptionEn": "Mastering core 3D braiding technology with digital twin automated production lines. Delivering world-class composite material manufacturing solutions for aerospace, new energy, and automotive lightweighting.",
   "buttons": [
     "核心技术",
     "解决方案",
     "产品中心",
     "关于我们"
   ],
+  "buttonsEn": [
+    "Technology",
+    "Solutions",
+    "Products",
+    "About Us"
+  ],
   "news": [],
   "contactTitle": "行业联系人电话",
+  "contactTitleEn": "Industry Contacts",
   "contacts": [
     {
       "role": "",
       "name": "易先生",
+      "nameEn": "Mr. Yi",
       "phone": "18121281680"
     },
     {
       "role": "",
       "name": "夏先生",
+      "nameEn": "Mr. Xia",
       "phone": "18201731965"
     },
     {
       "role": "",
       "name": "明女士",
+      "nameEn": "Ms. Ming",
       "phone": "18068884900"
     }
   ],
   "footer": {
     "email": "gusenyan@yl-fc.com",
     "address": "盐城市盐南高新区新河街道新园路70号1幢",
+    "addressEn": "Building 1, No. 70 Xinyuan Road, Xinhe Street, Yannan High-tech Zone, Yancheng, Jiangsu, China",
     "copyright": "云路复材 2023 - 2026 版权所有 渝ICP备2023004561号-1",
+    "copyrightEn": "Yunlu Composites 2023 - 2026 All Rights Reserved 渝ICP备2023004561号-1",
     "support": "技术支持：高倍智造团队",
+    "supportEn": "Technical Support: Gaobei Smart Manufacturing Team",
     "qrCodes": [
       {
         "label": "云路复材",
-        "image": "official.png"
+        "labelEn": "Yunlu Composites",
+        "image": "official.jpg"
       },
       {
         "label": "官方微信",
-        "image": "wechat.png"
+        "labelEn": "Official WeChat",
+        "image": "wechat.jpg"
       },
       {
         "label": "技术支持",
-        "image": "support.png"
+        "labelEn": "Tech Support",
+        "image": "support.jpg"
       }
     ]
   }

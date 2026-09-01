@@ -1,13 +1,22 @@
 {
   "id": "2-3",
   "name": "数控缠绕设备",
+  "nameEn": "CNC Filament Winding Equipment",
   "summary": "对高性能复合材料成型需求开发的智能化制造系统，涵盖了从传统多轴联动到先进机器人三维缠绕的技术布局",
+  "summaryEn": "Intelligent manufacturing system developed for high-performance composite molding needs, covering technology from traditional multi-axis linkage to advanced robotic 3D winding",
   "specs": [
-    "产品定位：云路复材的数控缠绕装备定位于高端复合材料的智能制造领域，致力于提供“自动化、高精度、高稳定性”的预制体成型解决方案。",
+    "产品定位：云路复材的数控缠绕装备定位于高端复合材料的智能制造领域，致力于提供「自动化、高精度、高稳定性」的预制体成型解决方案。",
     "生产规格：四轴缠绕装备主要针对圆柱形的复合材料管材、棒材及壳体等规则构件；机器人三维缠绕装备引入工业机器臂，能够处理具有复杂空间曲面、异形截面或超大尺寸的复合材料构件。",
     "技术特点：采用先进的数控系统，具备高精度的轨迹控制能力，能够实现对纤维缠绕角度、张力和速度的精确调节，确保制品的结构均匀性和力学性能一致性。",
     "核心价值：通过高精度控制和工艺复合，显著提高了复合材料的纤维体积分数和制品的力学性能，同时大幅提升了复杂构件的生产效率，降低了人工成本和废品率。"
   ],
+  "specsEn": [
+    "Positioning: Positioned in high-end composite intelligent manufacturing, providing 'automated, high-precision, high-stability' preform molding solutions.",
+    "Production Specs: Four-axis winding for cylindrical composite tubes, rods, 和 shells; Robotic 3D winding with industrial robotic arms for complex spatial curves, irregular cross-sections, or oversized components.",
+    "Technical Features: Advanced CNC system with high-precision trajectory control, precisely adjusting fiber winding angle, tension, 和 speed to ensure structural uniformity 和 mechanical consistency.",
+    "Core Value: High-precision control 和 process integration significantly improve fiber volume fraction 和 mechanical performance while greatly enhancing complex component production efficiency, reducing labor costs 和 scrap rates."
+  ],
   "content": "数控缠绕装备是一套集成了全数控精密控制、智能工艺复合与柔性化制造的高端智能装备体系。从传统的四轴联动到先进的机器人三维缠绕，该产品矩阵不仅具备覆盖广泛规格的成型能力，更以其高精尖的技术特点打破了国外技术垄断。其核心在于通过国产化高端装备，为客户提供高性能复合材料的整体解决方案，是推动现代工业向高端化、智能化迈进的重要技术引擎。",
+  "contentEn": "The CNC Filament Winding Equipment is an integrated high-end intelligent equipment system combining full CNC precision control, intelligent process integration, 和 flexible manufacturing. From traditional four-axis linkage to advanced robotic 3D winding, this product matrix offers not only wide-specification molding capability but also breaks foreign technology monopolies with its cutting-edge features. Its core lies in providing customers with comprehensive high-performance composite solutions through domestically produced high-end equipment, serving as a key technology engine driving modern industry toward high-end intelligence.",
   "images": []
 }

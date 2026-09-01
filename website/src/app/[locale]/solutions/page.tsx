@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations , useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import InquiryForm from "@/components/ui/InquiryForm";
+import { solutionsImageUrl } from "@/lib/asset-urls";
 
 interface SolutionProduct {
   id: string;
@@ -211,7 +212,7 @@ export default function SolutionsPage() {
               {ind.image && (
                 <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full rounded-3xl overflow-hidden border border-neutral-200/40 shadow-lg group">
                   <img
-                    src={`/api/solutions/image/${encodeURIComponent(ind.image)}`}
+                    src={solutionsImageUrl(ind.image)}
                     alt={ind.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />

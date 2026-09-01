@@ -1,13 +1,22 @@
 {
   "id": "4-2",
   "name": "YNP系列异形预制体针刺机",
+  "nameEn": "YNP Series Profiled Preform Needle Punching Machine",
   "summary": "连续供料-针刺-复合工艺-切割-烘烤-检验-包装多工序自动化协同控制，实现自动化生产，提高生产效率",
+  "summaryEn": "Continuous feeding-needle punching-composite process-cutting-baking-inspection-packaging multi-process automated coordinated control for automated production and improved efficiency",
   "specs": [
     "产线集成：集成自动化缠+连续供料系统，并配合多轴协作机器人协同作业",
     "效率指标：利用 多角度组合针板的高频（60~180次/分钟）穿刺，打破异形曲面缝合的效率瓶颈",
     "控制特色：基于 PLC伺服控制，精准调控异形芯模的 10~180 r/min 旋转速度与多角度针板的协同动作",
     "良品管理：结合自动化协同控制，实现针刺-复合-切割-烘烤多工序联动，有效降低人工干预带来的波动"
   ],
+  "specsEn": [
+    "Line Integration: Automated winding + continuous feeding system with multi-axis collaborative robots",
+    "Efficiency: High-frequency (60~180 strokes/min) multi-angle combination needle boards breaking efficiency bottlenecks for profiled surface stitching",
+    "Control Features: PLC servo control precisely regulating profiled mandrel rotation speed (10~180 r/min) and multi-angle needle board coordination",
+    "Quality Management: Automated coordinated control for needle punching-composite-cutting-baking multi-process linkage, effectively reducing manual intervention fluctuations"
+  ],
   "content": "本数字化单元针对飞机大承力结构件制造的极高性能和极高可靠性要求开发。全线高度融合了数字孪生数字控制技术，配合在线激光轨迹扫描和三维避障，可极佳适应各种厚截面、大曲度碳纤维的非定常自动化铺放，代表了国产航天级三维编织的高端智能应用水平。",
+  "contentEn": "This digital unit is developed for the ultra-high performance and reliability requirements of aircraft major load-bearing structural component manufacturing. The entire line deeply integrates digital twin digital control technology with online laser trajectory scanning and 3D obstacle avoidance, excellently adapting to non-stationary automated placement of various thick-section, high-curvature carbon fibers, representing the highest level of domestic aerospace-grade 3D braiding intelligent applications.",
   "images": []
 }

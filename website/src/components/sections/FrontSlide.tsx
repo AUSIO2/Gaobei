@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, type PanInfo } from "framer-motion";
 import { useTranslations , useLocale } from "next-intl";
+import { slidesImageUrl } from "@/lib/asset-urls";
 
 let globalSlidesCache: string[] | null = null;
 
@@ -118,7 +119,7 @@ export default function FrontSlide() {
         <AnimatePresence initial={false} custom={direction}>
           <motion.img
             key={currentIndex}
-            src={`/api/slides/${encodeURIComponent(images[currentIndex])}`}
+            src={slidesImageUrl(images[currentIndex])}
             custom={direction}
             variants={slideVariants}
             initial="enter"

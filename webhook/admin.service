@@ -1,0 +1,29 @@
+# Gaobei Admin — systemd unit
+[Unit]
+Description=Gaobei Admin CMS
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/admin
+EnvironmentFile=/root/admin/.env
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=5
+User=root
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/root/asset /root/asset-backups
+InaccessiblePaths=-/root/.ssh -/root/.gnupg
+
+[Install]
+WantedBy=multi-user.target

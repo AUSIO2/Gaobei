@@ -1,86 +1,121 @@
 {
   "hero": {
     "title": "引领复合材料三维编织数字化革命",
+    "titleEn": "Leading the Digital Revolution of 3D Composite Braiding",
     "subtitle": "关于我们 · ABOUT US",
-    "description": "江苏高倍智能装备有限公司（简称“江苏高倍”），是云路复合材料集团全资子公司，坐落于江苏省盐城市盐南高新区，专注于特种纤维复合材料等智能装备研发、制造与销售领域，是集技术研发、装备制造、产品应用于一体的高新技术企业。依托集团全球领先的三维编织技术，江苏高倍致力于为航空航天、轨道交通、新能源汽车等领域提供智造高性能复合材料产品整体解决方案。"
+    "subtitleEn": "About Us · ABOUT US",
+    "description": "江苏高倍智能装备有限公司（简称「江苏高倍」），是云路复合材料集团全资子公司，坐落于江苏省盐城市盐南高新区，专注于特种纤维复合材料等智能装备研发、制造与销售领域，是集技术研发、装备制造、产品应用于一体的高新技术企业。依托集团全球领先的三维编织技术，江苏高倍致力于为航空航天、轨道交通、新能源汽车等领域提供智造高性能复合材料产品整体解决方案。",
+    "descriptionEn": "Jiangsu Gaobei Intelligent Equipment Co., Ltd. (Jiangsu Gaobei), a wholly-owned subsidiary of Yunlu Composite Materials Group, is located in Yannan High-tech Zone, Yancheng, Jiangsu Province. Specializing in R&D, manufacturing, and sales of intelligent equipment for specialty fiber composite materials, it is a high-tech enterprise integrating technology R&D, equipment manufacturing, and product applications. Leveraging the group's globally leading 3D braiding technology, Jiangsu Gaobei is committed to providing smart manufacturing solutions for high-performance composite materials in aerospace, rail transit, and new energy vehicles."
   },
   "intro": {
     "paragraphs": [
       "三维编织技术是当今世界最先进的纤维预成型体制造技术之一，解决了传统层合复合材料容易层间开裂的痛点。云路复材通过自主研发的数字孪生系统，将数字化控制技术注入复杂的编织机构，赋予纤维以空间生命力。",
-      "我们不仅制造大国重器级别的三维编织智能设备，还致力于提供包括专用配件、中试与成型平台、非标自动化生产线定制在内的全生命周期整体解决方案。云路以“编织无限可能，成就轻量未来”为愿景，助力中国制造向高端跃升。"
+      "我们不仅制造大国重器级别的三维编织智能设备，还致力于提供包括专用配件、中试与成型平台、非标自动化生产线定制在内的全生命周期整体解决方案。云路以「编织无限可能，成就轻量未来」为愿景，助力中国制造向高端跃升。"
+    ],
+    "paragraphsEn": [
+      "3D braiding technology is one of the most advanced fiber preform manufacturing technologies in the world, solving the pain point of traditional laminated composite materials being prone to interlayer cracking. Through independently developed digital twin systems, Yunlu Composites injects digital control technology into complex braiding mechanisms, giving fibers spatial vitality.",
+      "We not only manufacture national-pillar-grade 3D braiding intelligent equipment, but also provide full lifecycle solutions including specialized accessories, pilot and molding platforms, and custom non-standard automated production lines. With the vision of 'Weaving Unlimited Possibilities, Achieving a Lightweight Future', Yunlu helps Chinese manufacturing leap to the high end."
     ],
     "position": {
       "title": "核心定位",
-      "description": "聚焦航空航天、国防军工及新能源领域的轻量化部件织造成型，实现核心工艺装备 100% 自主研发。"
+      "titleEn": "Core Positioning",
+      "description": "聚焦航空航天、国防军工及新能源领域的轻量化部件织造成型，实现核心工艺装备 100% 自主研发。",
+      "descriptionEn": "Focused on lightweight component braiding and molding for aerospace, defense, and new energy sectors, achieving 100% independent R&D of core process equipment."
     }
   },
   "strengths": [
     {
       "title": "学术基因 · 顶尖团队",
       "titleEn": "ACADEMIC ORIGINS & TOP TEAM",
-      "desc": "核心团队来自国内顶尖高校及航空航天科研院所，拥有多位三维编织与先进复合材料领域的教授、博士及高级工程师。"
+      "desc": "核心团队来自国内顶尖高校及航空航天科研院所，拥有多位三维编织与先进复合材料领域的教授、博士及高级工程师。",
+      "descEn": "Core team from top domestic universities and aerospace research institutes, with multiple professors, PhDs, and senior engineers in 3D braiding and advanced composite materials."
     },
     {
       "title": "技术自研 · 装备自主",
       "titleEn": "INDEPENDENT TECH & EQUIPMENT",
-      "desc": "突破国外技术封锁，实现三维编织运动控制系统、数字孪生仿真软件及核心执行机构的完全自主化研发与制造。"
+      "desc": "突破国外技术封锁，实现三维编织运动控制系统、数字孪生仿真软件及核心执行机构的完全自主化研发与制造。",
+      "descEn": "Breaking through foreign technology blockades, achieving fully independent R&D and manufacturing of 3D braiding motion control systems, digital twin simulation software, and core actuators."
     },
     {
       "title": "军工品质 · 航天验证",
       "titleEn": "MILITARY QUALITY & SPACE VERIFIED",
-      "desc": "产品与解决方案广泛应用于航天特种结构件、新能源高压容器及汽车轻量化构件，品质经过极高强度的服役验证。"
+      "desc": "产品与解决方案广泛应用于航天特种结构件、新能源高压容器及汽车轻量化构件，品质经过极高强度的服役验证。",
+      "descEn": "Products and solutions widely applied in aerospace special structural components, new energy high-pressure vessels, and automotive lightweight components, with quality verified through extreme service conditions."
     }
   ],
   "milestones": [
     {
       "year": "2020",
       "title": "初创启航",
-      "desc": "公司成立，入驻盐城盐南高新区西伏河数字智能创新社区。"
+      "titleEn": "Founding",
+      "desc": "公司成立，入驻盐城盐南高新区西伏河数字智能创新社区。",
+      "descEn": "Company established, located in Xifuhe Digital Intelligence Innovation Community, Yannan High-tech Zone, Yancheng."
     },
     {
       "year": "2021",
       "title": "启动研发",
-      "desc": "获批国家级高新技术企业，启动大尺寸三维编织装备研发项目。"
+      "titleEn": "R&D Launch",
+      "desc": "获批国家级高新技术企业，启动大尺寸三维编织装备研发项目。",
+      "descEn": "Certified as a National High-tech Enterprise, launched large-scale 3D braiding equipment R&D project."
     },
     {
       "year": "2023",
       "title": "领跑行业",
-      "desc": "荣获中国纺织工业联合会科技进步奖一等奖，技术成果达国际领先水平。"
+      "titleEn": "Industry Leader",
+      "desc": "荣获中国纺织工业联合会科技进步奖一等奖，技术成果达国际领先水平。",
+      "descEn": "Won First Prize of Science & Technology Progress Award from China National Textile and Apparel Council, achieving internationally leading technology."
     },
     {
       "year": "2024",
       "title": "技术突破",
-      "desc": "“复合成型自动化生产线”项目通过省级科技成果鉴定，整体技术达国际先进水平。"
+      "titleEn": "Breakthrough",
+      "desc": "「复合成型自动化生产线」项目通过省级科技成果鉴定，整体技术达国际先进水平。",
+      "descEn": "'Composite Molding Automated Production Line' project passed provincial S&T achievement evaluation, reaching internationally advanced level."
     }
   ],
   "culture": {
     "title": "企业文化",
+    "titleEn": "Corporate Culture",
     "items": [
       {
         "key": "VISION",
         "title": "企业愿景",
-        "desc": "编织无限可能，成就轻量未来。做全球三维编织与先进复材成型数字化智能装备的领航者。"
+        "titleEn": "Vision",
+        "desc": "编织无限可能，成就轻量未来。做全球三维编织与先进复材成型数字化智能装备的领航者。",
+        "descEn": "Weaving Unlimited Possibilities, Achieving a Lightweight Future. Becoming the global leader in 3D braiding and advanced composite molding digital intelligent equipment."
       },
       {
         "key": "MISSION",
         "title": "企业使命",
-        "desc": "以数字化、自动化、智能化编织技术为引擎，提供国际先进的复材制造装备与成型解决方案，助力制造强国。"
+        "titleEn": "Mission",
+        "desc": "以数字化、自动化、智能化编织技术为引擎，提供国际先进的复材制造装备与成型解决方案，助力制造强国。",
+        "descEn": "Powered by digital, automated, and intelligent braiding technology, providing internationally advanced composite manufacturing equipment and molding solutions, empowering manufacturing excellence."
       },
       {
         "key": "VALUES",
         "title": "核心价值观",
-        "desc": "求真、创新、坚韧、共赢。传承学术严谨基因，勇攀科技高峰，持续为客户与产业创造非凡价值。"
+        "titleEn": "Core Values",
+        "desc": "求真、创新、坚韧、共赢。传承学术严谨基因，勇攀科技高峰，持续为客户与产业创造非凡价值。",
+        "descEn": "Truth-seeking, Innovation, Resilience, Win-Win. Inheriting academic rigor, scaling technological heights, continuously creating extraordinary value for customers and industry."
       }
     ]
   },
   "honorsSummary": {
     "title": "学术与资质荣誉",
+    "titleEn": "Academic & Professional Honors",
     "description": "坚持学术底蕴与市场导向双重驱动，高倍智造已获得多项国家级科研鉴定及行业体系认定。",
+    "descriptionEn": "Driven by both academic foundation and market orientation, Gaobei Smart Manufacturing has obtained multiple national-level research certifications and industry accreditations.",
     "badges": [
       "中国纺织工业联合会科学技术奖",
       "高新技术企业证书",
       "质量管理体系认证证书",
       "AAA级信用企业"
+    ],
+    "badgesEn": [
+      "CNTAC Science & Technology Award",
+      "National High-tech Enterprise Certificate",
+      "Quality Management System Certification",
+      "AAA Credit Enterprise"
     ]
   }
 }

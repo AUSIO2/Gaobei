@@ -1,11 +1,15 @@
 {
   "hero": {
     "title": "联系我们",
+    "titleEn": "Contact Us",
     "subtitle": "联系方式 · CONTACT US",
-    "description": "如果您有任何设备采购、工艺解决方案咨询或加入我们的意向，欢迎通过以下渠道与我们取得联系。"
+    "subtitleEn": "Get in Touch · CONTACT US",
+    "description": "如果您有任何设备采购、工艺解决方案咨询或加入我们的意向，欢迎通过以下渠道与我们取得联系。",
+    "descriptionEn": "Whether you're interested in equipment procurement, process solutions, or joining our team, feel free to reach out through any of the channels below."
   },
   "info": {
     "address": "盐城市盐南高新区新河街道新园路70号1幢",
+    "addressEn": "Building 1, No. 70 Xinyuan Road, Xinhe Street, Yannan High-tech Zone, Yancheng, Jiangsu, China",
     "servicePhone": " 0515-80995996",
     "recruitmentEmail": "Yiyunzhi@yl-fc.com",
     "mapImage": "微信图片_20260602092032.jpg"
@@ -14,21 +18,25 @@
     {
       "department":"",
       "contactPerson": "易先生",
+      "contactPersonEn": "Mr. Yi",
       "phone": "18121281680"
     },
     {
       "department": "",
       "contactPerson": "夏先生",
+      "contactPersonEn": "Mr. Xia",
       "phone": "18201731965"
     },
     {
       "department": "",
       "contactPerson": "明女士",
+      "contactPersonEn": "Ms. Ming",
       "phone": "18068884900"
     }
   ],
   "partners": {
     "title": "合作伙伴与客户群体",
+    "titleEn": "Partners & Clients",
     "subtitle": "TRUSTED BY LEADING ENTERPRISES",
     "image": "partners.png"
   }

@@ -1,13 +1,22 @@
 {
   "id": "3-2",
   "name": "YTL系列行列式三维缝合设备",
+  "nameEn": "YTL Series Row-column 3D Stitching Equipment",
   "summary": "PLC控制主动放纱、张力恒定，可根据实际情况最优化设计",
+  "summaryEn": "PLC-controlled active yarn feeding with constant tension, optimized design based on actual requirements",
   "specs": [
     "产品定位：支持规格定制，专注行列式缝合，尤其适合有规律性、对效率要求高的生产场景",
     "生产规格：可实现PLC精准控制与张力恒定，缝线间距可调（2-20毫米），效率高达120毫米²/分钟以上",
     "技术特点：缝合路径可根据行列布局优化设计，实现最高效率",
     "核心价值：在特定行列结构中实现极速缝合，是追求产能与标准化作业的理想选择"
   ],
+  "specsEn": [
+    "Positioning: Custom specifications supported, focused on row-column stitching, ideal for regular-pattern, high-efficiency production scenarios",
+    "Production Specs: PLC precision control with constant tension, adjustable stitch spacing (2-20mm), efficiency up to 120+ mm²/min",
+    "Technical Features: Stitching paths optimized based on row-column layout for maximum efficiency",
+    "Core Value: Ultra-fast stitching in specific row-column structures, ideal for high-capacity standardized operations"
+  ],
   "content": "YTL系列行列式三维缝合设备是一款追求极致效率与定制化适配的专精型设备。它不受传统面积限制，支持规格定制，专注于行列式的规整缝合，效率高达120 mm²/min以上。其缝合路径可根据实际行列排布进行优化设计，在较薄的厚度范围（1~10 mm）内实现了高产能，是追求快速交付与高性价比标准化作业的理想选择。",
+  "contentEn": "The YTL Series Row-column 3D Stitching Equipment is a specialized device pursuing ultimate efficiency and customized adaptation. Free from traditional area constraints with custom specification support, it focuses on regular row-column stitching with efficiency exceeding 120 mm²/min. Its stitching paths can be optimized based on actual row-column layouts, achieving high productivity within the thinner range (1~10mm), ideal for fast-delivery and cost-effective standardized operations.",
   "images": []
 }

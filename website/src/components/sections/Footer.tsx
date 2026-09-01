@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations , useLocale } from "next-intl";
+import { contactImageUrl } from "@/lib/asset-urls";
 
 interface Contact {
   role: string;
@@ -123,7 +124,7 @@ export default function Footer() {
         <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white p-1 rounded-sm flex items-center justify-center shadow-md overflow-hidden relative">
           {hasImage && !imgError ? (
             <img
-              src={`/api/contact/${encodeURIComponent(qr.image!)}`}
+              src={contactImageUrl(qr.image!)}
               alt={qr.label}
               className="w-full h-full object-contain"
               onError={() => setImgError(true)}

@@ -1,13 +1,22 @@
 {
   "id": "1-3",
   "name": "YBIM系列满锭子变轨交联编织机",
+  "nameEn": "YBIM Series Full-spindle Variable-track Cross-linked Braiding Machine",
   "summary": "可变轨交联编织机",
+  "summaryEn": "Variable-track cross-linked braiding machine",
   "specs": [
     "规格尺寸：提供多种尺寸，最大尺寸可达 7680×5600×7050 mm",
     "编织尺寸：覆盖极广，支持从 10 mm 到从800 mm的编织件，全系支持 10°-85°大范围调节，最大容纱量高达 1000 m",
     "核心性能：常规纱锭最大转速达 100 r/min，全系标配 PLC 伺服控制系统，支持 2环、3环、7环配置，单方向编织单层厚度可达 4.5mm",
     "机型矩阵：提供YBIM-480型、YBIM-576型、YBIM-108型与YBIM-384型四种不同配置"
   ],
+  "specsEn": [
+    "Dimensions: Multiple sizes available, largest up to 7680×5600×7050 mm",
+    "Braiding Size: Ultra-wide coverage from 10mm to 800mm braided parts, 10°-85° wide-range adjustment, max yarn capacity up to 1000m",
+    "Core Performance: Max spindle speed 100 r/min, PLC servo control standard, supports 2/3/7-ring configurations, single-direction single-layer thickness up to 4.5mm",
+    "Model Matrix: Four configurations - YBIM-480, YBIM-576, YBIM-108, and YBIM-384"
+  ],
   "content":"YBIM系列内环柱面编织机是一款面向超大型、高精度及特殊厚壁构件的高端智能装备。设备提供从108锭到576锭的丰富配置，高端型号支持四步法及7环复杂工艺，覆盖Φ10mm至Φ800mm的直径范围，编织角度可在10°–85°范围内调节。其核心优势在于：单层编织厚度可达4.5mm，最大容纱量达1000m，配合100r/min高速运转与PLC伺服控制系统，确保大件编织的稳定性与高效率。此外，该系列支持双机协同、多环配置及纱管规格定制，可选配操作平台、牵引装置与编织仿真软件，适用于航空航天、深海耐压管、大型复合材料预成型体等高难度领域的精密制造。",
+  "contentEn": "The YBIM Series is a high-end intelligent equipment designed for oversized, high-precision, and special thick-wall components. Offering 108 to 576 spindle configurations, advanced models support four-step process and 7-ring complex processes, covering Φ10mm to Φ800mm diameter range with 10°-85° braiding angle adjustment. Key advantages include: single-layer braiding thickness up to 4.5mm, max yarn capacity of 1000m, combined with 100r/min high-speed operation and PLC servo control for large-part braiding stability and efficiency. Supporting dual-machine coordination, multi-ring configuration, and custom bobbin specifications with optional operating platforms, traction devices, and braiding simulation software, suitable for precision manufacturing in aerospace, deep-sea pressure pipes, and large composite preforms.",
   "images": []
 }

@@ -1,13 +1,22 @@
 {
   "id": "4-1",
   "name": "YNC系列圆筒预制体针刺机",
+  "nameEn": "YNC Series Cylindrical Preform Needle Punching Machine",
   "summary": "针刺+多种工艺结合，优化预制体原材料配比，实现预制体体积密度值最优控制，减少后续沉积和机加工成本",
+  "summaryEn": "Needle punching + multi-process integration, optimizing preform material ratios for optimal volume density control, reducing subsequent deposition and machining costs",
   "specs": [
     "产线集成：多轴协作机器人、自动纱架、干湿法缠绕单元",
     "效率指标：多工位并行织造，全产线工时成本缩减 70%",
     "控制特色：自研双冗余 PLC 高速纠偏与排线张力补偿",
     "良品管理：集成超声波在线孔隙无损检测与在线缺陷追踪"
   ],
+  "specsEn": [
+    "Line Integration: Multi-axis collaborative robots, automatic creels, dry/wet winding units",
+    "Efficiency: Multi-station parallel braiding, 70% reduction in overall line labor costs",
+    "Control Features: Independently developed dual-redundant PLC high-speed deviation correction and wire tension compensation",
+    "Quality Management: Integrated ultrasonic online porosity NDT and online defect tracking"
+  ],
   "content": "随着新能源氢能汽车和商业航天的爆发，该非标定制装备应运而生。它实现了碳纤维骨架的高速缠绕与自动转运注入一体化成型，中试线产能提升 100%。已在多家商业航天和特种承压装备企业成功起运装箱，投入量产运行。",
+  "contentEn": "With the boom in new energy hydrogen vehicles and commercial aerospace, this custom non-standard equipment emerged. It achieves high-speed winding of carbon fiber frameworks with automated transfer and injection-integrated molding, boosting pilot line capacity by 100%. Successfully shipped and deployed for mass production at multiple commercial aerospace and specialty pressure equipment enterprises.",
   "images": []
 }

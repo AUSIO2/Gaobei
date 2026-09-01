@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { homepageImageUrl } from "@/lib/asset-urls";
 
 interface HighlightCard {
   id: string;
@@ -329,7 +330,7 @@ export default function TechHighlights() {
                 <div className="w-full md:w-[160px] lg:w-[180px] h-[160px] md:h-auto shrink-0 relative flex items-center justify-center bg-white/2 rounded-xl border border-white/5 overflow-hidden z-10">
                   {card.image ? (
                     <img
-                      src={`/api/homepage/image/${encodeURIComponent(card.image)}`}
+                      src={homepageImageUrl(card.image)}
                       alt={card.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />

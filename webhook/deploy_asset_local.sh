@@ -24,6 +24,12 @@ git fetch --depth=1 origin "${BRANCH}"
 git reset --hard "origin/${BRANCH}"
 
 # ---- Step 2: 同步 asset 到部署目录 ----
+if [ "${ADMIN_MODE}" = "1" ]; then
+    warn "ADMIN_MODE=1，跳过 asset 同步（由管理端直接维护 /root/asset）"
+    info "资源部署跳过 ✅"
+    exit 0
+fi
+
 info "正在同步 asset/ → ${ASSET_DEST}/ (排除 inquiries) ..."
 
 if command -v rsync >/dev/null 2>&1; then

@@ -1,62 +1,88 @@
 {
   "title": "三维编织 × 数字孪生",
+  "titleEn": "3D Braiding × Digital Twin",
   "subtitle": "以自研科技力量，突破复合材料高端制造的物理极限",
+  "subtitleEn": "Breaking the physical limits of high-end composite manufacturing with independent R&D",
   "intro": "全球领先的三维编织技术（国家科技进步二等奖），独创大尺寸整体编织工艺，构件力学性能提升30%+，生产效率提升50%+。",
+  "introEn": "Globally leading 3D braiding technology (National S&T Progress Award), pioneering large-scale integral braiding process, improving component mechanical performance by 30%+ and production efficiency by 50%+.",
   "braiding": {
     "title": "三维立体编织技术",
-    "description": "三维立体编织工艺通过在空间中使多轴纱线互为交织，形成交联互锁的三维网状骨架结构。与传统“层合复材”相比，其结构内部嵌入了厚度方向的编织纱，从而彻底消除了“层间”概念，赋予材料极其优异的韧性、抗冲击和抗剪切强度。",
+    "titleEn": "3D Braiding Technology",
+    "description": "三维立体编织工艺通过在空间中使多轴纱线互为交织，形成交联互锁的三维网状骨架结构。与传统「层合复材」相比，其结构内部嵌入了厚度方向的编织纱，从而彻底消除了「层间」概念，赋予材料极其优异的韧性、抗冲击和抗剪切强度。",
+    "descriptionEn": "3D braiding technology interlaces multi-axis yarns in space to form a cross-linked, interlocking three-dimensional network skeleton structure. Compared to traditional 'laminated composites', its structure embeds braiding yarns in the thickness direction, completely eliminating the 'interlayer' concept and giving the material exceptional toughness, impact resistance, and shear strength.",
     "image": "braiding.JPG",
     "specs": [
-      { "name": "最大编织外径", "value": "1500 mm", "desc": "可成型重载火箭壳体与超大航空风筒预制体" },
-      { "name": "最大编织长度", "value": "6000 mm", "desc": "支持大飞机肋梁及长轴系结构件的连续织造" },
-      { "name": "编织角度调整范围", "value": "20°-75°", "desc": "角度可根据沿轴向的受力分布进行多段渐变调节" },
-      { "name": "适用纤维材质", "value": "碳纤维(3k-48k)、玻璃纤维、芳纶、特种石英纤维", "desc": "多纤维混编技术，赋予材料空间可设计的性能梯度。" },
-      { "name": "主要织造结构", "value": "四步法/二步法实体、多层中空管、变曲率变截面异形件", "desc": "完美适配非对称和扭转等复杂空间曲面" }
+      { "name": "最大编织外径", "nameEn": "Max Braiding OD", "value": "1500 mm", "desc": "可成型重载火箭壳体与超大航空风筒预制体", "descEn": "Capable of forming heavy-duty rocket casings and oversized aerospace duct preforms" },
+      { "name": "最大编织长度", "nameEn": "Max Braiding Length", "value": "6000 mm", "desc": "支持大飞机肋梁及长轴系结构件的连续织造", "descEn": "Supports continuous braiding of large aircraft rib beams and long shaft structural components" },
+      { "name": "编织角度调整范围", "nameEn": "Braiding Angle Range", "value": "20°-75°", "desc": "角度可根据沿轴向的受力分布进行多段渐变调节", "descEn": "Angles can be adjusted in multi-segment gradients based on axial stress distribution" },
+      { "name": "适用纤维材质", "nameEn": "Applicable Fiber Materials", "value": "碳纤维(3k-48k)、玻璃纤维、芳纶、特种石英纤维", "valueEn": "Carbon Fiber (3k-48k), Glass Fiber, Aramid, Special Quartz Fiber", "desc": "多纤维混编技术，赋予材料空间可设计的性能梯度。", "descEn": "Multi-fiber hybrid braiding technology provides spatially designable performance gradients." },
+      { "name": "主要织造结构", "nameEn": "Main Braiding Structures", "value": "四步法/二步法实体、多层中空管、变曲率变截面异形件", "valueEn": "Four-step/Two-step solid, Multi-layer hollow tubes, Variable curvature/section profiles", "desc": "完美适配非对称和扭转等复杂空间曲面", "descEn": "Perfectly adapts to complex spatial surfaces including asymmetric and torsional geometries" }
     ],
     "advantages": [
-      { "title": "无层间分层缺陷", "desc": "空间三维一体编织，层间剪切强度相比传统层合板提升1.5-2倍。" },
-      { "title": "超高抗撞击吸能", "desc": "多向相交的纤维网络能有效维持材料在撞击瞬间的结构完整性，阻止损伤（裂纹等）向纵深蔓延。" },
-      { "title": "近净尺寸一次成型", "desc": "直接织造出接近零件最终几何形状的预制体，废料率降低至3%以下。" }
+      { "title": "无层间分层缺陷", "titleEn": "No Interlayer Delamination Defects", "desc": "空间三维一体编织，层间剪切强度相比传统层合板提升1.5-2倍。", "descEn": "Spatial 3D integral braiding increases interlayer shear strength by 1.5-2x compared to traditional laminates." },
+      { "title": "超高抗撞击吸能", "titleEn": "Ultra-high Impact Energy Absorption", "desc": "多向相交的纤维网络能有效维持材料在撞击瞬间的结构完整性，阻止损伤（裂纹等）向纵深蔓延。", "descEn": "Multi-directional intersecting fiber networks effectively maintain structural integrity upon impact, preventing damage propagation." },
+      { "title": "近净尺寸一次成型", "titleEn": "Near-net-shape One-step Forming", "desc": "直接织造出接近零件最终几何形状的预制体，废料率降低至3%以下。", "descEn": "Directly braiding preforms close to final part geometry, reducing waste rate to below 3%." }
     ]
   },
   "digitalTwin": {
     "title": "复合成型自动化生产线",
+    "titleEn": "Automated Composite Molding Production Line",
     "description": "我们将数字化技术贯穿于设计、模拟、生产、固化及检测的全生命周期。编织前，利用数字孪生软件进行精确物理碰撞与干涉验证；生产中，通过高精度张力传感器（百兆高频）与伺服机构阵列实时反馈，动态调节纱线张力，确保大尺寸复杂构件织造的高一致性。",
+    "descriptionEn": "We integrate digital technology throughout the entire lifecycle of design, simulation, production, curing, and inspection. Before braiding, digital twin software performs precise physical collision and interference verification; during production, high-precision tension sensors (100MHz high-frequency) and servo mechanism arrays provide real-time feedback to dynamically adjust yarn tension, ensuring high consistency in braiding large, complex components.",
     "image": "DigitalTwin.JPG",
     "features": [
-      { "name": "运动轨迹与排线干涉预演", "desc": "在虚拟空间中对数百锭线轴运动轨迹进行动态解算，提前识别并消除纤维磨损隐患。" },
-      { "name": "每锭独立闭环张力在线监控", "desc": "采样率达100Hz，实时监控单根纱线张力，波动范围控制在设定值的±5%以内，彻底杜绝断纱。" },
-      { "name": "成型工艺高精度闭环温控", "desc": "固化成型环节集成自适应控温算法，实现热压罐及真空辅助固化成型全过程±1℃精准控温，优化树脂浸渍质量。" }
+      { "name": "运动轨迹与排线干涉预演", "nameEn": "Motion Trajectory & Wire Interference Preview", "desc": "在虚拟空间中对数百锭线轴运动轨迹进行动态解算，提前识别并消除纤维磨损隐患。", "descEn": "Dynamic computation of hundreds of spool motion trajectories in virtual space, identifying and eliminating fiber wear risks in advance." },
+      { "name": "每锭独立闭环张力在线监控", "nameEn": "Independent Closed-loop Tension Monitoring Per Spool", "desc": "采样率达100Hz，实时监控单根纱线张力，波动范围控制在设定值的±5%以内，彻底杜绝断纱。", "descEn": "Sampling rate up to 100Hz, real-time monitoring of individual yarn tension, controlling fluctuation within ±5% of set value, completely eliminating yarn breakage." },
+      { "name": "成型工艺高精度闭环温控", "nameEn": "High-precision Closed-loop Temperature Control", "desc": "固化成型环节集成自适应控温算法，实现热压罐及真空辅助固化成型全过程±1℃精准控温，优化树脂浸渍质量。", "descEn": "Adaptive temperature control algorithm integrated in the curing process, achieving ±1°C precise temperature control throughout autoclave and VARTM processes, optimizing resin impregnation quality." }
     ]
   },
   "comparison": {
     "title": "工艺技术对比表",
+    "titleEn": "Process Technology Comparison",
     "subtitle": "三维立体编织工艺与传统制造工艺的技术维度对比",
+    "subtitleEn": "Technical comparison between 3D braiding and traditional manufacturing processes",
     "columns": ["评估维度", "传统铺层工艺 (Lamination)", "传统卷管/缠绕工艺 (Winding)", "云路三维立体编织 (3D Braiding)"],
+    "columnsEn": ["Dimension", "Traditional Lamination", "Traditional Winding", "Yunlu 3D Braiding"],
     "rows": [
       {
         "dimension": "结构整体性",
+        "dimensionEn": "Structural Integrity",
         "lamination": "层与层之间仅靠树脂黏结，易发生剪切剥离",
+        "laminationEn": "Layers bonded only by resin, prone to shear delamination",
         "winding": "环向缠绕整体性较好，但厚度方向缺乏纤维连接",
-        "braiding": "三维整体交织，纤维贯穿XYZ轴，不存在物理分层面"
+        "windingEn": "Good circumferential integrity, but lacks fiber connection in thickness direction",
+        "braiding": "三维整体交织，纤维贯穿XYZ轴，不存在物理分层面",
+        "braidingEn": "3D integral interlacing, fibers penetrate XYZ axes, no physical delamination planes"
       },
       {
         "dimension": "抗冲击与吸能",
+        "dimensionEn": "Impact Resistance & Energy Absorption",
         "lamination": "受冲击易分层开裂，结构瞬间丧失承载能力",
+        "laminationEn": "Prone to delamination cracking under impact, instant loss of load-bearing capacity",
         "winding": "受局部撞击时易沿缠绕缝隙发生螺旋状开裂",
-        "braiding": "纤维网络交错咬合，吸能效率是普通铺层构件的2倍以上"
+        "windingEn": "Prone to spiral cracking along winding gaps under localized impact",
+        "braiding": "纤维网络交错咬合，吸能效率是普通铺层构件的2倍以上",
+        "braidingEn": "Interlocking fiber networks, energy absorption efficiency over 2x that of ordinary laminated components"
       },
       {
         "dimension": "复杂异形件适用度",
+        "dimensionEn": "Complex Profile Suitability",
         "lamination": "凹凸双曲率表面需人工裁剪拼接，拼缝多，力学折损大",
+        "laminationEn": "Concave/convex double-curvature surfaces require manual cutting and splicing, many seams, significant mechanical degradation",
         "winding": "只适用于旋转体及规则的圆柱体，异型面无法缠绕",
-        "braiding": "可通过多关节机械臂和变截面导轨，一次编织成形复杂双曲率异形件"
+        "windingEn": "Only suitable for bodies of revolution and regular cylinders, irregular profiles cannot be wound",
+        "braiding": "可通过多关节机械臂和变截面导轨，一次编织成形复杂双曲率异形件",
+        "braidingEn": "Complex double-curvature profiles can be braided in one step using multi-joint robotic arms and variable-section guide rails"
       },
       {
         "dimension": "数字化与一致性",
+        "dimensionEn": "Digitalization & Consistency",
         "lamination": "极度依赖人工铺贴手艺，质量一致性低，难以数字化追溯",
+        "laminationEn": "Highly dependent on manual lay-up skills, low quality consistency, difficult to digitally trace",
         "winding": "可实现数控缠绕，但无法实时感知纤维内部应力分布",
-        "braiding": "全数字孪生控制，工艺参数100%云端记录、仿真核验、在线追溯"
+        "windingEn": "CNC winding achievable, but cannot sense fiber internal stress distribution in real-time",
+        "braiding": "全数字孪生控制，工艺参数100%云端记录、仿真核验、在线追溯",
+        "braidingEn": "Full digital twin control, 100% cloud recording of process parameters, simulation verification, and online traceability"
       }
     ]
   }

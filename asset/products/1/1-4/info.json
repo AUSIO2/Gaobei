@@ -1,13 +1,22 @@
 {
   "id": "1-4",
   "name": "36锭单环卧式编织机",
+  "nameEn": "36-spindle Single-ring Horizontal Braiding Machine",
   "summary": "单环卧式编织机",
+  "summaryEn": "Single-ring horizontal braiding machine",
   "specs": [
     "产品组成：采用可调节高倍4K摄像头+工控主机+高清显示屏构成编织点放大观测平台",
     "产品材料：使用相对柔性的精密气动夹持气缸，夹持编织芯模",
     "核心功能：编织过程中，支撑模块自动触发，对芯模进行支撑，全程智能守护，断纱自检系统即时响应，保障每一米编织物的完美品质",
     "产品应用：可编织的纤维类型包含碳化硅、氧化铝等高性能纤维，丝类型：金属丝、尼龙丝等特种材料；充分适应特种纤维领域的多样化需求"
   ],
+  "specsEn": [
+    "Components: Adjustable high-magnification 4K camera + industrial PC + HD display for braiding point magnification observation platform",
+    "Materials: Precision pneumatic clamping cylinders with relative flexibility for mandrel holding",
+    "Core Functions: Support module auto-triggers during braiding for mandrel support, full-process intelligent monitoring, instant yarn breakage detection system ensuring perfect quality per meter",
+    "Applications: Compatible with SiC, alumina, and other high-performance fibers, as well as metal wire, nylon, and other specialty materials for diverse specialty fiber requirements"
+  ],
   "content": "采用可调节高倍4K摄像头+工控主机+高清显示屏构成编织点放大观测平台，实时显示动态编织状态。采用相对柔性的精密气动夹持气缸，夹持编织芯模，通过气压调节，实现不同的夹持力度，编织过程中，支撑模块自动触发，对芯模进行支撑，全程智能守护，断纱自检系统即时响应，保障每一米编织物的完美品质。可编织的纤维类型包含碳化硅、氧化铝等高性能纤维，丝类型：金属丝、尼龙丝等特种材料；充分适应特种纤维领域的多样化需求，为客户提供高度定制化的解决方案。",
+  "contentEn": "Featuring an adjustable high-magnification 4K camera + industrial PC + HD display braiding point observation platform for real-time dynamic braiding status display. Precision pneumatic clamping cylinders with adjustable air pressure for different clamping forces on the braiding mandrel. During braiding, the support module automatically triggers to support the mandrel with full-process intelligent monitoring, and the yarn breakage detection system responds instantly to ensure perfect quality. Compatible with silicon carbide, alumina, and other high-performance fibers, as well as metal wire, nylon, and other specialty materials, fully adapting to the diverse needs of the specialty fiber field and providing highly customized solutions.",
   "images": []
 }

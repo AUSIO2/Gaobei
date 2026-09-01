@@ -1,12 +1,18 @@
 {
   "hero": {
     "title": "先进三维编织装备与成型平台",
+    "titleEn": "Advanced 3D Braiding Equipment & Molding Platforms",
     "subtitle": "产品与解决方案 · PRODUCTS",
-    "description": "云路复材为科研院所及企业客户提供从纤维编织到树脂成型的全流程闭环软硬件产品体系。"
+    "subtitleEn": "Products & Solutions · PRODUCTS",
+    "description": "云路复材为科研院所及企业客户提供从纤维编织到树脂成型的全流程闭环软硬件产品体系。",
+    "descriptionEn": "Yunlu Composites provides research institutes and enterprise clients with a full-process closed-loop hardware and software product system from fiber braiding to resin molding."
   },
   "customService": {
     "title": "非标自动化装备定制服务",
+    "titleEn": "Custom Non-standard Automation Equipment Service",
     "description": "我们的研发实力不仅限于标准规格三维编织设备，还可以为您的异形三维编织件（如高压氢气储罐、飞机机翼骨架等）定制专属的自动生产线和控制轨迹。",
-    "buttonText": "与技术专家探讨定制需求"
+    "descriptionEn": "Our R&D capabilities extend beyond standard 3D braiding equipment. We can also customize dedicated automated production lines and control trajectories for your specialized 3D braided components such as high-pressure hydrogen tanks and aircraft wing frames.",
+    "buttonText": "与技术专家探讨定制需求",
+    "buttonTextEn": "Discuss Custom Requirements with Experts"
   }
 }

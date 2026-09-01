@@ -20,6 +20,7 @@ IMAGE_NAME="yunlu-website"
 CONTAINER_NAME="yunlu-website-app"
 LISTEN_PORT=3000
 PUBLIC_PORT=80
+REVERSE_PROXY_MODE="${REVERSE_PROXY_MODE:-iptables}"
 
 # ---- Step 1: 拉取最新代码 ----
 info "正在拉取 code 仓库最新代码 ..."
@@ -47,17 +48,21 @@ else
 fi
 
 # ---- Step 3: 同步 asset 资源 ----
-info "正在同步 asset/ → ${ASSET_DEST}/ (排除 inquiries) ..."
-if command -v rsync >/dev/null 2>&1; then
-    rsync -av --delete \
-        --exclude='inquiries' \
-        --exclude='.DS_Store' \
-        --exclude='.git' \
-        "${REPO_DIR}/asset/" "${ASSET_DEST}/"
+if [ "${ADMIN_MODE}" = "1" ]; then
+    warn "ADMIN_MODE=1，跳过 asset 同步（由管理端直接维护）"
 else
-    find "${ASSET_DEST}" -mindepth 1 -maxdepth 1 ! -name "inquiries" -exec rm -rf {} +
-    cd "${REPO_DIR}/asset"
-    find . -mindepth 1 -maxdepth 1 ! -name "inquiries" ! -name ".DS_Store" -exec cp -r {} "${ASSET_DEST}/" \;
+    info "正在同步 asset/ → ${ASSET_DEST}/ (排除 inquiries) ..."
+    if command -v rsync >/dev/null 2>&1; then
+        rsync -av --delete \
+            --exclude='inquiries' \
+            --exclude='.DS_Store' \
+            --exclude='.git' \
+            "${REPO_DIR}/asset/" "${ASSET_DEST}/"
+    else
+        find "${ASSET_DEST}" -mindepth 1 -maxdepth 1 ! -name "inquiries" -exec rm -rf {} +
+        cd "${REPO_DIR}/asset"
+        find . -mindepth 1 -maxdepth 1 ! -name "inquiries" ! -name ".DS_Store" -exec cp -r {} "${ASSET_DEST}/" \;
+    fi
 fi
 
 # ---- Step 4: 构建 Docker 镜像 ----
@@ -74,7 +79,9 @@ podman run -d --network=host \
     "${IMAGE_NAME}"
 
 # ---- Step 6: 端口转发 ----
-if [ "${PUBLIC_PORT}" != "${LISTEN_PORT}" ]; then
+if [ "${REVERSE_PROXY_MODE}" = "caddy" ]; then
+    info "Caddy 反向代理模式，跳过 iptables 端口转发"
+elif [ "${PUBLIC_PORT}" != "${LISTEN_PORT}" ]; then
     info "配置端口转发 ${PUBLIC_PORT} → ${LISTEN_PORT} ..."
     iptables -t nat -D PREROUTING -p tcp --dport ${PUBLIC_PORT} -j REDIRECT --to-port ${LISTEN_PORT} 2>/dev/null || true
     iptables -t nat -D OUTPUT -p tcp --dport ${PUBLIC_PORT} -j REDIRECT --to-port ${LISTEN_PORT} 2>/dev/null || true

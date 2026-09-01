@@ -1,13 +1,22 @@
 {
   "id": "1-1",
   "name": "YBI系列内环柱面编织机",
+  "nameEn": "YBI Series Internal Ring Cylindrical Braiding Machine",
   "summary": "可安装操作平台、牵引装置、自主开发的编织仿真软件系统。",
+  "summaryEn": "Compatible with operating platforms, traction devices, and independently developed braiding simulation software systems.",
   "specs": [
     "规格尺寸：提供多种尺寸选择，最大型号可达 7250×3500×7250 mm",
     "编织尺寸：支持从40mm到1050mm的超大直径编织件，同时支持10°-85°的大范围调节",
     "核心性能：纱锭最大转速可达 100 r/min；全系标配 PLC 伺服控制系统，确保运行稳定",
     "机型矩阵：提供YBI-176型、YBI-256型、YBI-320型与YBI-352型四种不同配置"
   ],
+  "specsEn": [
+    "Dimensions: Multiple sizes available, largest model up to 7250×3500×7250 mm",
+    "Braiding Size: Supports oversized braided parts from 40mm to 1050mm diameter, with 10°-85° wide-range adjustment",
+    "Core Performance: Max spindle speed up to 100 r/min; PLC servo control system standard across all models for stable operation",
+    "Model Matrix: Four configurations available - YBI-176, YBI-256, YBI-320, and YBI-352"
+  ],
   "content": "YBI 系列内环柱面编织机提供 176 至 352 锭多种规格，最大支持 Φ1050mm 超大直径编织件，具备 10°-85° 大范围精密编织能力（精度 ±3°）及 100r/min 高速运转性能；全系采用 PLC 伺服控制，支持往复编织、双机协同及多环配置，兼具高灵活性与定制化扩展能力（如操作平台、仿真软件），是满足不同规模高效生产需求的高端智能装备。",
+  "contentEn": "The YBI Series Internal Ring Cylindrical Braiding Machine offers 176 to 352 spindle configurations, supporting oversized braided parts up to Φ1050mm diameter with 10°-85° precision braiding capability (±3° accuracy) and 100r/min high-speed performance. The entire series features PLC servo control, supports reciprocal braiding, dual-machine coordination, and multi-ring configurations, combining high flexibility with customizable expansion capabilities (operating platforms, simulation software), making it a high-end intelligent equipment for efficient production at various scales.",
   "images": []
 }
