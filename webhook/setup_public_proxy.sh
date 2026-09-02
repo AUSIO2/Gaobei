@@ -40,7 +40,7 @@ iptables-save > "${BACKUP_DIR}/iptables.rules" 2>/dev/null || true
 
 if ! command -v caddy >/dev/null 2>&1; then
   dnf install -y dnf-plugins-core
-  dnf copr enable -y @caddy/caddy
+  dnf copr enable -y @caddy/caddy epel-8-x86_64
   dnf install -y caddy
 fi
 
@@ -81,6 +81,7 @@ else
   echo 'REVERSE_PROXY_MODE=caddy' >> /root/webhook/.env
 fi
 systemctl restart gaobei-webhook
+podman start yunlu-website-app 2>/dev/null || true
 systemctl restart caddy
 
 systemctl --no-pager --full status caddy | sed -n '1,20p'

@@ -133,6 +133,8 @@ systemctl daemon-reload
 systemctl enable gaobei-admin
 systemctl restart gaobei-admin
 systemctl restart gaobei-webhook || true
+# Webhook 启动的 Podman 容器可能随旧 service cgroup 一起收到 SIGTERM。
+podman start yunlu-website-app 2>/dev/null || true
 systemctl --no-pager status gaobei-admin || true
 # 管理端仅监听本机；移除旧的公网端口规则（如存在）
 if command -v firewall-cmd >/dev/null 2>&1; then
