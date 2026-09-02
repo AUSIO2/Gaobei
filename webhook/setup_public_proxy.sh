@@ -46,6 +46,10 @@ fi
 
 mkdir -p /etc/caddy
 cat > /etc/caddy/Caddyfile <<'CADDY'
+gaobei-tech.com {
+  redir https://www.gaobei-tech.com{uri} permanent
+}
+
 www.gaobei-tech.com {
   encode zstd gzip
   reverse_proxy 127.0.0.1:3000
